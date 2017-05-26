@@ -7,21 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CBFB99E4C60B8914C21D621 /* Pods_Viale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48545A165799EF72AF307AB7 /* Pods_Viale.framework */; };
 		EEB4734A1ED6230500B1020A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473491ED6230500B1020A /* AppDelegate.swift */; };
-		EEB4734C1ED6230500B1020A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4734B1ED6230500B1020A /* ViewController.swift */; };
+		EEB4734C1ED6230500B1020A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4734B1ED6230500B1020A /* SignInVC.swift */; };
 		EEB4734F1ED6230500B1020A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB4734D1ED6230500B1020A /* Main.storyboard */; };
 		EEB473511ED6230500B1020A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEB473501ED6230500B1020A /* Assets.xcassets */; };
 		EEB473541ED6230500B1020A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB473521ED6230500B1020A /* LaunchScreen.storyboard */; };
+		EEB473641ED7258300B1020A /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473601ED7258300B1020A /* FancyView.swift */; };
+		EEB473651ED7258300B1020A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473611ED7258300B1020A /* RoundButton.swift */; };
+		EEB473661ED7258300B1020A /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473621ED7258300B1020A /* FancyField.swift */; };
+		EEB473671ED7258300B1020A /* FancySubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473631ED7258300B1020A /* FancySubmitButton.swift */; };
+		EEB4736E1ED725BD00B1020A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4736D1ED725BD00B1020A /* Constants.swift */; };
+		EEB473701ED7977D00B1020A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEB4736F1ED7977D00B1020A /* GoogleService-Info.plist */; };
+		EEB473721ED79BFC00B1020A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473711ED79BFC00B1020A /* DataService.swift */; };
+		EEB473741ED7A31A00B1020A /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473731ED7A31A00B1020A /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		402312B47F9EDBA449D530C0 /* Pods-Viale.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Viale.release.xcconfig"; path = "Pods/Target Support Files/Pods-Viale/Pods-Viale.release.xcconfig"; sourceTree = "<group>"; };
+		48545A165799EF72AF307AB7 /* Pods_Viale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Viale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D462145FDFE613D75D58BFC /* Pods-Viale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Viale.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Viale/Pods-Viale.debug.xcconfig"; sourceTree = "<group>"; };
 		EEB473461ED6230500B1020A /* Viale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Viale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB473491ED6230500B1020A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EEB4734B1ED6230500B1020A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EEB4734B1ED6230500B1020A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		EEB4734E1ED6230500B1020A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEB473501ED6230500B1020A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEB473531ED6230500B1020A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEB473551ED6230500B1020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEB473601ED7258300B1020A /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
+		EEB473611ED7258300B1020A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		EEB473621ED7258300B1020A /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
+		EEB473631ED7258300B1020A /* FancySubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancySubmitButton.swift; sourceTree = "<group>"; };
+		EEB4736D1ED725BD00B1020A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EEB4736F1ED7977D00B1020A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EEB473711ED79BFC00B1020A /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		EEB473731ED7A31A00B1020A /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		EEB473751ED7A4B700B1020A /* Viale.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Viale.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +50,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBFB99E4C60B8914C21D621 /* Pods_Viale.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D0E909A11456A7DEA71C138 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D462145FDFE613D75D58BFC /* Pods-Viale.debug.xcconfig */,
+				402312B47F9EDBA449D530C0 /* Pods-Viale.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		ABE2AA57EE2C143EEBFF8B99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48545A165799EF72AF307AB7 /* Pods_Viale.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EEB4733D1ED6230500B1020A = {
 			isa = PBXGroup;
 			children = (
 				EEB473481ED6230500B1020A /* Viale */,
 				EEB473471ED6230500B1020A /* Products */,
+				2D0E909A11456A7DEA71C138 /* Pods */,
+				ABE2AA57EE2C143EEBFF8B99 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +96,62 @@
 			isa = PBXGroup;
 			children = (
 				EEB473491ED6230500B1020A /* AppDelegate.swift */,
-				EEB4734B1ED6230500B1020A /* ViewController.swift */,
 				EEB4734D1ED6230500B1020A /* Main.storyboard */,
+				EEB4736C1ED725B700B1020A /* Services */,
+				EEB4736B1ED725B200B1020A /* Util */,
+				EEB4736A1ED725A500B1020A /* Controller */,
+				EEB473691ED725A000B1020A /* Model */,
+				EEB473681ED7258800B1020A /* View */,
 				EEB473501ED6230500B1020A /* Assets.xcassets */,
 				EEB473521ED6230500B1020A /* LaunchScreen.storyboard */,
 				EEB473551ED6230500B1020A /* Info.plist */,
+				EEB4736F1ED7977D00B1020A /* GoogleService-Info.plist */,
+				EEB473751ED7A4B700B1020A /* Viale.entitlements */,
 			);
 			path = Viale;
+			sourceTree = "<group>";
+		};
+		EEB473681ED7258800B1020A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EEB473601ED7258300B1020A /* FancyView.swift */,
+				EEB473611ED7258300B1020A /* RoundButton.swift */,
+				EEB473621ED7258300B1020A /* FancyField.swift */,
+				EEB473631ED7258300B1020A /* FancySubmitButton.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		EEB473691ED725A000B1020A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		EEB4736A1ED725A500B1020A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EEB4734B1ED6230500B1020A /* SignInVC.swift */,
+				EEB473731ED7A31A00B1020A /* MainVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EEB4736B1ED725B200B1020A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				EEB4736D1ED725BD00B1020A /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		EEB4736C1ED725B700B1020A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EEB473711ED79BFC00B1020A /* DataService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +161,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEB473581ED6230500B1020A /* Build configuration list for PBXNativeTarget "Viale" */;
 			buildPhases = (
+				DD9AC18588CD7F497B87DEE1 /* [CP] Check Pods Manifest.lock */,
 				EEB473421ED6230500B1020A /* Sources */,
 				EEB473431ED6230500B1020A /* Frameworks */,
 				EEB473441ED6230500B1020A /* Resources */,
+				668ACCE96A8217146254F30A /* [CP] Embed Pods Frameworks */,
+				F8B81078E799751B6E9C3BD5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -98,6 +191,11 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 23W29C93WU;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -127,18 +225,74 @@
 				EEB473541ED6230500B1020A /* LaunchScreen.storyboard in Resources */,
 				EEB473511ED6230500B1020A /* Assets.xcassets in Resources */,
 				EEB4734F1ED6230500B1020A /* Main.storyboard in Resources */,
+				EEB473701ED7977D00B1020A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		668ACCE96A8217146254F30A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Viale/Pods-Viale-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD9AC18588CD7F497B87DEE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F8B81078E799751B6E9C3BD5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Viale/Pods-Viale-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EEB473421ED6230500B1020A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB4734C1ED6230500B1020A /* ViewController.swift in Sources */,
+				EEB473651ED7258300B1020A /* RoundButton.swift in Sources */,
+				EEB4734C1ED6230500B1020A /* SignInVC.swift in Sources */,
+				EEB473661ED7258300B1020A /* FancyField.swift in Sources */,
+				EEB473671ED7258300B1020A /* FancySubmitButton.swift in Sources */,
+				EEB473741ED7A31A00B1020A /* MainVC.swift in Sources */,
+				EEB4736E1ED725BD00B1020A /* Constants.swift in Sources */,
 				EEB4734A1ED6230500B1020A /* AppDelegate.swift in Sources */,
+				EEB473641ED7258300B1020A /* FancyView.swift in Sources */,
+				EEB473721ED79BFC00B1020A /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +413,10 @@
 		};
 		EEB473591ED6230500B1020A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D462145FDFE613D75D58BFC /* Pods-Viale.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Viale/Viale.entitlements;
 				DEVELOPMENT_TEAM = 23W29C93WU;
 				INFOPLIST_FILE = Viale/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -272,8 +428,10 @@
 		};
 		EEB4735A1ED6230500B1020A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 402312B47F9EDBA449D530C0 /* Pods-Viale.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Viale/Viale.entitlements;
 				DEVELOPMENT_TEAM = 23W29C93WU;
 				INFOPLIST_FILE = Viale/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -302,6 +460,7 @@
 				EEB4735A1ED6230500B1020A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
