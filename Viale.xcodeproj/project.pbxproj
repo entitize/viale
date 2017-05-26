@@ -21,6 +21,13 @@
 		EEB473701ED7977D00B1020A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEB4736F1ED7977D00B1020A /* GoogleService-Info.plist */; };
 		EEB473721ED79BFC00B1020A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473711ED79BFC00B1020A /* DataService.swift */; };
 		EEB473741ED7A31A00B1020A /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473731ED7A31A00B1020A /* MainVC.swift */; };
+		EEB4738A1ED7AC2900B1020A /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB473811ED7AC2900B1020A /* GeoFire.m */; };
+		EEB4738B1ED7AC2900B1020A /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB473831ED7AC2900B1020A /* GFBase32Utils.m */; };
+		EEB4738C1ED7AC2900B1020A /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB473851ED7AC2900B1020A /* GFGeoHash.m */; };
+		EEB4738D1ED7AC2900B1020A /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB473871ED7AC2900B1020A /* GFGeoHashQuery.m */; };
+		EEB4738E1ED7AC2900B1020A /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB473891ED7AC2900B1020A /* GFQuery.m */; };
+		EEB473911ED7B6BB00B1020A /* ParkingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473901ED7B6BB00B1020A /* ParkingAnnotation.swift */; };
+		EEB473D51ED8619200B1020A /* UIColor+Helpe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473D41ED8619200B1020A /* UIColor+Helpe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +50,24 @@
 		EEB473711ED79BFC00B1020A /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		EEB473731ED7A31A00B1020A /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		EEB473751ED7A4B700B1020A /* Viale.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Viale.entitlements; sourceTree = "<group>"; };
+		EEB4737A1ED7AC2900B1020A /* GeoFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFire.h; sourceTree = "<group>"; };
+		EEB4737B1ED7AC2900B1020A /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
+		EEB4737C1ED7AC2900B1020A /* GFQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFQuery.h; sourceTree = "<group>"; };
+		EEB4737D1ED7AC2900B1020A /* GFRegionQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFRegionQuery.h; sourceTree = "<group>"; };
+		EEB4737E1ED7AC2900B1020A /* GeoFire-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoFire-Prefix.pch"; sourceTree = "<group>"; };
+		EEB473801ED7AC2900B1020A /* GeoFire+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoFire+Private.h"; sourceTree = "<group>"; };
+		EEB473811ED7AC2900B1020A /* GeoFire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoFire.m; sourceTree = "<group>"; };
+		EEB473821ED7AC2900B1020A /* GFBase32Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFBase32Utils.h; sourceTree = "<group>"; };
+		EEB473831ED7AC2900B1020A /* GFBase32Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFBase32Utils.m; sourceTree = "<group>"; };
+		EEB473841ED7AC2900B1020A /* GFGeoHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHash.h; sourceTree = "<group>"; };
+		EEB473851ED7AC2900B1020A /* GFGeoHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHash.m; sourceTree = "<group>"; };
+		EEB473861ED7AC2900B1020A /* GFGeoHashQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHashQuery.h; sourceTree = "<group>"; };
+		EEB473871ED7AC2900B1020A /* GFGeoHashQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHashQuery.m; sourceTree = "<group>"; };
+		EEB473881ED7AC2900B1020A /* GFQuery+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GFQuery+Private.h"; sourceTree = "<group>"; };
+		EEB473891ED7AC2900B1020A /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
+		EEB4738F1ED7AD0700B1020A /* Viale-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Viale-Bridging-Header.h"; sourceTree = "<group>"; };
+		EEB473901ED7B6BB00B1020A /* ParkingAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingAnnotation.swift; sourceTree = "<group>"; };
+		EEB473D41ED8619200B1020A /* UIColor+Helpe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpe.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +122,8 @@
 			children = (
 				EEB473491ED6230500B1020A /* AppDelegate.swift */,
 				EEB4734D1ED6230500B1020A /* Main.storyboard */,
+				EEB473781ED7AC2900B1020A /* GeoFire */,
+				EEB473D31ED8617D00B1020A /* Extensions */,
 				EEB4736C1ED725B700B1020A /* Services */,
 				EEB4736B1ED725B200B1020A /* Util */,
 				EEB4736A1ED725A500B1020A /* Controller */,
@@ -107,6 +134,7 @@
 				EEB473551ED6230500B1020A /* Info.plist */,
 				EEB4736F1ED7977D00B1020A /* GoogleService-Info.plist */,
 				EEB473751ED7A4B700B1020A /* Viale.entitlements */,
+				EEB4738F1ED7AD0700B1020A /* Viale-Bridging-Header.h */,
 			);
 			path = Viale;
 			sourceTree = "<group>";
@@ -125,6 +153,7 @@
 		EEB473691ED725A000B1020A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EEB473901ED7B6BB00B1020A /* ParkingAnnotation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -152,6 +181,52 @@
 				EEB473711ED79BFC00B1020A /* DataService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		EEB473781ED7AC2900B1020A /* GeoFire */ = {
+			isa = PBXGroup;
+			children = (
+				EEB473791ED7AC2900B1020A /* API */,
+				EEB4737E1ED7AC2900B1020A /* GeoFire-Prefix.pch */,
+				EEB4737F1ED7AC2900B1020A /* Implementation */,
+			);
+			path = GeoFire;
+			sourceTree = "<group>";
+		};
+		EEB473791ED7AC2900B1020A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EEB4737A1ED7AC2900B1020A /* GeoFire.h */,
+				EEB4737B1ED7AC2900B1020A /* GFCircleQuery.h */,
+				EEB4737C1ED7AC2900B1020A /* GFQuery.h */,
+				EEB4737D1ED7AC2900B1020A /* GFRegionQuery.h */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		EEB4737F1ED7AC2900B1020A /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				EEB473801ED7AC2900B1020A /* GeoFire+Private.h */,
+				EEB473811ED7AC2900B1020A /* GeoFire.m */,
+				EEB473821ED7AC2900B1020A /* GFBase32Utils.h */,
+				EEB473831ED7AC2900B1020A /* GFBase32Utils.m */,
+				EEB473841ED7AC2900B1020A /* GFGeoHash.h */,
+				EEB473851ED7AC2900B1020A /* GFGeoHash.m */,
+				EEB473861ED7AC2900B1020A /* GFGeoHashQuery.h */,
+				EEB473871ED7AC2900B1020A /* GFGeoHashQuery.m */,
+				EEB473881ED7AC2900B1020A /* GFQuery+Private.h */,
+				EEB473891ED7AC2900B1020A /* GFQuery.m */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		EEB473D31ED8617D00B1020A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EEB473D41ED8619200B1020A /* UIColor+Helpe.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,12 +362,19 @@
 				EEB473651ED7258300B1020A /* RoundButton.swift in Sources */,
 				EEB4734C1ED6230500B1020A /* SignInVC.swift in Sources */,
 				EEB473661ED7258300B1020A /* FancyField.swift in Sources */,
+				EEB4738D1ED7AC2900B1020A /* GFGeoHashQuery.m in Sources */,
+				EEB473D51ED8619200B1020A /* UIColor+Helpe.swift in Sources */,
+				EEB4738B1ED7AC2900B1020A /* GFBase32Utils.m in Sources */,
 				EEB473671ED7258300B1020A /* FancySubmitButton.swift in Sources */,
 				EEB473741ED7A31A00B1020A /* MainVC.swift in Sources */,
+				EEB473911ED7B6BB00B1020A /* ParkingAnnotation.swift in Sources */,
 				EEB4736E1ED725BD00B1020A /* Constants.swift in Sources */,
 				EEB4734A1ED6230500B1020A /* AppDelegate.swift in Sources */,
 				EEB473641ED7258300B1020A /* FancyView.swift in Sources */,
 				EEB473721ED79BFC00B1020A /* DataService.swift in Sources */,
+				EEB4738C1ED7AC2900B1020A /* GFGeoHash.m in Sources */,
+				EEB4738A1ED7AC2900B1020A /* GeoFire.m in Sources */,
+				EEB4738E1ED7AC2900B1020A /* GFQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +504,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Kai-Nakamura.Viale";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Viale/Viale-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -437,6 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Kai-Nakamura.Viale";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Viale/Viale-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

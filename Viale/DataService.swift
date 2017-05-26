@@ -16,6 +16,11 @@ class DataService {
     static let ds = DataService()
     
     private var _REF_USERS = DB_BASE.child("users")
+    private var _REF_GEOFIRE = DB_BASE.child("geofire")
+    
+    var REF_GEOFIRE: FIRDatabaseReference {
+        return _REF_GEOFIRE
+    }
     
     func createFirebaseDBUser(uid:String, userData: Dictionary<String,String>) {
         _REF_USERS.child(uid).updateChildValues(userData)

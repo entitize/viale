@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -143,7 +144,7 @@
                         <outlet property="passwordField" destination="otf-xe-UOA" id="xy8-8f-sQO"/>
                         <outlet property="segControl" destination="VUl-OK-D43" id="RA8-7J-Wfc"/>
                         <outlet property="submitButton" destination="kPb-Dc-sEj" id="29c-H9-Bj4"/>
-                        <segue destination="YGv-YM-hlD" kind="show" identifier="toMainScreen" id="efc-go-INY"/>
+                        <segue destination="KMG-QU-KX1" kind="show" identifier="toMainScreen" id="efc-go-INY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -162,8 +163,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dLi-dz-yGr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYM-1T-L0f">
-                                <rect key="frame" x="163" y="318" width="48" height="30"/>
+                                <rect key="frame" x="16" y="617" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
@@ -172,11 +176,49 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dLi-dz-yGr" firstAttribute="leading" secondItem="r2E-vI-1MG" secondAttribute="leading" id="EfF-gd-R1M"/>
+                            <constraint firstAttribute="trailing" secondItem="dLi-dz-yGr" secondAttribute="trailing" id="OAM-rU-r1u"/>
+                            <constraint firstItem="dLi-dz-yGr" firstAttribute="top" secondItem="r2E-vI-1MG" secondAttribute="top" id="d4k-Zr-fFD"/>
+                            <constraint firstItem="XgW-9m-MTh" firstAttribute="top" secondItem="dLi-dz-yGr" secondAttribute="bottom" id="ryX-MY-8pa"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="BJ0-gW-bo2">
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="bookmarks" id="Vl4-3N-rEv"/>
+                            <barButtonItem systemItem="compose" id="QFU-b1-rRD"/>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="search" id="B2E-Fw-dS7">
+                            <connections>
+                                <action selector="searchButtonTapped:" destination="YGv-YM-hlD" id="Wl9-Bi-j8D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="dLi-dz-yGr" id="wHl-iU-CPg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0Y-io-rN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960" y="144"/>
+            <point key="canvasLocation" x="1898.4000000000001" y="143.47826086956522"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dIq-FI-PD2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KMG-QU-KX1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xno-NE-TT4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YGv-YM-hlD" kind="relationship" relationship="rootViewController" id="D9M-eT-KWP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hRq-nv-bUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="959.20000000000005" y="143.47826086956522"/>
         </scene>
     </scenes>
     <resources>
