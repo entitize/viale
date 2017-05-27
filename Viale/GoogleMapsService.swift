@@ -52,19 +52,6 @@ class GoogleMapsService {
             return (dummyCoordinate,dummyAddress,true)
         }
         
-        
-        
-        
-        
-//        if let result = json["results"] as? NSArray {
-//            if let geometry = result[0]["geometry"] as? NSDictionary {
-//                if let location = geometry["location"] as? NSDictionary {
-//                    let latitude = location["lat"] as! Float
-//                    let longitude = location["lng"] as! Float
-//                    print("\n\(latitude), \(longitude)")
-//                }
-//            }
-//        }
     }
     
     

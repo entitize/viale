@@ -16,13 +16,15 @@ class Parking {
     var rating : CGFloat?
     var coordinate : CLLocationCoordinate2D?
     var owner : UserDriver?
+    var ratePerHour : Int?
     
-    init(addressString:String,parkingImage:UIImage,rating:CGFloat,coordinate:CLLocationCoordinate2D,owner:UserDriver) {
+    init(addressString:String,parkingImage:UIImage,rating:CGFloat,coordinate:CLLocationCoordinate2D,owner:UserDriver,ratePerHour:Int) {
         self.addressString = addressString
         self.parkingImage = parkingImage
         self.rating = rating
         self.coordinate = coordinate
         self.owner = owner
+        self.ratePerHour = ratePerHour
     }
     
 }

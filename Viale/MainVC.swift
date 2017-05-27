@@ -12,6 +12,7 @@ import SwiftKeychainWrapper
 import Firebase
 import PKHUD
 import MapKit
+import PopupDialog
 
 class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     
@@ -47,7 +48,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     }
     func testMyPin() {
         let testOwner = UserDriver(fullName: "Kai Awesome", avatarImage: UIImage.init(named: "add_feeling_btn")!, carImage: UIImage.init(named: "Swift_logo.svg")!)
-        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "destination_location")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), owner: testOwner)
+        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "Swift_logo.svg")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), owner: testOwner, ratePerHour: 3)
         let testParkingAnnotation = ParkingAnnotation()
         testParkingAnnotation.parking = testParking
         mapView.addAnnotation(testParkingAnnotation)
@@ -156,6 +157,44 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             return pinAnnotationView
         }
         return nil
+    }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if view is ParkingAnnotationView {
+            
+            //Getting selected pin data
+            let parkingAnnotationView : ParkingAnnotationView = view as! ParkingAnnotationView
+            let parkingAnnotation : ParkingAnnotation = parkingAnnotationView.annotation as! ParkingAnnotation
+            let parking : Parking = parkingAnnotation.parking!
+            
+            //Display the popup accordingly
+            let popup = PopupDialog(title: parking.owner!.fullName, message: parking.addressString)
+            
+            // Create buttons
+            
+            let buttonOne = DefaultButton(title: "PARK HERE ($\(String(describing: parking.ratePerHour!)) per hour)") {
+                self.performSegue(withIdentifier: "toRent", sender: nil)
+            }
+            
+            let buttonTwo = DefaultButton(title: "BOOKMARK") {
+                //Bookmark code
+            }
+            
+            let buttonThree = CancelButton(title: "CANCEL", height: 60) { }
+            
+            // Add buttons to dialog
+            // Alternatively, you can use popup.addButton(buttonOne)
+            // to add a single button
+            popup.addButtons([buttonOne, buttonTwo, buttonThree])
+            present(popup, animated: true, completion: nil)
+            
+            let vc = popup.viewController as! PopupDialogDefaultViewController
+            
+            // Set dialog properties
+            vc.image = parking.parkingImage
+            //vc.titleText = "Troll"
+            //vc.messageText = "something"
+
+        }
     }
     
     

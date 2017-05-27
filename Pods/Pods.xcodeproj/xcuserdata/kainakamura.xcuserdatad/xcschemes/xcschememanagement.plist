@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DateTimePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -20,6 +25,11 @@
 			<false/>
 		</dict>
 		<key>Pods-Viale.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PopupDialog.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,7 +52,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04282CEC4249C9A276B675D90E7F9C9C</key>
+		<key>084FF3D229F1C1EC86AEF2540918A10E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,17 +62,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F711D27B3932808485D44A06E98903D</key>
+		<key>4E916614818E715AE0FCB3FB2D0A5F86</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>50E4DE4060DE593CD1B5F00E1FC2159A</key>
+		<key>64686BEA4783EE2DC146806B5E761207</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B18C7E71CE8D1C2D37BB62A841D674F0</key>
+		<key>93F7D1A274A7C26B3B02A2BC9D65B3F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9FA73695D1E57996C128686ADB24DCC2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AA0ABB4FC66A00B3904BECACF82C05F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

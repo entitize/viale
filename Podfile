@@ -14,5 +14,7 @@ target 'Viale' do
     pod 'PKHUD'
     pod 'SideMenu'
     pod 'SwiftyJSON'
+    pod 'PopupDialog' 
+    pod 'DateTimePicker'
 
 end
