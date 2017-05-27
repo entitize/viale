@@ -15,9 +15,11 @@ class SignInVC: UIViewController {
 
     @IBOutlet weak var segControl: UISegmentedControl!
     @IBOutlet weak var fullNameField: FancyField!
+    @IBOutlet weak var phoneNumberField: FancyField!
     @IBOutlet weak var emailField: FancyField!
     @IBOutlet weak var passwordField: FancyField!
     @IBOutlet weak var submitButton: UIButton!
+    
     
     
     override func viewDidLoad() {
@@ -35,10 +37,12 @@ class SignInVC: UIViewController {
 
     func setupRegisterView() {
         fullNameField.isHidden = false
+        phoneNumberField.isHidden = false
         submitButton.setTitle("Register New Account", for: .normal)
     }
     func setupLoginView() {
         fullNameField.isHidden = true
+        phoneNumberField.isHidden = true
         submitButton.setTitle("Login", for: .normal)
     }
     func loginUser() {
@@ -64,10 +68,10 @@ class SignInVC: UIViewController {
     }
     
     func registerUser() {
-        guard let email = emailField.text, let password = passwordField.text, let fullName = fullNameField.text else {
+        guard let email = emailField.text, let password = passwordField.text, let fullName = fullNameField.text, let phoneNumber = phoneNumberField.text else {
             return
         }
-        if email == "" || password == "" || fullName == "" {
+        if email == "" || password == "" || fullName == "" || phoneNumber == "" {
             HUD.flash(.labeledError(title: "", subtitle: "Please fill out all email and password fields"), delay: 1.0)
             return
         }
@@ -76,7 +80,7 @@ class SignInVC: UIViewController {
                 HUD.flash(.labeledError(title: "", subtitle: "There was an error signing in"), delay: 1.0)
             } else {
                 if let user = user {
-                    let userData = ["provider":user.providerID,"fullName":fullName]
+                    let userData = ["provider":user.providerID,"fullName":fullName,"phoneNumber":phoneNumber]
                     self.completeSignIn(id: user.uid, userData: userData)
                 }
                 

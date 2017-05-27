@@ -12,4 +12,6 @@ target 'Viale' do
     pod 'Firebase/Storage'
     pod 'SwiftKeychainWrapper'
     pod 'PKHUD'
+    pod 'SideMenu'
+
 end

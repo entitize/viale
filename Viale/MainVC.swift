@@ -36,11 +36,25 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         mapView.userTrackingMode = MKUserTrackingMode.follow
         
         geoFire = GeoFire(firebaseRef: DataService.ds.REF_GEOFIRE)
+        
+        setupNotifications()
     }
     override func viewDidAppear(_ animated: Bool) {
         mapHasCenteredOnce = false
         locationAuthStatus()
     }
+    
+    func setupNotifications() {
+        
+        //Logout Notification
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_LOGOUT_USER), object: nil, queue: nil) { (notification) in
+            KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+            try! FIRAuth.auth()?.signOut()
+            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func locationAuthStatus() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             mapView.showsUserLocation = true
@@ -122,12 +136,9 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
-        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
-        try! FIRAuth.auth()?.signOut()
-        dismiss(animated: true, completion: nil)
-        
         
     }
+    
     
     
 }

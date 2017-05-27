@@ -40,6 +40,7 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
   - PKHUD (4.2.1)
+  - SideMenu (2.3.2)
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - PKHUD
+  - SideMenu
   - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
@@ -61,8 +63,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   PKHUD: 957ce2a68b3c97a51839b30216120c1dbc0c3a78
+  SideMenu: 3fa07dd05d4bade2b6f9889fb1877e312e1ba319
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 6c59954d97e1b637d7d9445256482e8f4e01ccfe
+PODFILE CHECKSUM: 490f3ffbd504da7160496a6349f2a552e316bbba
 
 COCOAPODS: 1.2.1

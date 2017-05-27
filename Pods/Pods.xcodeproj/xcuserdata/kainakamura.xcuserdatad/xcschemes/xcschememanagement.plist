@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SideMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftKeychainWrapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,17 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>09CA5769B6A61147AA7F1EAEFFCB3821</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BDF3F4C63328B1E9F100FF66F9742EDF</key>
+		<key>143B2F3504EADCC01240D5C320C55112</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A270546C0A7FDA7B51238D0CE6C15381</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>D7A75F149082140741FC1E0B5B2863C8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F16E2920A1734EA0EC7BB1E06B866D7B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
