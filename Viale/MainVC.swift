@@ -47,8 +47,8 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         testMyPin()
     }
     func testMyPin() {
-        let testOwner = UserDriver(fullName: "Kai Awesome", avatarImage: UIImage.init(named: "add_feeling_btn")!, carImage: UIImage.init(named: "Swift_logo.svg")!)
-        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "Swift_logo.svg")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), owner: testOwner, ratePerHour: 3)
+        let testOwner = UserDriver(fullName: "Jackson Hurley", avatarImage: UIImage.init(named: "add_feeling_btn")!, carImage: UIImage.init(named: "Swift_logo.svg")!)
+        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "Swift_logo.svg")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), owner: testOwner, ratePerHour: 3, name: "The Best Parking Lot")
         let testParkingAnnotation = ParkingAnnotation()
         testParkingAnnotation.parking = testParking
         mapView.addAnnotation(testParkingAnnotation)
@@ -165,6 +165,8 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             let parkingAnnotationView : ParkingAnnotationView = view as! ParkingAnnotationView
             let parkingAnnotation : ParkingAnnotation = parkingAnnotationView.annotation as! ParkingAnnotation
             let parking : Parking = parkingAnnotation.parking!
+            
+            selectedParking = parking
             
             //Display the popup accordingly
             let popup = PopupDialog(title: parking.owner!.fullName, message: parking.addressString)

@@ -10,23 +10,53 @@ import UIKit
 import DateTimePicker
 
 class RentVC: UIViewController {
+    
+    @IBOutlet weak var locationNameLabel: UILabel!
+    @IBOutlet weak var ownerNameLabel: UILabel!
+    @IBOutlet weak var parkingImage: UIImageView!
+    
     override func viewDidLoad() {
         
+        locationNameLabel.text = selectedParking.name
+        if let ownerName = selectedParking.owner?.fullName {
+            ownerNameLabel.text = ownerName
+        }
+        parkingImage.image = selectedParking.parkingImage
+        
     }
-    override func viewDidAppear(_ animated: Bool) {
-        let min = Date()
-        let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
-        let picker = DateTimePicker.show(minimumDate: min, maximumDate: max)
-        picker.highlightColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
-        picker.darkColor = UIColor.darkGray
-        picker.doneButtonTitle = "!! DONE DONE !!"
-        picker.todayButtonTitle = "Today"
-        picker.is12HourFormat = true
-        picker.dateFormat = "hh:mm aa dd/MM/YYYY"
+    @IBAction func startDayTapped(_ sender: Any) {
+        let picker = getDatePicker()
+        picker.completionHandler = { date in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm aa dd/MM/YYYY"
+            print(formatter.string(from: date))
+        }    }
+    @IBAction func endDayTapped(_ sender: Any) {
+        let picker = getDatePicker()
         picker.completionHandler = { date in
             let formatter = DateFormatter()
             formatter.dateFormat = "hh:mm aa dd/MM/YYYY"
             print(formatter.string(from: date))
         }
+    }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "toNext", sender: nil)
+    }
+    
+    
+    func getDatePicker() -> DateTimePicker {
+        let min = Date()
+        let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
+        let picker = DateTimePicker.show(minimumDate: min, maximumDate: max)
+        picker.highlightColor = UIColor(hex: "#90CAF9")
+        picker.darkColor = UIColor.darkGray
+        picker.doneButtonTitle = "Choose Time"
+        picker.todayButtonTitle = "Today"
+        picker.is12HourFormat = true
+        picker.dateFormat = "hh:mm aa dd/MM/YYYY"
+        return picker
     }
 }

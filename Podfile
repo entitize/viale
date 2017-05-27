@@ -16,5 +16,6 @@ target 'Viale' do
     pod 'SwiftyJSON'
     pod 'PopupDialog' 
     pod 'DateTimePicker'
+    pod "SwiftSignatureView"
 
 end

@@ -44,6 +44,7 @@ PODS:
   - PopupDialog (0.5.4)
   - SideMenu (2.3.2)
   - SwiftKeychainWrapper (3.0.1)
+  - SwiftSignatureView (2.0.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
@@ -56,6 +57,7 @@ DEPENDENCIES:
   - PopupDialog
   - SideMenu
   - SwiftKeychainWrapper
+  - SwiftSignatureView
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -73,8 +75,9 @@ SPEC CHECKSUMS:
   PopupDialog: 75cf955693590b0cb2fdde00223fb65d99c57247
   SideMenu: 3fa07dd05d4bade2b6f9889fb1877e312e1ba319
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
+  SwiftSignatureView: aacf6b4fb9108d79b76af1d3f23a50ff50a0a98f
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: cd8bd735bb40eee37e62c67aabbe445a9a3ef465
+PODFILE CHECKSUM: 8946b94c33e959f1a36a476afe6916067be46c69
 
 COCOAPODS: 1.2.1

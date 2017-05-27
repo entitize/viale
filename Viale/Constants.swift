@@ -13,3 +13,6 @@ let KEY_UID = "uid"
 
 //MARK: NSNotification Keys
 let NOTIFICATION_KEY_LOGOUT_USER = "logoutUser"
+
+
+var selectedParking : Parking!
