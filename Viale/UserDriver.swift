@@ -12,15 +12,21 @@ class UserDriver {
     
     //All
     var fullName : String?
-    var avatarImage : String?
+    var avatarImage : UIImage?
     
     //Driver Specific
     var carImage : UIImage?
     
     
-    
     //Owner Specific
-    var home : Parking?
+
+    //In the future have an identifier to the home instead of the home object itself
+    
+    init(fullName:String,avatarImage:UIImage,carImage:UIImage) {
+        self.fullName = fullName
+        self.avatarImage = avatarImage
+        self.carImage = carImage
+    }
     
     
     

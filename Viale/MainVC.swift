@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftKeychainWrapper
 import Firebase
+import PKHUD
 import MapKit
 
 class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
@@ -26,9 +27,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     
     //SEARCH Variables
     var searchController : UISearchController!
-    var localSearchRequest:MKLocalSearchRequest!
-    var localSearch:MKLocalSearch!
-    var localSearchResponse:MKLocalSearchResponse!
+    
     
     
     override func viewDidLoad() {
@@ -38,11 +37,22 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         geoFire = GeoFire(firebaseRef: DataService.ds.REF_GEOFIRE)
         
         setupNotifications()
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         mapHasCenteredOnce = false
         locationAuthStatus()
+        
+        testMyPin()
     }
+    func testMyPin() {
+        let testOwner = UserDriver(fullName: "Kai Awesome", avatarImage: UIImage.init(named: "add_feeling_btn")!, carImage: UIImage.init(named: "Swift_logo.svg")!)
+        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "destination_location")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), owner: testOwner)
+        let testParkingAnnotation = ParkingAnnotation()
+        testParkingAnnotation.parking = testParking
+        mapView.addAnnotation(testParkingAnnotation)
+    }
+    
     
     func setupNotifications() {
         
@@ -93,46 +103,61 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         present(searchController, animated: true, completion: nil)
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        
+        HUD.show(.labeledProgress(title: "Locating...", subtitle: "This may take a while"))
+        
         searchBar.resignFirstResponder()
         dismiss(animated: true, completion: nil)
         
-        localSearchRequest = MKLocalSearchRequest()
-        localSearchRequest.naturalLanguageQuery = searchBar.text
-        localSearch = MKLocalSearch(request: localSearchRequest)
-        localSearch.start { (localSearchResponse, error) -> Void in
+        
+        let res = GoogleMapsService.gm.getLatLng(addressString: searchBar.text!)
+        if (res.isError) {
+            HUD.flash(.labeledError(title: "Location was not found", subtitle: "Try being more descriptive or specific in your search."),delay:1.5)
+        } else {
+            HUD.hide()
             
-            if localSearchResponse == nil{
-                let alertController = UIAlertController(title: nil, message: "Place Not Found", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-                return
-            }
-            let pointAnnotation = MKPointAnnotation()
-            pointAnnotation.title = searchBar.text
-            pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude: localSearchResponse!.boundingRegion.center.longitude)
+            //Create the search annotation
+            let searchAnnotation = SearchAnnotation()
+            searchAnnotation.coord = res.location
+            searchAnnotation.title = searchBar.text
+            searchAnnotation.subtitle = res.formattedAdress
+            mapView.addAnnotation(searchAnnotation)
             
+            //Select the new annotation automatically
+            let annotationIndex = 1
+            mapView.selectAnnotation(mapView.annotations[annotationIndex], animated: true)
             
-            let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
-            let location = CLLocation(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude: localSearchResponse!.boundingRegion.center.longitude)
-            self.centerMapOnLocation(location: location)
-            self.mapView.addAnnotation(pinAnnotationView.annotation!)
-            self.showCircle(coordinate: pointAnnotation.coordinate, radius: 200)
+            self.createSearchCircle(latitude: res.location.latitude, longitude: res.location.longitude)
         }
     }
     
-    func showCircle(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
-        let circle = MKCircle(center: coordinate, radius: radius)
-        mapView.add(circle)
+    func createSearchCircle(latitude:CLLocationDegrees,longitude:CLLocationDegrees) {
         
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        self.centerMapOnLocation(location: location)
+        let circle = MKCircle(center: CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude), radius: 500)
+        mapView.add(circle)
     }
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let circleOverlay = overlay as? MKCircle
         let circleRenderer = MKCircleRenderer(overlay: circleOverlay!)
-        circleRenderer.fillColor = UIColor.init(hex: "#BBDEFB")
+        circleRenderer.fillColor = UIColor.init(hex: "#F8BBD0")
         circleRenderer.alpha = 0.4
         return circleRenderer
         
     }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is SearchAnnotation {
+            let pinAnnotationView = SearchAnnotationView(annotation: annotation, reuseIdentifier: "searchPin")
+            return pinAnnotationView
+        } else if annotation is ParkingAnnotation {
+            let pinAnnotationView = ParkingAnnotationView(annotation: annotation, reuseIdentifier: "parkPin")
+            return pinAnnotationView
+        }
+        return nil
+    }
+    
     
     
     @IBAction func logoutButtonTapped(_ sender: Any) {

@@ -42,6 +42,7 @@ PODS:
   - PKHUD (4.2.1)
   - SideMenu (2.3.2)
   - SwiftKeychainWrapper (3.0.1)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - PKHUD
   - SideMenu
   - SwiftKeychainWrapper
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
@@ -65,7 +67,8 @@ SPEC CHECKSUMS:
   PKHUD: 957ce2a68b3c97a51839b30216120c1dbc0c3a78
   SideMenu: 3fa07dd05d4bade2b6f9889fb1877e312e1ba319
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 490f3ffbd504da7160496a6349f2a552e316bbba
+PODFILE CHECKSUM: 027a1e228a1b4709a47cd48f28d864c88b664d3f
 
 COCOAPODS: 1.2.1

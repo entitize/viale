@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9CBFB99E4C60B8914C21D621 /* Pods_Viale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48545A165799EF72AF307AB7 /* Pods_Viale.framework */; };
+		EE4E07EB1ED9BA1100F7D02A /* GoogleMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07EA1ED9BA1100F7D02A /* GoogleMapsService.swift */; };
+		EE4E07ED1ED9CEE600F7D02A /* SearchAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07EC1ED9CEE600F7D02A /* SearchAnnotation.swift */; };
+		EE4E07EF1ED9D17B00F7D02A /* SearchAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07EE1ED9D17B00F7D02A /* SearchAnnotationView.swift */; };
+		EE4E07F11ED9E4A900F7D02A /* ParkingAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07F01ED9E4A900F7D02A /* ParkingAnnotationView.swift */; };
 		EEB4734A1ED6230500B1020A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473491ED6230500B1020A /* AppDelegate.swift */; };
 		EEB4734C1ED6230500B1020A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4734B1ED6230500B1020A /* SignInVC.swift */; };
 		EEB4734F1ED6230500B1020A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB4734D1ED6230500B1020A /* Main.storyboard */; };
@@ -37,6 +41,10 @@
 		402312B47F9EDBA449D530C0 /* Pods-Viale.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Viale.release.xcconfig"; path = "Pods/Target Support Files/Pods-Viale/Pods-Viale.release.xcconfig"; sourceTree = "<group>"; };
 		48545A165799EF72AF307AB7 /* Pods_Viale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Viale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D462145FDFE613D75D58BFC /* Pods-Viale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Viale.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Viale/Pods-Viale.debug.xcconfig"; sourceTree = "<group>"; };
+		EE4E07EA1ED9BA1100F7D02A /* GoogleMapsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsService.swift; sourceTree = "<group>"; };
+		EE4E07EC1ED9CEE600F7D02A /* SearchAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAnnotation.swift; sourceTree = "<group>"; };
+		EE4E07EE1ED9D17B00F7D02A /* SearchAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAnnotationView.swift; sourceTree = "<group>"; };
+		EE4E07F01ED9E4A900F7D02A /* ParkingAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingAnnotationView.swift; sourceTree = "<group>"; };
 		EEB473461ED6230500B1020A /* Viale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Viale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB473491ED6230500B1020A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEB4734B1ED6230500B1020A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -105,6 +113,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EE4E07E91ED9B03200F7D02A /* Fancy */ = {
+			isa = PBXGroup;
+			children = (
+				EEB473601ED7258300B1020A /* FancyView.swift */,
+				EEB473611ED7258300B1020A /* RoundButton.swift */,
+				EEB473621ED7258300B1020A /* FancyField.swift */,
+				EEB473631ED7258300B1020A /* FancySubmitButton.swift */,
+			);
+			name = Fancy;
+			sourceTree = "<group>";
+		};
 		EEB4733D1ED6230500B1020A = {
 			isa = PBXGroup;
 			children = (
@@ -148,10 +167,11 @@
 		EEB473681ED7258800B1020A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EEB473601ED7258300B1020A /* FancyView.swift */,
-				EEB473611ED7258300B1020A /* RoundButton.swift */,
-				EEB473621ED7258300B1020A /* FancyField.swift */,
-				EEB473631ED7258300B1020A /* FancySubmitButton.swift */,
+				EE4E07E91ED9B03200F7D02A /* Fancy */,
+				EEB473901ED7B6BB00B1020A /* ParkingAnnotation.swift */,
+				EE4E07F01ED9E4A900F7D02A /* ParkingAnnotationView.swift */,
+				EE4E07EC1ED9CEE600F7D02A /* SearchAnnotation.swift */,
+				EE4E07EE1ED9D17B00F7D02A /* SearchAnnotationView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -159,8 +179,8 @@
 		EEB473691ED725A000B1020A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EEB473D71ED8D75A00B1020A /* Classes */,
-				EEB473D61ED8D74300B1020A /* Annotations */,
+				EEB473D81ED8D76C00B1020A /* Parking.swift */,
+				EEB473DA1ED8D82900B1020A /* UserDriver.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -168,9 +188,9 @@
 		EEB4736A1ED725A500B1020A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EEB473731ED7A31A00B1020A /* MainVC.swift */,
 				EEB4734B1ED6230500B1020A /* SignInVC.swift */,
 				EEECD5731ED92B7800D42B65 /* LeftMenuTBVC.swift */,
-				EEB473731ED7A31A00B1020A /* MainVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -187,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				EEB473711ED79BFC00B1020A /* DataService.swift */,
+				EE4E07EA1ED9BA1100F7D02A /* GoogleMapsService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -235,23 +256,6 @@
 				EEB473D41ED8619200B1020A /* UIColor+Helpe.swift */,
 			);
 			name = Extensions;
-			sourceTree = "<group>";
-		};
-		EEB473D61ED8D74300B1020A /* Annotations */ = {
-			isa = PBXGroup;
-			children = (
-				EEB473901ED7B6BB00B1020A /* ParkingAnnotation.swift */,
-			);
-			name = Annotations;
-			sourceTree = "<group>";
-		};
-		EEB473D71ED8D75A00B1020A /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				EEB473D81ED8D76C00B1020A /* Parking.swift */,
-				EEB473DA1ED8D82900B1020A /* UserDriver.swift */,
-			);
-			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,9 +389,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEB473651ED7258300B1020A /* RoundButton.swift in Sources */,
+				EE4E07F11ED9E4A900F7D02A /* ParkingAnnotationView.swift in Sources */,
+				EE4E07EB1ED9BA1100F7D02A /* GoogleMapsService.swift in Sources */,
 				EEB4734C1ED6230500B1020A /* SignInVC.swift in Sources */,
 				EEB473661ED7258300B1020A /* FancyField.swift in Sources */,
 				EEB4738D1ED7AC2900B1020A /* GFGeoHashQuery.m in Sources */,
+				EE4E07EF1ED9D17B00F7D02A /* SearchAnnotationView.swift in Sources */,
 				EEB473D51ED8619200B1020A /* UIColor+Helpe.swift in Sources */,
 				EEB4738B1ED7AC2900B1020A /* GFBase32Utils.m in Sources */,
 				EEB473D91ED8D76C00B1020A /* Parking.swift in Sources */,
@@ -395,6 +402,7 @@
 				EEB473671ED7258300B1020A /* FancySubmitButton.swift in Sources */,
 				EEB473741ED7A31A00B1020A /* MainVC.swift in Sources */,
 				EEB473911ED7B6BB00B1020A /* ParkingAnnotation.swift in Sources */,
+				EE4E07ED1ED9CEE600F7D02A /* SearchAnnotation.swift in Sources */,
 				EEB4736E1ED725BD00B1020A /* Constants.swift in Sources */,
 				EEB4734A1ED6230500B1020A /* AppDelegate.swift in Sources */,
 				EEB473DB1ED8D82900B1020A /* UserDriver.swift in Sources */,

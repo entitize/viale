@@ -13,5 +13,6 @@ target 'Viale' do
     pod 'SwiftKeychainWrapper'
     pod 'PKHUD'
     pod 'SideMenu'
+    pod 'SwiftyJSON'
 
 end
