@@ -10,22 +10,22 @@ import Foundation
 
 class UserDriver {
     
+    static var currentUser = UserDriver(fullName: "", avatarImage: UIImage(named: "add_feeling_btn")!, carImage: UIImage(named: "Swift_logo.svg")!, phoneNumber: "0000000000")
+    
     //All
     var fullName : String?
     var avatarImage : UIImage?
-    
-    //Driver Specific
+    var phoneNumber : String?
     var carImage : UIImage?
+    var parking : Parking?
     
-    
-    //Owner Specific
-
-    //In the future have an identifier to the home instead of the home object itself
-    
-    init(fullName:String,avatarImage:UIImage,carImage:UIImage) {
+    init(fullName:String,avatarImage:UIImage,carImage:UIImage,phoneNumber:String,parking:Parking? = nil) {
+        
         self.fullName = fullName
         self.avatarImage = avatarImage
         self.carImage = carImage
+        self.phoneNumber = phoneNumber
+        self.parking = parking
     }
     
     

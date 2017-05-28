@@ -200,6 +200,7 @@
                     <connections>
                         <outlet property="mapView" destination="dLi-dz-yGr" id="wHl-iU-CPg"/>
                         <segue destination="ITJ-6I-VjV" kind="presentation" identifier="toRent" id="5AS-Xg-NnZ"/>
+                        <segue destination="Uvd-p5-stn" kind="presentation" identifier="toManageDriveway" id="ELT-Od-tJ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0Y-io-rN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -241,7 +242,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="cnO-1K-ygy"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -333,7 +334,6 @@
         <!--Final RentVC-->
         <scene sceneID="419-ah-dqD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mdp-pN-aFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="vBV-oG-E0f" customClass="FinalRentVC" customModule="Viale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="neP-yj-bwB"/>
@@ -429,12 +429,13 @@
                                     <constraint firstAttribute="height" constant="30" id="Ngi-TA-TsT"/>
                                 </constraints>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="BY SIGNING IN THE GRAY BOX BELOW YOU ARE LEGALLY DOING STUFF" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1H-Wz-CXG">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1H-Wz-CXG">
                                 <rect key="frame" x="8" y="156" width="359" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="SN4-PU-moA"/>
                                 </constraints>
+                                <string key="text">BY SIGNING BELOW IN THE GRAY BOX, YOU AGREE THAT YOU HAVE READ ALL OF THE OWNER'S REQUIREMENTS FOR PARKING, YOU AGREE TO USE DIGITAL SIGNATURES AND DIGITAL TRANSACTIONS. YOU WILL BE HELD ACCOUNTABLE FOR STAYING LONGER THAN AGREED UPON YOU (THE DRIVER) AND THE OWNER OF THE DRIVEWAY.</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -472,6 +473,7 @@
                         <outlet property="totalLabel" destination="JCX-50-4Tg" id="EkC-pd-azj"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mdp-pN-aFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3487.1999999999998" y="453.82308845577217"/>
         </scene>
@@ -503,14 +505,14 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="t1N-JO-vQS" style="IBUITableViewCellStyleDefault" id="Leo-Lh-R1g">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="OBW-bN-XsV" style="IBUITableViewCellStyleDefault" id="taM-bT-hVT">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Leo-Lh-R1g" id="YaF-uT-sNc">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="taM-bT-hVT" id="4GX-mF-gGZ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="🗺 Manage Your Driveway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t1N-JO-vQS">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="🔑 Your Rentals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OBW-bN-XsV">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -537,8 +539,25 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="zLi-uj-F4f" style="IBUITableViewCellStyleDefault" id="M5T-md-LVn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="t1N-JO-vQS" style="IBUITableViewCellStyleDefault" id="Leo-Lh-R1g">
                                         <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Leo-Lh-R1g" id="YaF-uT-sNc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="🔐 Manage Your Own Driveway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t1N-JO-vQS">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="zLi-uj-F4f" style="IBUITableViewCellStyleDefault" id="M5T-md-LVn">
+                                        <rect key="frame" x="0.0" y="204" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M5T-md-LVn" id="CFB-LO-JuP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -555,7 +574,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="cL5-D8-GG2" style="IBUITableViewCellStyleDefault" id="iB5-pu-hrV">
-                                        <rect key="frame" x="0.0" y="204" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="248" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iB5-pu-hrV" id="f2e-4n-AH0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -572,7 +591,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="1oP-QN-CoR" style="IBUITableViewCellStyleDefault" id="7de-Nw-zwI">
-                                        <rect key="frame" x="0.0" y="248" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="292" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7de-Nw-zwI" id="vXU-ip-1Wq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -589,7 +608,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="n6b-a8-PIj" style="IBUITableViewCellStyleDefault" id="2Qx-1S-OYj">
-                                        <rect key="frame" x="0.0" y="292" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="336" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Qx-1S-OYj" id="r4N-ET-ORm">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -617,7 +636,288 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybE-Dd-rui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3469.5999999999999" y="-249.62518740629687"/>
+            <point key="canvasLocation" x="3562" y="-249"/>
+        </scene>
+        <!--Create DrivewayVC-->
+        <scene sceneID="fge-Qj-kUa">
+            <objects>
+                <viewController id="Uvd-p5-stn" customClass="CreateDrivewayVC" customModule="Viale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bsf-pj-AIn"/>
+                        <viewControllerLayoutGuide type="bottom" id="ojW-ca-Cr3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v0m-z5-zky">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1w-J7-PyK" customClass="FancyView" customModule="Viale" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create Driveway" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw1-mU-byr">
+                                        <rect key="frame" x="16" y="35" width="343" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.62805265188217163" green="0.83319228887557983" blue="0.97916978597640991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="b0f-US-KmH"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please complete each field accurately " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgs-46-Wpr">
+                                <rect key="frame" x="16" y="108" width="343" height="23.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of Driveway" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xrp-iF-B4Z" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="16" y="139" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MmO-fu-mwA"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.62805265190000004" green="0.83319228889999997" blue="0.97916978600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.92549019607843142" green="0.25098039215686274" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address, ZipCode" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DiY-W6-6hy" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="16" y="187" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ycG-Wr-B2k"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.62805265188217163" green="0.83319228887557983" blue="0.97916978597640991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.92549019607843142" green="0.25098039215686274" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egw-bg-IhE" customClass="FancySubmitButton" customModule="Viale" customModuleProvider="target">
+                                <rect key="frame" x="16" y="235" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.95044165849685669" green="0.35489374399185181" blue="0.55457442998886108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Choose a picture of your driveway">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87r-d8-Qna" customClass="SwiftSignatureView" customModule="SwiftSignatureView">
+                                <rect key="frame" x="16" y="541" width="343" height="80"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="bfd-Er-yxp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="rrW-Sk-UXn">
+                                <rect key="frame" x="8" y="501" width="359" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z20-ew-qaf">
+                                        <rect key="frame" x="0.0" y="0.0" width="89" height="36"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdI-op-PQ0">
+                                        <rect key="frame" x="209" y="0.0" width="150" height="36"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Clear"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meZ-2x-Sbs" customClass="FancySubmitButton" customModule="Viale" customModuleProvider="target">
+                                <rect key="frame" x="16" y="629" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.95044165849999995" green="0.35489374400000001" blue="0.55457442999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Create Driveway">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BY SIGNING BELOW, YOU (THE USER) AGREE THAT YOU WILL BE HELD ACCOUNTABLE FOR FAILING TO FOLLOW THE OWNERSHIP POLICY STATEMENT." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgX-cX-MZW">
+                                <rect key="frame" x="16" y="411" width="343" height="82"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Tap here to edit Information given to your customers about where and how to park." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KJr-kh-X41">
+                                <rect key="frame" x="16" y="281" width="343" height="114"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qgs-46-Wpr" firstAttribute="trailing" secondItem="v0m-z5-zky" secondAttribute="trailingMargin" id="1Io-om-D4T"/>
+                            <constraint firstItem="meZ-2x-Sbs" firstAttribute="top" secondItem="87r-d8-Qna" secondAttribute="bottom" constant="8" id="1cb-VW-L48"/>
+                            <constraint firstItem="tgX-cX-MZW" firstAttribute="top" secondItem="KJr-kh-X41" secondAttribute="bottom" constant="16" id="3Ay-Bv-UwO"/>
+                            <constraint firstItem="Xrp-iF-B4Z" firstAttribute="trailing" secondItem="v0m-z5-zky" secondAttribute="trailingMargin" id="3lQ-m4-Bxg"/>
+                            <constraint firstAttribute="trailing" secondItem="x1w-J7-PyK" secondAttribute="trailing" id="3o2-aN-PmL"/>
+                            <constraint firstItem="meZ-2x-Sbs" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leadingMargin" id="5OU-tM-lnV"/>
+                            <constraint firstItem="x1w-J7-PyK" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leading" id="6nx-36-y86"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="87r-d8-Qna" secondAttribute="trailing" id="Bsz-bd-Pgo"/>
+                            <constraint firstItem="qgs-46-Wpr" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leadingMargin" id="C3Q-ES-OFO"/>
+                            <constraint firstItem="87r-d8-Qna" firstAttribute="top" secondItem="rrW-Sk-UXn" secondAttribute="bottom" constant="4" id="CdY-kt-BsA"/>
+                            <constraint firstItem="egw-bg-IhE" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leadingMargin" id="DTq-jP-qD7"/>
+                            <constraint firstItem="Xrp-iF-B4Z" firstAttribute="top" secondItem="qgs-46-Wpr" secondAttribute="bottom" constant="8" id="Dw0-95-bay"/>
+                            <constraint firstItem="rrW-Sk-UXn" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leading" constant="8" id="GWy-bv-vCC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tgX-cX-MZW" secondAttribute="trailing" id="HZi-ay-HyG"/>
+                            <constraint firstItem="tgX-cX-MZW" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leadingMargin" id="K2q-DV-OmG"/>
+                            <constraint firstItem="KJr-kh-X41" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leadingMargin" id="KYJ-0y-5SV"/>
+                            <constraint firstItem="ojW-ca-Cr3" firstAttribute="top" secondItem="meZ-2x-Sbs" secondAttribute="bottom" constant="8" id="N1y-Br-r4z"/>
+                            <constraint firstItem="qgs-46-Wpr" firstAttribute="top" secondItem="x1w-J7-PyK" secondAttribute="bottom" constant="8" id="O9J-xV-bEx"/>
+                            <constraint firstItem="rrW-Sk-UXn" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leading" constant="8" id="PZM-hw-Q5J"/>
+                            <constraint firstItem="KJr-kh-X41" firstAttribute="trailing" secondItem="v0m-z5-zky" secondAttribute="trailingMargin" id="THr-RS-Kq9"/>
+                            <constraint firstItem="DiY-W6-6hy" firstAttribute="trailing" secondItem="v0m-z5-zky" secondAttribute="trailingMargin" id="ZAi-nZ-NMy"/>
+                            <constraint firstItem="DiY-W6-6hy" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leadingMargin" id="amW-7I-wfw"/>
+                            <constraint firstItem="87r-d8-Qna" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leadingMargin" id="atG-PV-D6E"/>
+                            <constraint firstItem="KJr-kh-X41" firstAttribute="top" secondItem="egw-bg-IhE" secondAttribute="bottom" constant="16" id="edB-9O-9I4"/>
+                            <constraint firstAttribute="trailing" secondItem="rrW-Sk-UXn" secondAttribute="trailing" constant="8" id="fSF-6c-cst"/>
+                            <constraint firstItem="egw-bg-IhE" firstAttribute="trailing" secondItem="v0m-z5-zky" secondAttribute="trailingMargin" id="ibU-wf-abY"/>
+                            <constraint firstItem="DiY-W6-6hy" firstAttribute="top" secondItem="Xrp-iF-B4Z" secondAttribute="bottom" constant="8" id="l5e-K3-X2s"/>
+                            <constraint firstItem="x1w-J7-PyK" firstAttribute="top" secondItem="v0m-z5-zky" secondAttribute="top" id="lyO-oy-u9n"/>
+                            <constraint firstAttribute="trailing" secondItem="rrW-Sk-UXn" secondAttribute="trailing" constant="8" id="lz6-Wb-CQm"/>
+                            <constraint firstItem="Xrp-iF-B4Z" firstAttribute="leading" secondItem="v0m-z5-zky" secondAttribute="leadingMargin" id="pgq-1H-tQ0"/>
+                            <constraint firstItem="meZ-2x-Sbs" firstAttribute="trailing" secondItem="v0m-z5-zky" secondAttribute="trailingMargin" id="tBH-Fy-0xM"/>
+                            <constraint firstItem="egw-bg-IhE" firstAttribute="top" secondItem="DiY-W6-6hy" secondAttribute="bottom" constant="8" id="tbE-lM-iYV"/>
+                            <constraint firstItem="rrW-Sk-UXn" firstAttribute="top" secondItem="tgX-cX-MZW" secondAttribute="bottom" constant="8" id="vdn-IV-GHG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="AHl-vN-9W9" kind="show" id="Utv-hA-nYO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mH2-Sf-oYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2728.8000000000002" y="-940.47976011994012"/>
+        </scene>
+        <!--Manage DrivewayVC-->
+        <scene sceneID="RHT-7t-FME">
+            <objects>
+                <viewController id="AHl-vN-9W9" customClass="ManageDrivewayVC" customModule="Viale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hxb-SX-4g5"/>
+                        <viewControllerLayoutGuide type="bottom" id="uzF-OF-JkN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iqc-n4-Ybe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlq-UV-THV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Manage Driveway" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqB-zd-0eG">
+                                        <rect key="frame" x="8" y="35" width="359" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.62805265188217163" green="0.83319228887557983" blue="0.97916978597640991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4kH-ZC-j5Z"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="spK-Ay-l5A">
+                                <rect key="frame" x="16" y="268" width="343" height="339"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKy-qF-UGp" customClass="FancyView" customModule="Viale" customModuleProvider="target">
+                                <rect key="frame" x="16" y="108" width="343" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NO3-G1-qLA">
+                                        <rect key="frame" x="8" y="8" width="327" height="134"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Add Another Time Period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zI-MK-JOl">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="20"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOD-h1-Phs" customClass="FancySubmitButton" customModule="Viale" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="327" height="30"/>
+                                                <color key="backgroundColor" red="0.95044165849999995" green="0.35489374400000001" blue="0.55457442999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Choose Start Date">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5a-M8-Pfh" customClass="FancySubmitButton" customModule="Viale" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="66" width="327" height="30"/>
+                                                <color key="backgroundColor" red="0.95044165849999995" green="0.35489374400000001" blue="0.55457442999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Choose End Date">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ql0-Ke-NKM" customClass="FancySubmitButton" customModule="Viale" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="104" width="327" height="30"/>
+                                                <color key="backgroundColor" red="0.62805265188217163" green="0.83319228887557983" blue="0.97916978597640991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Add Time Period">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="NO3-G1-qLA" firstAttribute="top" secondItem="TKy-qF-UGp" secondAttribute="top" constant="8" id="D30-TB-KC0"/>
+                                    <constraint firstAttribute="height" constant="150" id="PVM-ur-j8P"/>
+                                    <constraint firstAttribute="trailing" secondItem="NO3-G1-qLA" secondAttribute="trailing" constant="8" id="gbw-Sf-uEy"/>
+                                    <constraint firstItem="NO3-G1-qLA" firstAttribute="leading" secondItem="TKy-qF-UGp" secondAttribute="leading" constant="8" id="oXY-Jf-xgY"/>
+                                    <constraint firstAttribute="bottom" secondItem="NO3-G1-qLA" secondAttribute="bottom" constant="8" id="uOq-4m-Mo5"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAw-kA-jpy" customClass="FancySubmitButton" customModule="Viale" customModuleProvider="target">
+                                <rect key="frame" x="16" y="617" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.95044165849999995" green="0.35489374400000001" blue="0.55457442999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Save and Exit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TKy-qF-UGp" firstAttribute="top" secondItem="jlq-UV-THV" secondAttribute="bottom" constant="8" id="04E-ET-HM3"/>
+                            <constraint firstItem="TKy-qF-UGp" firstAttribute="trailing" secondItem="iqc-n4-Ybe" secondAttribute="trailingMargin" id="8Lo-Ho-Xjk"/>
+                            <constraint firstItem="jlq-UV-THV" firstAttribute="leading" secondItem="iqc-n4-Ybe" secondAttribute="leading" id="BvJ-Sz-zvX"/>
+                            <constraint firstItem="spK-Ay-l5A" firstAttribute="top" secondItem="TKy-qF-UGp" secondAttribute="bottom" constant="10" id="C5o-mD-zg3"/>
+                            <constraint firstItem="gAw-kA-jpy" firstAttribute="top" secondItem="spK-Ay-l5A" secondAttribute="bottom" constant="10" id="H8G-je-oDy"/>
+                            <constraint firstItem="jlq-UV-THV" firstAttribute="top" secondItem="iqc-n4-Ybe" secondAttribute="top" id="VUM-zD-Du4"/>
+                            <constraint firstItem="spK-Ay-l5A" firstAttribute="leading" secondItem="iqc-n4-Ybe" secondAttribute="leadingMargin" id="d0N-bd-Hz1"/>
+                            <constraint firstItem="uzF-OF-JkN" firstAttribute="top" secondItem="gAw-kA-jpy" secondAttribute="bottom" constant="20" id="e20-wk-Hxg"/>
+                            <constraint firstAttribute="trailing" secondItem="jlq-UV-THV" secondAttribute="trailing" id="jlf-Ee-FET"/>
+                            <constraint firstItem="TKy-qF-UGp" firstAttribute="leading" secondItem="iqc-n4-Ybe" secondAttribute="leadingMargin" id="kil-Ns-bse"/>
+                            <constraint firstItem="gAw-kA-jpy" firstAttribute="trailing" secondItem="iqc-n4-Ybe" secondAttribute="trailingMargin" id="lNi-1K-FaP"/>
+                            <constraint firstItem="gAw-kA-jpy" firstAttribute="leading" secondItem="iqc-n4-Ybe" secondAttribute="leadingMargin" id="rOE-vP-7PO"/>
+                            <constraint firstItem="spK-Ay-l5A" firstAttribute="trailing" secondItem="iqc-n4-Ybe" secondAttribute="trailingMargin" id="yDn-qS-BUt"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0zf-lg-E5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3560.8000000000002" y="-940.47976011994012"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dIq-FI-PD2">

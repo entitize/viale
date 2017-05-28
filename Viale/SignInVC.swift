@@ -24,9 +24,7 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInVC.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        self.hideKeyboardWhenTappedAround()
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -113,9 +111,6 @@ class SignInVC: UIViewController {
             loginUser()
         }
         
-    }
-    func dismissKeyboard() {
-        view.endEditing(true)
     }
 
 

@@ -17,5 +17,6 @@ target 'Viale' do
     pod 'PopupDialog' 
     pod 'DateTimePicker'
     pod "SwiftSignatureView"
+    pod "TextFieldEffects"
 
 end

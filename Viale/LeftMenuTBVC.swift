@@ -7,17 +7,32 @@
 //
 
 import UIKit
+import Firebase
 
 class LeftMenuTBVC: UITableViewController {
+        
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return UserDriver.currentUser.fullName
     
-    override func viewDidLoad() {
         
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedIndex = (indexPath as NSIndexPath).row
         
-        if selectedIndex == 6 {
+        
+        if selectedIndex == 0 {
+            
+            dismiss(animated: true, completion: nil)
+        } else if selectedIndex == 3 {
+            dismiss(animated: true, completion: { 
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_KEY_MANAGE_DRIVEWAY), object: nil)
+            })
+            
+        
+        } else if selectedIndex == 7 {
             
             //Logout User
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_KEY_LOGOUT_USER), object: nil)

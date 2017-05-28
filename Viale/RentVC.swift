@@ -18,11 +18,18 @@ class RentVC: UIViewController {
     override func viewDidLoad() {
         
         locationNameLabel.text = selectedParking.name
-        if let ownerName = selectedParking.owner?.fullName {
-            ownerNameLabel.text = ownerName
-        }
-        parkingImage.image = selectedParking.parkingImage
         
+        //Download user data
+        ownerNameLabel.text = "Dummy Name"
+        
+        
+        parkingImage.image = selectedParking.parkingImage
+        setupNotifications()
+    }
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_EXIT_RENT), object: nil, queue: nil) { (notification) in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     @IBAction func startDayTapped(_ sender: Any) {
         let picker = getDatePicker()

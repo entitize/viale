@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TextFieldEffects.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -62,22 +67,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2C3A88E1C5D4B5C2DA533C07845C4DA8</key>
+		<key>1F71BD8214D3750B6639732ADF0F6874</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3A8EA54F7A303251E29EDDE1E003142F</key>
+		<key>40BB1C9D9D137AC5A1B909864AEEBCEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73DF4E9F58BBFC19C6948DC74E489E13</key>
+		<key>48657D725CE8EB4C0A02E281D4009D68</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97562B8D7AD53C5343CAC66E715C6D1F</key>
+		<key>8869B7635727B0116A3D32A8EC5C76E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B15195E2405DD9DBBCFEC496AC98BC3A</key>
+		<key>A29AF688D7CBA2E7584B2986A783720B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D6CE0175222324CC360849604BD4AECF</key>
+		<key>CFC839EC6154B641AF4F641A17FB31A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D7A75F149082140741FC1E0B5B2863C8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F613260B8FCF18ACAE1EFC666FF48798</key>
 		<dict>
 			<key>primary</key>
 			<true/>

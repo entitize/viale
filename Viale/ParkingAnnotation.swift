@@ -22,16 +22,18 @@ class ParkingAnnotation: NSObject, MKAnnotation {
     
     var parking : Parking? {
         didSet {
+            
             if let p = parking {
+                
+                //Download user
+                self.title = "Dummy User"
+                
                 self.subtitle = "$\(p.ratePerHour!) per hour"
                 
                 if let c = p.coordinate {
                     self.coord = c
                 }
                 
-                if let ownerName = p.owner?.fullName {
-                    self.title = ownerName
-                }
                 
             }
             

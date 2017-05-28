@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A29AF688D7CBA2E7584B2986A783720B'
-               BlueprintName = 'SwiftKeychainWrapper'
+               BlueprintIdentifier = '40BB1C9D9D137AC5A1B909864AEEBCEF'
+               BlueprintName = 'TextFieldEffects'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftKeychainWrapper.framework'>
+               BuildableName = 'TextFieldEffects.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

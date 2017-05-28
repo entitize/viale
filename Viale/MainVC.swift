@@ -47,8 +47,8 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         testMyPin()
     }
     func testMyPin() {
-        let testOwner = UserDriver(fullName: "Jackson Hurley", avatarImage: UIImage.init(named: "add_feeling_btn")!, carImage: UIImage.init(named: "Swift_logo.svg")!)
-        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "Swift_logo.svg")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), owner: testOwner, ratePerHour: 3, name: "The Best Parking Lot")
+        let testOwner = UserDriver(fullName: "Jackson Hurley", avatarImage: UIImage.init(named: "add_feeling_btn")!, carImage: UIImage.init(named: "Swift_logo.svg")!, phoneNumber: "1232456789")
+        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "Swift_logo.svg")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), ratePerHour: 3, name: "The Best Parking Lot")
         let testParkingAnnotation = ParkingAnnotation()
         testParkingAnnotation.parking = testParking
         mapView.addAnnotation(testParkingAnnotation)
@@ -63,6 +63,11 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             try! FIRAuth.auth()?.signOut()
             self.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_MANAGE_DRIVEWAY), object: nil, queue: nil) { (notification) in
+
+            self.performSegue(withIdentifier: "toManageDriveway", sender: nil)
+            
         }
     }
     
@@ -168,8 +173,10 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             
             selectedParking = parking
             
+            //Download from firebase the owner data
+            
             //Display the popup accordingly
-            let popup = PopupDialog(title: parking.owner!.fullName, message: parking.addressString)
+            let popup = PopupDialog(title: "Dummy Name", message: parking.addressString)
             
             // Create buttons
             
