@@ -423,6 +423,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="startDateTapped:" destination="CEA-1A-AO4" eventType="touchUpInside" id="QsV-Ve-wRQ"/>
                                     <action selector="startDayTapped:" destination="ITJ-6I-VjV" eventType="touchUpInside" id="3nO-4E-gRM"/>
                                 </connections>
                             </button>
@@ -434,6 +435,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="endDateTapped:" destination="CEA-1A-AO4" eventType="touchUpInside" id="xIF-Hn-uVp"/>
                                     <action selector="startDayTapped:" destination="ITJ-6I-VjV" eventType="touchUpInside" id="UVM-KF-sXT"/>
                                 </connections>
                             </button>
@@ -445,6 +447,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="continueTapped:" destination="CEA-1A-AO4" eventType="touchUpInside" id="jqc-Gc-Z4L"/>
                                     <action selector="startDayTapped:" destination="ITJ-6I-VjV" eventType="touchUpInside" id="PFg-Ad-jUj"/>
                                 </connections>
                             </button>
@@ -456,6 +459,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="backTapped:" destination="CEA-1A-AO4" eventType="touchUpInside" id="PMH-Mr-fyD"/>
                                     <action selector="cancelButtonTapped:" destination="ITJ-6I-VjV" eventType="touchUpInside" id="sxl-Dz-ZHV"/>
                                 </connections>
                             </button>
@@ -498,6 +502,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="endDateBtn" destination="e6g-eW-TAp" id="85u-ZQ-JQy"/>
+                        <outlet property="startDateBtn" destination="7GV-0U-FF7" id="BoC-J5-0TJ"/>
+                        <outlet property="totalLabel" destination="s6j-FN-FOx" id="kfE-9W-W6i"/>
                         <segue destination="vBV-oG-E0f" kind="show" identifier="toNext" id="Xxc-K1-mOD"/>
                     </connections>
                 </viewController>

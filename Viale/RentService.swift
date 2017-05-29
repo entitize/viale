@@ -14,8 +14,9 @@ class RentService {
     
     var selectedParking : Parking?
     var selectedInterval : ParkingInterval?
-    
-    
+    var selectedStartDate : Date?
+    var selectedEndDate : Date?
+    var totalValue : Float?
     
     
     

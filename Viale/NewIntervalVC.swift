@@ -27,7 +27,7 @@ class NewIntervalVC : UIViewController {
     }
     @IBAction func startTimeTapped(_ sender: Any) {
         
-        let picker = getDatePicker()
+        let picker = DatePickerService.dps.getDatePicker(min: Date(), max: Date().addingTimeInterval(60 * 60 * 24 * 30 * 12))
         picker.completionHandler = { date in
             self.startDateButton.backgroundColor = UIColor(hex: "#90CAF9")
             let formatter = DateFormatter()
@@ -39,7 +39,7 @@ class NewIntervalVC : UIViewController {
     }
     @IBAction func endTimeTapped(_ sender: Any) {
         
-        let picker = getDatePicker()
+        let picker = DatePickerService.dps.getDatePicker(min: Date(), max: Date().addingTimeInterval(60 * 60 * 24 * 30 * 12))
         picker.completionHandler = { date in
             self.endDateButton.backgroundColor = UIColor(hex: "#90CAF9")
             let formatter = DateFormatter()
@@ -122,17 +122,6 @@ class NewIntervalVC : UIViewController {
         
         
     }
-    func getDatePicker() -> DateTimePicker {
-        let min = Date() //Current Date
-        let max = Date().addingTimeInterval(60 * 60 * 24 * 30 * 12) //One Year
-        let picker = DateTimePicker.show(minimumDate: min, maximumDate: max)
-        picker.highlightColor = UIColor(hex: "#90CAF9")
-        picker.darkColor = UIColor.darkGray
-        picker.doneButtonTitle = "Choose Time"
-        picker.todayButtonTitle = "Today"
-        picker.is12HourFormat = true
-        picker.dateFormat = "hh:mm aa dd/MM/YYYY"
-        return picker
-    }
+    
     
 }

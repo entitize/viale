@@ -36,18 +36,7 @@ class RentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func getDatePicker() -> DateTimePicker {
-        let min = Date()
-        let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
-        let picker = DateTimePicker.show(minimumDate: min, maximumDate: max)
-        picker.highlightColor = UIColor(hex: "#90CAF9")
-        picker.darkColor = UIColor(hex: "#5C6BC0")
-        picker.doneButtonTitle = "Choose Time"
-        picker.todayButtonTitle = "Today"
-        picker.is12HourFormat = true
-        picker.dateFormat = "hh:mm aa dd/MM/YYYY"
-        return picker
-    }
+    
     //MARK: TableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
