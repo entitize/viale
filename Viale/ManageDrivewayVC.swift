@@ -26,6 +26,7 @@ class ManageDrivewayVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
 }

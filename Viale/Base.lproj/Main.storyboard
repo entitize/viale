@@ -1150,7 +1150,7 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
-                                                <color key="value" red="0.3766336441" green="0.70486313099999998" blue="0.97505718470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.37647058823529411" green="0.70588235294117641" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -1219,6 +1219,13 @@
                             <constraint firstAttribute="trailing" secondItem="k4g-27-DIm" secondAttribute="trailing" id="osd-BD-c7U"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="endDateButton" destination="ACQ-Ih-j73" id="hko-uT-qQo"/>
+                        <outlet property="rateField" destination="iYD-rr-xHH" id="A65-kX-xTy"/>
+                        <outlet property="rulesField" destination="vNa-fS-mG3" id="4EC-E6-EKh"/>
+                        <outlet property="slotField" destination="2Do-Px-an7" id="Uhx-g8-dth"/>
+                        <outlet property="startDateButton" destination="2zo-Yv-hEi" id="q3Y-2P-9oV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAz-5a-0hZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

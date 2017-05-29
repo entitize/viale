@@ -22,6 +22,7 @@ class DataService {
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_GEOFIRE = DB_BASE.child("geofire")
     private var _REF_PARKINGS = DB_BASE.child("parkings")
+    private var _REF_INTERVALS = DB_BASE.child("intervals")
     
     var REF_GEOFIRE: FIRDatabaseReference {
         return _REF_GEOFIRE
@@ -34,6 +35,9 @@ class DataService {
     }
     var REF_USER_PARKINGS: FIRDatabaseReference {
         return _REF_PARKINGS.child(USER_UID)
+    }
+    var REF_INTERVALS : FIRDatabaseReference {
+        return _REF_INTERVALS
     }
     
     var REF_USER_CURRENT: FIRDatabaseReference {

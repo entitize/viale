@@ -66,23 +66,23 @@ class CreateDrivewayVC: UIViewController, SwiftSignatureViewDelegate, ImagePicke
         
         
         if (nameField.text == "" || addressField.text == "" || descriptionTextField.text == "") {
-            HUD.flash(.labeledError(title: "Fields", subtitle: "You must fill out all of the fields"), delay: 2)
+            HUD.flash(.labeledError(title: "Fields", subtitle: "You must fill out all of the fields"), delay: 2.5)
             return
         }
         
         if (selectedPicture == false) {
-            HUD.flash(.labeledError(title: "Image", subtitle: "You must select an image of your driveway"), delay: 2)
+            HUD.flash(.labeledError(title: "Image", subtitle: "You must select an image of your driveway"), delay: 2.5)
             return
         }
         
         if (signed == false) {
-            HUD.flash(.labeledError(title: "Signature", subtitle: "You must sign in order to create your driveway"), delay: 2)
+            HUD.flash(.labeledError(title: "Signature", subtitle: "You must sign in order to create your driveway"), delay: 2.5)
             return
         }
         
         let res = GoogleMapsService.gm.getLatLng(addressString: addressField.text!)
         if (res.isError) {
-            HUD.flash(.labeledError(title: "Address", subtitle: "You must enter a valid address. It must be sufficently descriptive and accurate"), delay: 2)
+            HUD.flash(.labeledError(title: "Address", subtitle: "You must enter a valid address. It must be sufficently descriptive and accurate"), delay: 2.5)
             return
         }
         
@@ -94,7 +94,7 @@ class CreateDrivewayVC: UIViewController, SwiftSignatureViewDelegate, ImagePicke
             
             DataService.ds.REF_PARKING_IMAGES.child(imageUID).put(imgData, metadata: metadata, completion: { (metadata, error) in
                 if (error != nil) {
-                    HUD.flash(.labeledError(title: "Error", subtitle: "There was an error with uploading the driveway image to the database"), delay: 3)
+                    HUD.flash(.labeledError(title: "Error", subtitle: "There was an error with uploading the driveway image to the database"), delay: 2.5)
                 } else {
                     
                     //Upload all the parking data to firebase
@@ -126,12 +126,12 @@ class CreateDrivewayVC: UIViewController, SwiftSignatureViewDelegate, ImagePicke
                         parkingPost.setValue(parkingData, withCompletionBlock: { (error, ref) in
                             
                             if (error != nil) {
-                                HUD.flash(.labeledError(title: "Error", subtitle: "There was an error with uploading your driveway information"), delay: 3)
+                                HUD.flash(.labeledError(title: "Error", subtitle: "There was an error with uploading your driveway information"), delay: 2.5)
                             } else {
                                 
                                 DataService.ds.REF_USER_CURRENT.updateChildValues(["hasDriveway":true], withCompletionBlock: { (error, ref) in
                                     if (error != nil) {
-                                        HUD.flash(.labeledError(title: "Error", subtitle: "There was an error with updating the user driveway status"), delay: 3)
+                                        HUD.flash(.labeledError(title: "Error", subtitle: "There was an error with updating the user driveway status"), delay: 2.5)
                                     } else {
                                         HUD.flash(.success, delay: 1)
                                         self.dismiss(animated: true, completion: {
