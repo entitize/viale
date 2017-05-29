@@ -69,8 +69,6 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
             HUD.flash(.labeledError(title: "Error", subtitle: "There was an error with Keanu"), delay: 2.5)
         }
         
-        
-        
     }
     
     func createCellHeightsArray() {
@@ -132,12 +130,6 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         }, completion: nil)
     }
     
-    
-    
-    
-    @IBAction func saveAndExitTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

@@ -15,7 +15,7 @@
 		EE4E07F11ED9E4A900F7D02A /* ParkingAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07F01ED9E4A900F7D02A /* ParkingAnnotationView.swift */; };
 		EE4E07F31ED9F8C400F7D02A /* RentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07F21ED9F8C400F7D02A /* RentVC.swift */; };
 		EE8A9C981EDB262800DC6E8B /* NewIntervalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A9C971EDB262800DC6E8B /* NewIntervalVC.swift */; };
-		EEA423091EDA1A1A00609599 /* FinalRentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA423081EDA1A1A00609599 /* FinalRentVC.swift */; };
+		EEA423091EDA1A1A00609599 /* PayRentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA423081EDA1A1A00609599 /* PayRentVC.swift */; };
 		EEA4230B1EDA640700609599 /* CreateDrivewayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */; };
 		EEA4230D1EDA6EF300609599 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA4230C1EDA6EF300609599 /* UIViewController+Helper.swift */; };
 		EEB4734A1ED6230500B1020A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473491ED6230500B1020A /* AppDelegate.swift */; };
@@ -42,6 +42,8 @@
 		EEB473DB1ED8D82900B1020A /* UserDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473DA1ED8D82900B1020A /* UserDriver.swift */; };
 		EEE594051EDC5F8B00800B07 /* IntervalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE594041EDC5F8B00800B07 /* IntervalCell.swift */; };
 		EEE594081EDC761E00800B07 /* ParkingInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE594071EDC761E00800B07 /* ParkingInterval.swift */; };
+		EEE5940A1EDC9DF300800B07 /* TimeRentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE594091EDC9DF300800B07 /* TimeRentVC.swift */; };
+		EEE5940C1EDC9E6000800B07 /* ReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5940B1EDC9E6000800B07 /* ReminderVC.swift */; };
 		EEECD5741ED92B7800D42B65 /* LeftMenuTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEECD5731ED92B7800D42B65 /* LeftMenuTBVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +58,7 @@
 		EE4E07F01ED9E4A900F7D02A /* ParkingAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingAnnotationView.swift; sourceTree = "<group>"; };
 		EE4E07F21ED9F8C400F7D02A /* RentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentVC.swift; sourceTree = "<group>"; };
 		EE8A9C971EDB262800DC6E8B /* NewIntervalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewIntervalVC.swift; sourceTree = "<group>"; };
-		EEA423081EDA1A1A00609599 /* FinalRentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalRentVC.swift; sourceTree = "<group>"; };
+		EEA423081EDA1A1A00609599 /* PayRentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayRentVC.swift; sourceTree = "<group>"; };
 		EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDrivewayVC.swift; sourceTree = "<group>"; };
 		EEA4230C1EDA6EF300609599 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
 		EEB473461ED6230500B1020A /* Viale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Viale.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,8 @@
 		EEB473DA1ED8D82900B1020A /* UserDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDriver.swift; sourceTree = "<group>"; };
 		EEE594041EDC5F8B00800B07 /* IntervalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalCell.swift; sourceTree = "<group>"; };
 		EEE594071EDC761E00800B07 /* ParkingInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingInterval.swift; sourceTree = "<group>"; };
+		EEE594091EDC9DF300800B07 /* TimeRentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRentVC.swift; sourceTree = "<group>"; };
+		EEE5940B1EDC9E6000800B07 /* ReminderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderVC.swift; sourceTree = "<group>"; };
 		EEECD5731ED92B7800D42B65 /* LeftMenuTBVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTBVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				EE4E07F21ED9F8C400F7D02A /* RentVC.swift */,
-				EEA423081EDA1A1A00609599 /* FinalRentVC.swift */,
+				EEE594091EDC9DF300800B07 /* TimeRentVC.swift */,
+				EEA423081EDA1A1A00609599 /* PayRentVC.swift */,
+				EEE5940B1EDC9E6000800B07 /* ReminderVC.swift */,
 			);
 			name = RentVCs;
 			sourceTree = "<group>";
@@ -436,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE5940C1EDC9E6000800B07 /* ReminderVC.swift in Sources */,
 				EEE594051EDC5F8B00800B07 /* IntervalCell.swift in Sources */,
 				EEB473651ED7258300B1020A /* RoundButton.swift in Sources */,
 				EE4E07F11ED9E4A900F7D02A /* ParkingAnnotationView.swift in Sources */,
@@ -448,6 +455,7 @@
 				EE8A9C981EDB262800DC6E8B /* NewIntervalVC.swift in Sources */,
 				EEB473D51ED8619200B1020A /* UIColor+Helpe.swift in Sources */,
 				EEB4738B1ED7AC2900B1020A /* GFBase32Utils.m in Sources */,
+				EEE5940A1EDC9DF300800B07 /* TimeRentVC.swift in Sources */,
 				EEB473D91ED8D76C00B1020A /* Parking.swift in Sources */,
 				EEECD5741ED92B7800D42B65 /* LeftMenuTBVC.swift in Sources */,
 				EEB473671ED7258300B1020A /* FancySubmitButton.swift in Sources */,
@@ -466,7 +474,7 @@
 				EEB4738C1ED7AC2900B1020A /* GFGeoHash.m in Sources */,
 				EEB4738A1ED7AC2900B1020A /* GeoFire.m in Sources */,
 				EEB4738E1ED7AC2900B1020A /* GFQuery.m in Sources */,
-				EEA423091EDA1A1A00609599 /* FinalRentVC.swift in Sources */,
+				EEA423091EDA1A1A00609599 /* PayRentVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

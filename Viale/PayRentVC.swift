@@ -1,5 +1,5 @@
 //
-//  FinalRentVC.swift
+//  PayRentVC.swift
 //  Viale
 //
 //  Created by Kai Nakamura on 5/27/17.
@@ -11,7 +11,7 @@ import UIKit
 import SwiftSignatureView
 import PKHUD
 
-class FinalRentVC: UIViewController, SwiftSignatureViewDelegate {
+class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
     
     var signed = false
     
