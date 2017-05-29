@@ -33,9 +33,8 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
     }
     @IBAction func rentButtonTapped(_ sender: Any) {
         if (signed == true) {
-            dismiss(animated: true, completion: { 
-                NotificationCenter.default.post(name: NSNotification.Name.init(NOTIFICATION_KEY_EXIT_RENT), object: nil)
-            })
+            
+            performSegue(withIdentifier: "toNext", sender: nil)
             
         } else {
             HUD.flash(.labeledError(title: "Signature Required", subtitle: "Please Sign in the Gray Box to Confirm"),delay:1)

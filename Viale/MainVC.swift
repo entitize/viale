@@ -44,14 +44,6 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         mapHasCenteredOnce = false
         locationAuthStatus()
         
-        testMyPin()
-    }
-    func testMyPin() {
-        let testOwner = UserDriver(fullName: "Jackson Hurley", avatarImage: UIImage.init(named: "add_feeling_btn")!, carImage: UIImage.init(named: "Swift_logo.svg")!, phoneNumber: "1232456789")
-        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "Swift_logo.svg")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), ratePerHour: 3, name: "The Best Parking Lot", totalIntervals: 10, description: "Please follow all of my very own instructions in parking", averageRatePerHour: 10)
-        let testParkingAnnotation = ParkingAnnotation()
-        testParkingAnnotation.parking = testParking
-        mapView.addAnnotation(testParkingAnnotation)
     }
     
     
@@ -121,6 +113,18 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     }
     
     
+    @IBAction func searchFromLocal(_ sender: Any) {
+        
+        let northEast = mapView.convert(CGPoint(x: mapView.bounds.width, y: 0), toCoordinateFrom: mapView)
+        let southWest = mapView.convert(CGPoint(x: 0, y: mapView.bounds.height), toCoordinateFrom: mapView)
+        
+        let dLatitude = northEast.latitude - southWest.latitude
+        let dLongitude = northEast.longitude - southWest.longitude
+        
+        geoSearchCircle(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude, radius: 2.5)
+        
+    }
+    
     @IBAction func searchButtonTapped(_ sender: Any) {
         searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
@@ -149,11 +153,102 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             mapView.addAnnotation(searchAnnotation)
             
             //Select the new annotation automatically
-            let annotationIndex = 1
-            mapView.selectAnnotation(mapView.annotations[annotationIndex], animated: true)
+            //let annotationIndex = 1
+            //mapView.selectAnnotation(mapView.annotations[annotationIndex], animated: true)
             
-            self.createSearchCircle(latitude: res.location.latitude, longitude: res.location.longitude)
+            //self.createSearchCircle(latitude: res.location.latitude, longitude: res.location.longitude)
+            
+            //Next, start GeoFire search
+            geoSearchCircle(latitude: res.location.latitude, longitude: res.location.longitude,radius: 2.5)
+            
+            
         }
+    }
+    func geoSearchCircle(latitude:CLLocationDegrees,longitude:CLLocationDegrees,radius:Double) {
+        
+        
+        let circleQuery = geoFire.query(at: CLLocation.init(latitude: latitude, longitude: longitude), withRadius: radius)
+        
+        circleQuery?.observe(GFEventType.keyEntered, with: { (key, location) in
+            
+            if let userUID = key, let location = location {
+                
+                //Download the parking information using the userID from 'parkings'
+                
+                
+                DataService.ds.REF_PARKINGS.child(userUID).observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    if let snapshot = snapshot.value as? [String: AnyObject] {
+                        
+                        //Parsing Data
+                        guard let addressString = snapshot["addressString"] as? String, let description = snapshot["description"] as? String, let name = snapshot["name"] as? String, let parkingImageURL = snapshot["parkingImageURL"] as? String else {
+                            
+                            HUD.flash(.labeledError(title: "Parsing Error", subtitle: ""), delay: 2.5)
+                            return
+                        }
+                        
+                        //Loop through the intervals and store them and put them inside parkingInformation
+                        guard let intervals = snapshot["intervals"] as? [String: Bool] else {
+                            
+                            HUD.flash(.labeledError(title: "Parsing Error", subtitle: "Intervals"), delay: 2.5)
+                            return
+                        }
+
+                        //Download the image from parkingImageURL
+                        let ref = FIRStorage.storage().reference(forURL: parkingImageURL)
+                        ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                            if error != nil {
+                                HUD.flash(.labeledError(title: "Downloading Image Error", subtitle: "Image"), delay: 2.5)
+                            } else {
+                                guard let data = data else {
+                                    HUD.flash(.labeledError(title: "Downloading Image Error", subtitle: "Image"), delay: 2.5)
+                                    return
+                                }
+                                guard let img = UIImage(data: data) else {
+                                    return
+                                }
+                                
+                                //Downloading Image Success
+                                
+                                //Set up parking object
+                                let parking = Parking(addressString: addressString, parkingImage: img, rating: 5, coordinate: CLLocationCoordinate2D.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), name: name, totalIntervals: 100, description: description)
+                                parking.ownerUID = userUID
+                                parking.intervalKeys = []
+                                
+                                for interval in intervals {
+                                    if (interval.value == true) {
+                                        parking.intervalKeys.append(interval.key)
+                                    }
+                                }
+                                
+                                //Set up parking annotation
+                                let parkingAnnotation = ParkingAnnotation()
+                                parkingAnnotation.parking = parking
+                                
+                                //Finally, add the annotation
+                                self.mapView.addAnnotation(parkingAnnotation)
+                                
+                                
+                            }
+                        })
+                        
+                        
+                        
+                        
+                
+                    } else {
+                        HUD.flash(.labeledError(title: "Parsing Error", subtitle: ""), delay: 2.5)
+                    }
+                    
+                    
+                    
+                }, withCancel: { (error) in
+                    HUD.flash(.labeledError(title: "Error", subtitle: "Getting Parking Data Error"), delay: 2.5)
+                })
+                
+                
+            }
+        })
     }
     
     func createSearchCircle(latitude:CLLocationDegrees,longitude:CLLocationDegrees) {
@@ -190,7 +285,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             let parkingAnnotation : ParkingAnnotation = parkingAnnotationView.annotation as! ParkingAnnotation
             let parking : Parking = parkingAnnotation.parking!
             
-            selectedParking = parking
+            RentService.rs.selectedParking = parking
             
             //Download from firebase the owner data
             
@@ -199,7 +294,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             
             // Create buttons
             
-            let buttonOne = DefaultButton(title: "PARK HERE ($\(String(describing: parking.averageRatePerHour!)) per hour)") {
+            let buttonOne = DefaultButton(title: "PARK HERE ($AVERAGE_RATE) per hour)") {
                 self.performSegue(withIdentifier: "toRent", sender: nil)
             }
             
@@ -219,6 +314,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             
             // Set dialog properties
             vc.image = parking.parkingImage
+            
             //vc.titleText = "Troll"
             //vc.messageText = "something"
 

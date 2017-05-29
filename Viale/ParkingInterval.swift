@@ -17,8 +17,9 @@ class ParkingInterval {
     var rules : String?
     var availableSlots : Int?
     var totalSlots: Int?
+    var intervalKey : String?
     
-    init(startNumber:Double,endNumber:Double,ratePerHour:Float,rules:String,availableSlots:Int,totalSlots:Int) {
+    init(startNumber:Double,endNumber:Double,ratePerHour:Float,rules:String,availableSlots:Int,totalSlots:Int,intervalKey:String) {
         
         //Convert the floats into dates
         
@@ -30,6 +31,7 @@ class ParkingInterval {
         self.availableSlots = availableSlots
         self.totalSlots = totalSlots
         
+        self.intervalKey = intervalKey
     }
     
     

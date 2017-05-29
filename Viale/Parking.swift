@@ -15,12 +15,14 @@ class Parking {
     var parkingImage : UIImage?
     var rating : CGFloat?
     var coordinate : CLLocationCoordinate2D?
-    var averageRatePerHour : Int?
     var name : String?
     var totalIntervals : Int?
     var description : String?
+    var intervalKeys = [String]()
+    var ownerUID : String?
     
-    init(addressString:String,parkingImage:UIImage,rating:CGFloat,coordinate:CLLocationCoordinate2D,ratePerHour:Int,name:String,totalIntervals:Int,description:String,averageRatePerHour:Int) {
+    
+    init(addressString:String,parkingImage:UIImage,rating:CGFloat,coordinate:CLLocationCoordinate2D,name:String,totalIntervals:Int,description:String) {
         self.addressString = addressString
         self.parkingImage = parkingImage
         self.rating = rating
@@ -28,7 +30,7 @@ class Parking {
         self.totalIntervals = totalIntervals
         self.name = name
         self.description = description
-        self.averageRatePerHour = averageRatePerHour
+        
     }
     
 }

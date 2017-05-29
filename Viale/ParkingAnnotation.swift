@@ -26,9 +26,9 @@ class ParkingAnnotation: NSObject, MKAnnotation {
             if let p = parking {
                 
                 //Download user
-                self.title = "Dummy User"
+                self.title = p.addressString
                 
-                self.subtitle = "$\(p.averageRatePerHour!) per hour"
+                self.subtitle = p.name
                 
                 if let c = p.coordinate {
                     self.coord = c

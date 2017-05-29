@@ -18,5 +18,3 @@ let NOTIFICATION_KEY_MANAGE_DRIVEWAY = "v024jgr90fg8s9g0"
 let NOTIFICATION_KEY_DRIVEWAY_CREATED = "f23fi23hf02hef90ewfj9dwajf"
 
 
-//MARK: Global Variables (not constants)
-var selectedParking : Parking!

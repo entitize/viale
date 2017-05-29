@@ -48,7 +48,7 @@ class IntervalCell : FoldingCell {
                 }
             
                 //Create the parking interval
-                self.parkingInterval = ParkingInterval(startNumber: startDate, endNumber: endDate, ratePerHour: ratePerHour, rules: rules, availableSlots: slots, totalSlots: totalSlots)
+                self.parkingInterval = ParkingInterval(startNumber: startDate, endNumber: endDate, ratePerHour: ratePerHour, rules: rules, availableSlots: slots, totalSlots: totalSlots, intervalKey: intervalKey)
                 
                 self.setupViews()
                 
