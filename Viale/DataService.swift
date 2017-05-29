@@ -11,6 +11,7 @@ import Firebase
 import SwiftKeychainWrapper
 
 let DB_BASE = FIRDatabase.database().reference()
+let STORAGE_BASE = FIRStorage.storage().reference()
 
 class DataService {
     
@@ -20,7 +21,7 @@ class DataService {
     
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_GEOFIRE = DB_BASE.child("geofire")
-    
+    private var _REF_PARKINGS = DB_BASE.child("parkings")
     
     var REF_GEOFIRE: FIRDatabaseReference {
         return _REF_GEOFIRE
@@ -28,14 +29,33 @@ class DataService {
     var REF_USERS: FIRDatabaseReference {
         return _REF_USERS
     }
+    var REF_PARKINGS: FIRDatabaseReference {
+        return _REF_PARKINGS
+    }
+    var REF_USER_PARKINGS: FIRDatabaseReference {
+        return _REF_PARKINGS.child(USER_UID)
+    }
     
     var REF_USER_CURRENT: FIRDatabaseReference {
-        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
-        let user = REF_USERS.child(uid!)
+        let uid = USER_UID
+        let user = REF_USERS.child(uid)
         return user
     }
     
+    //MARK: Storage Properties
+    
+    private var _REF_PARKING_IMAGES = STORAGE_BASE.child("parking-images")
+    
+    var REF_PARKING_IMAGES: FIRStorageReference {
+        return _REF_PARKING_IMAGES
+    }
+    
+    
     //MARK: Local Properties
+    
+    var USER_UID: String {
+        return KeychainWrapper.standard.string(forKey: KEY_UID)!
+    }
     
     //MARK: Methods
     
@@ -52,6 +72,9 @@ class DataService {
                 if let phoneNumber = snapshot["phoneNumber"] as? String {
                     UserDriver.currentUser.phoneNumber = phoneNumber
                 }
+                if let hasDriveway = snapshot["hasDriveway"] as? Bool {
+                    UserDriver.currentUser.hasDriveway = hasDriveway
+                }
             }
             
         })
@@ -61,6 +84,8 @@ class DataService {
     func createFirebaseDBUser(uid:String, userData: Dictionary<String,String>) {
         _REF_USERS.child(uid).updateChildValues(userData)
     }
+    
+    
     
     
 }

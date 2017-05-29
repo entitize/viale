@@ -48,7 +48,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     }
     func testMyPin() {
         let testOwner = UserDriver(fullName: "Jackson Hurley", avatarImage: UIImage.init(named: "add_feeling_btn")!, carImage: UIImage.init(named: "Swift_logo.svg")!, phoneNumber: "1232456789")
-        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "Swift_logo.svg")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), ratePerHour: 3, name: "The Best Parking Lot")
+        let testParking = Parking(addressString: "123 Alphabet Street", parkingImage: UIImage.init(named: "Swift_logo.svg")!, rating: 5.0, coordinate: CLLocationCoordinate2D.init(latitude: 34.4272373, longitude: -119.89878069999997), ratePerHour: 3, name: "The Best Parking Lot", totalIntervals: 10, description: "Please follow all of my very own instructions in parking", averageRatePerHour: 10)
         let testParkingAnnotation = ParkingAnnotation()
         testParkingAnnotation.parking = testParking
         mapView.addAnnotation(testParkingAnnotation)
@@ -64,9 +64,28 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             self.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
         }
+        //Manage Drive Notification
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_MANAGE_DRIVEWAY), object: nil, queue: nil) { (notification) in
 
-            self.performSegue(withIdentifier: "toManageDriveway", sender: nil)
+            if UserDriver.currentUser.hasDriveway! {
+                self.performSegue(withIdentifier: "toManageDriveway", sender: nil)
+            } else {
+                self.performSegue(withIdentifier: "toCreateDriveway", sender: nil)
+            }
+            
+            
+        }
+        //Driveway Created Notification
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_DRIVEWAY_CREATED), object: nil, queue: nil) { (notification) in
+            
+            //Display the popup accordingly
+            let popup = PopupDialog(title: "Success!", message: "Your driveway has been successfully created! Select 'Manage Driveway' in the left sidebar to start renting your driveway to others!")
+            
+            // Create buttons
+            let buttonOne = DefaultButton(title: "Done") { }
+            
+            popup.addButton(buttonOne)
+            self.present(popup, animated: true, completion: nil)
             
         }
     }
@@ -180,7 +199,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             
             // Create buttons
             
-            let buttonOne = DefaultButton(title: "PARK HERE ($\(String(describing: parking.ratePerHour!)) per hour)") {
+            let buttonOne = DefaultButton(title: "PARK HERE ($\(String(describing: parking.averageRatePerHour!)) per hour)") {
                 self.performSegue(withIdentifier: "toRent", sender: nil)
             }
             

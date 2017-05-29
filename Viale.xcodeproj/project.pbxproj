@@ -14,6 +14,7 @@
 		EE4E07EF1ED9D17B00F7D02A /* SearchAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07EE1ED9D17B00F7D02A /* SearchAnnotationView.swift */; };
 		EE4E07F11ED9E4A900F7D02A /* ParkingAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07F01ED9E4A900F7D02A /* ParkingAnnotationView.swift */; };
 		EE4E07F31ED9F8C400F7D02A /* RentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07F21ED9F8C400F7D02A /* RentVC.swift */; };
+		EE8A9C981EDB262800DC6E8B /* NewIntervalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A9C971EDB262800DC6E8B /* NewIntervalVC.swift */; };
 		EEA423091EDA1A1A00609599 /* FinalRentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA423081EDA1A1A00609599 /* FinalRentVC.swift */; };
 		EEA4230B1EDA640700609599 /* CreateDrivewayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */; };
 		EEA4230D1EDA6EF300609599 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA4230C1EDA6EF300609599 /* UIViewController+Helper.swift */; };
@@ -52,6 +53,7 @@
 		EE4E07EE1ED9D17B00F7D02A /* SearchAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAnnotationView.swift; sourceTree = "<group>"; };
 		EE4E07F01ED9E4A900F7D02A /* ParkingAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingAnnotationView.swift; sourceTree = "<group>"; };
 		EE4E07F21ED9F8C400F7D02A /* RentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentVC.swift; sourceTree = "<group>"; };
+		EE8A9C971EDB262800DC6E8B /* NewIntervalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewIntervalVC.swift; sourceTree = "<group>"; };
 		EEA423081EDA1A1A00609599 /* FinalRentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalRentVC.swift; sourceTree = "<group>"; };
 		EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDrivewayVC.swift; sourceTree = "<group>"; };
 		EEA4230C1EDA6EF300609599 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
@@ -121,6 +123,25 @@
 				48545A165799EF72AF307AB7 /* Pods_Viale.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE2F74611EDA76DE002389C8 /* RentVCs */ = {
+			isa = PBXGroup;
+			children = (
+				EE4E07F21ED9F8C400F7D02A /* RentVC.swift */,
+				EEA423081EDA1A1A00609599 /* FinalRentVC.swift */,
+			);
+			name = RentVCs;
+			sourceTree = "<group>";
+		};
+		EE2F74621EDA76EA002389C8 /* DrivewayVCs */ = {
+			isa = PBXGroup;
+			children = (
+				EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */,
+				EE2F745F1EDA739D002389C8 /* ManageDrivewayVC.swift */,
+				EE8A9C971EDB262800DC6E8B /* NewIntervalVC.swift */,
+			);
+			name = DrivewayVCs;
 			sourceTree = "<group>";
 		};
 		EE4E07E91ED9B03200F7D02A /* Fancy */ = {
@@ -199,12 +220,10 @@
 			isa = PBXGroup;
 			children = (
 				EEB473731ED7A31A00B1020A /* MainVC.swift */,
-				EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */,
 				EEB4734B1ED6230500B1020A /* SignInVC.swift */,
 				EEECD5731ED92B7800D42B65 /* LeftMenuTBVC.swift */,
-				EE4E07F21ED9F8C400F7D02A /* RentVC.swift */,
-				EEA423081EDA1A1A00609599 /* FinalRentVC.swift */,
-				EE2F745F1EDA739D002389C8 /* ManageDrivewayVC.swift */,
+				EE2F74611EDA76DE002389C8 /* RentVCs */,
+				EE2F74621EDA76EA002389C8 /* DrivewayVCs */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -411,6 +430,7 @@
 				EEB4738D1ED7AC2900B1020A /* GFGeoHashQuery.m in Sources */,
 				EE4E07EF1ED9D17B00F7D02A /* SearchAnnotationView.swift in Sources */,
 				EEA4230B1EDA640700609599 /* CreateDrivewayVC.swift in Sources */,
+				EE8A9C981EDB262800DC6E8B /* NewIntervalVC.swift in Sources */,
 				EEB473D51ED8619200B1020A /* UIColor+Helpe.swift in Sources */,
 				EEB4738B1ED7AC2900B1020A /* GFBase32Utils.m in Sources */,
 				EEB473D91ED8D76C00B1020A /* Parking.swift in Sources */,

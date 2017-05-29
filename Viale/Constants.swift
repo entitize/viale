@@ -15,6 +15,7 @@ let KEY_UID = "uid"
 let NOTIFICATION_KEY_LOGOUT_USER = "23ri2nfn0e9fnw0f9sdmf2fdsf"
 let NOTIFICATION_KEY_EXIT_RENT = "fdf23fdisovb9923840hn0sopav"
 let NOTIFICATION_KEY_MANAGE_DRIVEWAY = "v024jgr90fg8s9g0"
+let NOTIFICATION_KEY_DRIVEWAY_CREATED = "f23fi23hf02hef90ewfj9dwajf"
 
 
 //MARK: Global Variables (not constants)

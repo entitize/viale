@@ -18,5 +18,7 @@ target 'Viale' do
     pod 'DateTimePicker'
     pod "SwiftSignatureView"
     pod "TextFieldEffects"
+    pod 'ImagePicker'
+
 
 end

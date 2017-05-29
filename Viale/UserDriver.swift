@@ -17,15 +17,18 @@ class UserDriver {
     var avatarImage : UIImage?
     var phoneNumber : String?
     var carImage : UIImage?
-    var parking : Parking?
     
-    init(fullName:String,avatarImage:UIImage,carImage:UIImage,phoneNumber:String,parking:Parking? = nil) {
+    var parking : Parking?
+    var hasDriveway : Bool?
+    
+    init(fullName:String,avatarImage:UIImage,carImage:UIImage,phoneNumber:String,parking:Parking? = nil, hasDriveway:Bool? = false) {
         
         self.fullName = fullName
         self.avatarImage = avatarImage
         self.carImage = carImage
         self.phoneNumber = phoneNumber
         self.parking = parking
+        self.hasDriveway = hasDriveway
     }
     
     

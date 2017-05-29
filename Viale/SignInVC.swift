@@ -29,6 +29,7 @@ class SignInVC: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            DataService.ds.setupGlobalListeners()
             performSegue(withIdentifier: "toMainScreen", sender: nil)
         }
     }
@@ -78,7 +79,7 @@ class SignInVC: UIViewController {
                 HUD.flash(.labeledError(title: "", subtitle: "There was an error signing in"), delay: 1.0)
             } else {
                 if let user = user {
-                    let userData = ["provider":user.providerID,"fullName":fullName,"phoneNumber":phoneNumber]
+                    let userData = ["provider":user.providerID,"fullName":fullName,"phoneNumber":phoneNumber,"hasDriveway":"false"]
                     self.completeSignIn(id: user.uid, userData: userData)
                 }
                 
@@ -89,6 +90,7 @@ class SignInVC: UIViewController {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
         performSegue(withIdentifier: "toMainScreen", sender: nil)
+        DataService.ds.setupGlobalListeners()
         HUD.flash(.success, delay: 0.5)
     }
     

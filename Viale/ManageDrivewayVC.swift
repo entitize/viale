@@ -15,6 +15,17 @@ class ManageDrivewayVC: UIViewController {
         
     }
     
+    @IBAction func startDateTapped(_ sender: Any) {
+    }
     
+    @IBAction func endDateTapped(_ sender: Any) {
+    }
+    @IBAction func addTimePeriodTapped(_ sender: Any) {
+    }
+    @IBAction func saveAndExitTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+    }
     
 }
