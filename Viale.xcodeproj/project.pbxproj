@@ -40,6 +40,8 @@
 		EEB473D51ED8619200B1020A /* UIColor+Helpe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473D41ED8619200B1020A /* UIColor+Helpe.swift */; };
 		EEB473D91ED8D76C00B1020A /* Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473D81ED8D76C00B1020A /* Parking.swift */; };
 		EEB473DB1ED8D82900B1020A /* UserDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473DA1ED8D82900B1020A /* UserDriver.swift */; };
+		EEE594051EDC5F8B00800B07 /* IntervalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE594041EDC5F8B00800B07 /* IntervalCell.swift */; };
+		EEE594081EDC761E00800B07 /* ParkingInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE594071EDC761E00800B07 /* ParkingInterval.swift */; };
 		EEECD5741ED92B7800D42B65 /* LeftMenuTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEECD5731ED92B7800D42B65 /* LeftMenuTBVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +95,8 @@
 		EEB473D41ED8619200B1020A /* UIColor+Helpe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpe.swift"; sourceTree = "<group>"; };
 		EEB473D81ED8D76C00B1020A /* Parking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parking.swift; sourceTree = "<group>"; };
 		EEB473DA1ED8D82900B1020A /* UserDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDriver.swift; sourceTree = "<group>"; };
+		EEE594041EDC5F8B00800B07 /* IntervalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalCell.swift; sourceTree = "<group>"; };
+		EEE594071EDC761E00800B07 /* ParkingInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingInterval.swift; sourceTree = "<group>"; };
 		EEECD5731ED92B7800D42B65 /* LeftMenuTBVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTBVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */,
-				EE2F745F1EDA739D002389C8 /* ManageDrivewayVC.swift */,
+				EEE594061EDC5F8F00800B07 /* ManageDriveway */,
 				EE8A9C971EDB262800DC6E8B /* NewIntervalVC.swift */,
 			);
 			name = DrivewayVCs;
@@ -212,6 +216,7 @@
 			children = (
 				EEB473D81ED8D76C00B1020A /* Parking.swift */,
 				EEB473DA1ED8D82900B1020A /* UserDriver.swift */,
+				EEE594071EDC761E00800B07 /* ParkingInterval.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -290,6 +295,15 @@
 				EEA4230C1EDA6EF300609599 /* UIViewController+Helper.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		EEE594061EDC5F8F00800B07 /* ManageDriveway */ = {
+			isa = PBXGroup;
+			children = (
+				EE2F745F1EDA739D002389C8 /* ManageDrivewayVC.swift */,
+				EEE594041EDC5F8B00800B07 /* IntervalCell.swift */,
+			);
+			name = ManageDriveway;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE594051EDC5F8B00800B07 /* IntervalCell.swift in Sources */,
 				EEB473651ED7258300B1020A /* RoundButton.swift in Sources */,
 				EE4E07F11ED9E4A900F7D02A /* ParkingAnnotationView.swift in Sources */,
 				EE4E07EB1ED9BA1100F7D02A /* GoogleMapsService.swift in Sources */,
@@ -437,6 +452,7 @@
 				EEECD5741ED92B7800D42B65 /* LeftMenuTBVC.swift in Sources */,
 				EEB473671ED7258300B1020A /* FancySubmitButton.swift in Sources */,
 				EEA4230D1EDA6EF300609599 /* UIViewController+Helper.swift in Sources */,
+				EEE594081EDC761E00800B07 /* ParkingInterval.swift in Sources */,
 				EE2F74601EDA739D002389C8 /* ManageDrivewayVC.swift in Sources */,
 				EEB473741ED7A31A00B1020A /* MainVC.swift in Sources */,
 				EEB473911ED7B6BB00B1020A /* ParkingAnnotation.swift in Sources */,

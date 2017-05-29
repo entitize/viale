@@ -19,6 +19,7 @@ target 'Viale' do
     pod "SwiftSignatureView"
     pod "TextFieldEffects"
     pod 'ImagePicker'
+    pod 'FoldingCell'
 
 
 end

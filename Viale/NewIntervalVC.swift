@@ -90,7 +90,8 @@ class NewIntervalVC : UIViewController {
             "endDate":end1970,
             "ratePerHour":rate,
             "rules":rules,
-            "slots":slots
+            "slots":slots,
+            "totalSlots":slots
         ] as [String : Any]
         
         let uuid = UUID().uuidString
@@ -103,18 +104,17 @@ class NewIntervalVC : UIViewController {
                 
                 //Save this data inside the parking section of database
                 
-                DataService.ds.REF_USER_PARKINGS.child("intervals").setValue([uuid:true], withCompletionBlock: { (error, ref) in
+                DataService.ds.REF_USER_PARKINGS.child("intervals").updateChildValues([uuid:true], withCompletionBlock: { (error, ref) in
                     if (error != nil) {
                         HUD.flash(.labeledError(title: "Upload Error", subtitle: "There was an error with uploading the data."), delay: 2.5)
                     } else {
                         
                         //Success!
                         
-                        HUD.flash(.success, delay: 2.5)
+                        HUD.flash(.success, delay: 2)
                         self.dismiss(animated: true, completion: nil)
                     }
                 })
-                
                 
                 
             }
