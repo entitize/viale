@@ -20,9 +20,10 @@ class Parking {
     var description : String?
     var intervalKeys = [String]()
     var ownerUID : String?
+    var averageRate : Float?
     
     
-    init(addressString:String,parkingImage:UIImage,rating:CGFloat,coordinate:CLLocationCoordinate2D,name:String,totalIntervals:Int,description:String) {
+    init(addressString:String,parkingImage:UIImage,rating:CGFloat,coordinate:CLLocationCoordinate2D,name:String,totalIntervals:Int,description:String,averageRate:Float) {
         self.addressString = addressString
         self.parkingImage = parkingImage
         self.rating = rating
@@ -30,6 +31,7 @@ class Parking {
         self.totalIntervals = totalIntervals
         self.name = name
         self.description = description
+        self.averageRate = averageRate
         
     }
     

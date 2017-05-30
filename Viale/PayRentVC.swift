@@ -17,10 +17,18 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
     
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var signatureView: SwiftSignatureView!
-    
+    @IBOutlet weak var locationNameLabel: UILabel!
     
     override func viewDidLoad() {
         self.signatureView.delegate = self
+        locationNameLabel.text = RentService.rs.selectedParking?.name
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_EXIT_RENT), object: nil, queue: nil) { (notification) in
+            self.dismiss(animated: true, completion: nil)
+            
+        }
+        
+        
     }
     
     
@@ -34,7 +42,29 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
     @IBAction func rentButtonTapped(_ sender: Any) {
         if (signed == true) {
             
-            performSegue(withIdentifier: "toNext", sender: nil)
+            //Subtract 1 from totalParkings
+            let intervalKey = RentService.rs.selectedInterval?.intervalKey
+            let intervalRef = DataService.ds.REF_INTERVALS.child(intervalKey!)
+            let intervalSlotsRef = intervalRef.child("availableSlots")
+                
+            intervalSlotsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let valString = snapshot.value as? Int else {
+                    return
+                }
+                let value = valString - 1
+                intervalSlotsRef.setValue(value)
+                
+                //Upload the user UID under 'users' inside the intervalRef
+                let userUID = DataService.ds.USER_UID
+                intervalRef.child("users").child(userUID).setValue(true)
+                
+                //Success
+                self.performSegue(withIdentifier: "toNext", sender: nil)
+                
+            }, withCancel: { (error) in
+                HUD.flash(.labeledError(title: "Upload Error", subtitle: "There was an error with downloading the slots data"), delay: 2.5)
+            })
+            
             
         } else {
             HUD.flash(.labeledError(title: "Signature Required", subtitle: "Please Sign in the Gray Box to Confirm"),delay:1)

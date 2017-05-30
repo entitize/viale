@@ -119,7 +119,8 @@ class CreateDrivewayVC: UIViewController, SwiftSignatureViewDelegate, ImagePicke
                             "totalRatings": 0 as AnyObject,
                             "totalRates": 0 as AnyObject,
                             "totalRatesAmount": 0 as AnyObject,
-                            "ownerUID":DataService.ds.USER_UID as AnyObject
+                            "ownerUID":DataService.ds.USER_UID as AnyObject,
+                            "averageRate":0 as AnyObject
                         ]
                         
                         //Upload Driveway Information to firebase

@@ -71,13 +71,19 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_DRIVEWAY_CREATED), object: nil, queue: nil) { (notification) in
             
             //Display the popup accordingly
-            let popup = PopupDialog(title: "Success!", message: "Your driveway has been successfully created! Select 'Manage Driveway' in the left sidebar to start renting your driveway to others!")
+            let popup = PopupDialog(title: "Success!", message: "Your driveway has been successfully created! Select 'Manage My Driveway' in the left sidebar to start renting your driveway to others!")
             
             // Create buttons
             let buttonOne = DefaultButton(title: "Done") { }
             
             popup.addButton(buttonOne)
             self.present(popup, animated: true, completion: nil)
+            
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_EXIT_RENT), object: nil, queue: nil) { (notification) in
+            
+            //Display the popup accordingly
+            
             
         }
     }
@@ -114,12 +120,6 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     
     
     @IBAction func searchFromLocal(_ sender: Any) {
-        
-        let northEast = mapView.convert(CGPoint(x: mapView.bounds.width, y: 0), toCoordinateFrom: mapView)
-        let southWest = mapView.convert(CGPoint(x: 0, y: mapView.bounds.height), toCoordinateFrom: mapView)
-        
-        let dLatitude = northEast.latitude - southWest.latitude
-        let dLongitude = northEast.longitude - southWest.longitude
         
         geoSearchCircle(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude, radius: 2.5)
         
@@ -176,24 +176,31 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
                 //Download the parking information using the userID from 'parkings'
                 
                 
-                DataService.ds.REF_PARKINGS.child(userUID).observeSingleEvent(of: .value, with: { (snapshot) in
+                DataService.ds.REF_PARKINGS.child(userUID).observeSingleEvent(of: .value, with: { (snap) in
                     
-                    if let snapshot = snapshot.value as? [String: AnyObject] {
+                    if let snapshot = snap.value as? [String: AnyObject] {
                         
                         //Parsing Data
-                        guard let addressString = snapshot["addressString"] as? String, let description = snapshot["description"] as? String, let name = snapshot["name"] as? String, let parkingImageURL = snapshot["parkingImageURL"] as? String else {
+                        guard let addressString = snapshot["addressString"] as? String, let description = snapshot["description"] as? String, let name = snapshot["name"] as? String, let parkingImageURL = snapshot["parkingImageURL"] as? String, let averageRate = snapshot["averageRate"] as? Float else {
                             
-                            HUD.flash(.labeledError(title: "Parsing Error", subtitle: ""), delay: 2.5)
+                            HUD.flash(.labeledError(title: "Parsing Error", subtitle: "EDBAG"), delay: 2.5)
                             return
                         }
                         
                         //Loop through the intervals and store them and put them inside parkingInformation
-                        guard let intervals = snapshot["intervals"] as? [String: Bool] else {
-                            
-                            HUD.flash(.labeledError(title: "Parsing Error", subtitle: "Intervals"), delay: 2.5)
+                        
+                        var _intervals : [String: Bool]?
+                        
+                        if snap.hasChild("intervals") {
+                            _intervals = snapshot["intervals"] as? [String: Bool]
+                        } else {
+                            _intervals = [:]
+                        }
+                        guard let intervals = _intervals else {
+                            HUD.flash(.labeledError(title: "Internal Error", subtitle: "Error with parsing intervals"), delay: 2.5)
                             return
                         }
-
+                        
                         //Download the image from parkingImageURL
                         let ref = FIRStorage.storage().reference(forURL: parkingImageURL)
                         ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
@@ -211,7 +218,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
                                 //Downloading Image Success
                                 
                                 //Set up parking object
-                                let parking = Parking(addressString: addressString, parkingImage: img, rating: 5, coordinate: CLLocationCoordinate2D.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), name: name, totalIntervals: 100, description: description)
+                                let parking = Parking(addressString: addressString, parkingImage: img, rating: 5, coordinate: CLLocationCoordinate2D.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), name: name, totalIntervals: 100, description: description, averageRate: averageRate)
                                 parking.ownerUID = userUID
                                 parking.intervalKeys = []
                                 
@@ -225,6 +232,10 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
                                 let parkingAnnotation = ParkingAnnotation()
                                 parkingAnnotation.parking = parking
                                 
+                                if averageRate == 0 {
+                                    parkingAnnotation.subtitle = "New Driveway! Not available for renting yet."
+                                }
+                                
                                 //Finally, add the annotation
                                 self.mapView.addAnnotation(parkingAnnotation)
                                 
@@ -237,7 +248,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
                         
                 
                     } else {
-                        HUD.flash(.labeledError(title: "Parsing Error", subtitle: ""), delay: 2.5)
+                        HUD.flash(.labeledError(title: "Parsing Error", subtitle: "abcdefgh"), delay: 2.5)
                     }
                     
                     
@@ -288,35 +299,42 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             RentService.rs.selectedParking = parking
             
             //Download from firebase the owner data
+            DataService.ds.REF_USERS.child(parking.ownerUID!).child("fullName").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let fullName = snapshot.value as? String {
+                    //Display the popup accordingly
+                    let popup = PopupDialog(title: fullName, message: parking.addressString)
+                    
+                    // Create buttons
+                    
+                    let average = parking.averageRate!
+                    
+                    let buttonOne = DefaultButton(title: "RENT (Average: $\(average) / hour)") {
+                        self.performSegue(withIdentifier: "toRent", sender: nil)
+                    }
+                    
+                    let buttonTwo = DefaultButton(title: "BOOKMARK") {
+                        //Bookmark code
+                    }
+                    
+                    let buttonThree = CancelButton(title: "CANCEL", height: 60) { }
+                    
+                    // Add buttons to dialog
+                    // Alternatively, you can use popup.addButton(buttonOne)
+                    // to add a single button
+                    popup.addButtons([buttonOne, buttonTwo, buttonThree])
+                    self.present(popup, animated: true, completion: nil)
+                    
+                    let vc = popup.viewController as! PopupDialogDefaultViewController
+                    
+                    // Set dialog properties
+                    vc.image = parking.parkingImage
+                    
+                    //vc.titleText = "Troll"
+                    //vc.messageText = "something"
+                }
+            })
             
-            //Display the popup accordingly
-            let popup = PopupDialog(title: "Dummy Name", message: parking.addressString)
             
-            // Create buttons
-            
-            let buttonOne = DefaultButton(title: "PARK HERE ($AVERAGE_RATE) per hour)") {
-                self.performSegue(withIdentifier: "toRent", sender: nil)
-            }
-            
-            let buttonTwo = DefaultButton(title: "BOOKMARK") {
-                //Bookmark code
-            }
-            
-            let buttonThree = CancelButton(title: "CANCEL", height: 60) { }
-            
-            // Add buttons to dialog
-            // Alternatively, you can use popup.addButton(buttonOne)
-            // to add a single button
-            popup.addButtons([buttonOne, buttonTwo, buttonThree])
-            present(popup, animated: true, completion: nil)
-            
-            let vc = popup.viewController as! PopupDialogDefaultViewController
-            
-            // Set dialog properties
-            vc.image = parking.parkingImage
-            
-            //vc.titleText = "Troll"
-            //vc.messageText = "something"
 
         }
     }

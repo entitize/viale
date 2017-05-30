@@ -15,6 +15,7 @@ class TimeRentVC: UIViewController {
     @IBOutlet weak var startDateBtn: FancySubmitButton!
     @IBOutlet weak var endDateBtn: FancySubmitButton!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var locationNameLabel: UILabel!
 
     var minDate : Date?
     var maxDate : Date?
@@ -24,12 +25,19 @@ class TimeRentVC: UIViewController {
     
     override func viewDidLoad() {
         
+        locationNameLabel.text = RentService.rs.selectedParking?.name
+        
+        
         guard let selectedInterval = RentService.rs.selectedInterval else {
             return
         }
         minDate = selectedInterval.startDate
         maxDate = selectedInterval.endDate
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_EXIT_RENT), object: nil, queue: nil) { (notification) in
+            self.dismiss(animated: true, completion: nil)
+            
+        }
         
     }
     
@@ -72,7 +80,7 @@ class TimeRentVC: UIViewController {
         let totalValue = Float(dHours) * (RentService.rs.selectedInterval?.ratePerHour)!
         RentService.rs.totalValue = totalValue
         
-        totalLabel.text = "$\(totalValue) per hour"
+        totalLabel.text = "Total: $\(totalValue)"
         
     }
     

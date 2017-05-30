@@ -37,26 +37,36 @@ class IntervalCell : FoldingCell {
     }
     func setupIntervalListener(intervalKey:String) {
         
-        DataService.ds.REF_INTERVALS.child(intervalKey).observe(.value, with: { (snapshot) in
-            //Successfully downloaded the interval data
-            
+        DataService.ds.REF_INTERVALS.child(intervalKey).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshot = snapshot.value as? [String: AnyObject] {
                 
-                guard let startDate = snapshot["startDate"] as? Double, let endDate = snapshot["endDate"] as? Double, let ratePerHour = snapshot["ratePerHour"] as? Float, let slots = snapshot["slots"] as? Int, let rules = snapshot["rules"] as? String, let totalSlots = snapshot["totalSlots"] as? Int else {
+                guard let startDate = snapshot["startDate"] as? Double, let endDate = snapshot["endDate"] as? Double, let ratePerHour = snapshot["ratePerHour"] as? Float else {
                     HUD.flash(.labeledError(title: "Data Parsing Error", subtitle: "There was an internal error regarding the parsing of downloaded interval data"), delay: 2.5)
                     return
                 }
-            
+                guard let slots = snapshot["availableSlots"] as? Int else {
+                    HUD.flash(.labeledError(title: "Data Parsing Error", subtitle: "There was an internal error regarding the parsing of downloaded interval data"), delay: 2.5)
+                    return
+                }
+                guard let rules = snapshot["rules"] as? String else {
+                    HUD.flash(.labeledError(title: "Data Parsing Error", subtitle: "There was an internal error regarding the parsing of downloaded interval data"), delay: 2.5)
+                    return
+                }
+                guard let totalSlots = snapshot["totalSlots"] as? Int else {
+                    HUD.flash(.labeledError(title: "Data Parsing Error", subtitle: "There was an internal error regarding the parsing of downloaded interval data"), delay: 2.5)
+                    return
+                }
+                
                 //Create the parking interval
                 self.parkingInterval = ParkingInterval(startNumber: startDate, endNumber: endDate, ratePerHour: ratePerHour, rules: rules, availableSlots: slots, totalSlots: totalSlots, intervalKey: intervalKey)
                 
                 self.setupViews()
                 
             }
-            
         }) { (error) in
             HUD.flash(.labeledError(title: "Get Recked", subtitle: "360 No Scope"), delay: 2.5)
         }
+        
     }
     func setupViews() {
         //Use parkingInterval's data to setup the views
@@ -102,7 +112,7 @@ class IntervalCell : FoldingCell {
             return
         }
         
-        rateLabel.text = "$\(rate) per hour"
+        rateLabel.text = "$\(rate) / hour"
         
         
     }

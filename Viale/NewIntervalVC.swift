@@ -90,7 +90,7 @@ class NewIntervalVC : UIViewController {
             "endDate":end1970,
             "ratePerHour":rate,
             "rules":rules,
-            "slots":slots,
+            "availableSlots":slots,
             "totalSlots":slots
         ] as [String : Any]
         
@@ -109,7 +109,34 @@ class NewIntervalVC : UIViewController {
                         HUD.flash(.labeledError(title: "Upload Error", subtitle: "There was an error with uploading the data."), delay: 2.5)
                     } else {
                         
-                        //Success!
+                        //First, download and upload parking's totalRates += 1, totalRatesAmount += ratePerHour
+                        
+                        
+                        DataService.ds.REF_USER_PARKINGS.observeSingleEvent(of: .value, with: { (snapshot) in
+                            
+                            guard let snap = snapshot.value as? [String:AnyObject] else {
+                                
+                                HUD.flash(.labeledError(title: "Parsing Error", subtitle: ":("), delay: 2.5)
+                                return
+                                
+                            }
+                            
+                            //Use 'snap' instead of 'snapshot'
+                            
+                            guard let totalRates = snap["totalRates"] as? Float, let totalRatesAmount = snap["totalRatesAmount"] as? Float else {
+                                HUD.flash(.labeledError(title: "Parsing Error", subtitle: ":( totalRates, totalRatesAmount"), delay: 2.5)
+                                return
+                            }
+                            
+                            let newTotalRates = totalRates + 1
+                            let newTotalRatesAmount = totalRatesAmount + rate
+                            let newAverage = newTotalRatesAmount / newTotalRates
+                            
+                            //Upload that average to the parking's averageRates
+                            DataService.ds.REF_USER_PARKINGS.updateChildValues(["averageRate":newAverage])
+                            
+                        })
+                        
                         
                         HUD.flash(.success, delay: 2)
                         self.dismiss(animated: true, completion: nil)
