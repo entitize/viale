@@ -11,28 +11,54 @@ import UIKit
 
 class ParkingInterval {
     
-    var startDate : Date?
-    var endDate : Date?
-    var ratePerHour : Float?
-    var rules : String?
-    var availableSlots : Int?
-    var totalSlots: Int?
-    var intervalKey : String?
+    var startDate: Date!
+    var endDate: Date!
+    var name: String!
+    var ratePerHour: Float!
+    var rules: String!
+    var totalSlots: Int!
+    var availableSlots: Int!
     
-    init(startNumber:Double,endNumber:Double,ratePerHour:Float,rules:String,availableSlots:Int,totalSlots:Int,intervalKey:String) {
-        
-        //Convert the floats into dates
-        
-        self.startDate = Date(timeIntervalSince1970: startNumber)
-        self.endDate = Date(timeIntervalSince1970: endNumber)
-        
-        self.ratePerHour = ratePerHour
-        self.rules = rules
-        self.availableSlots = availableSlots
-        self.totalSlots = totalSlots
-        
-        self.intervalKey = intervalKey
+    var intervalKey: String?
+    
+    var startDateDouble : Double {
+        set {
+            self.startDate = Date(timeIntervalSince1970: TimeInterval(newValue))
+        }
+        get {
+            if let startDateNumber = self.startDate?.timeIntervalSince1970 {
+                return startDateNumber
+            } else {
+                return 0.0
+            }
+        }
     }
+    var endDateDouble : Double {
+        set {
+            self.endDate = Date(timeIntervalSince1970: TimeInterval(newValue))
+        }
+        get {
+            if let endDateNumber = self.endDate?.timeIntervalSince1970 {
+                return endDateNumber
+            } else {
+                return 0.0
+            }
+        }
+    }
+    
+    init(snapshot:[String: AnyObject]) {
+        
+        self.name = snapshot["name"] as! String
+        self.startDateDouble = snapshot["startDateDouble"] as! Double
+        self.endDateDouble = snapshot["endDateDouble"] as! Double
+        self.availableSlots = snapshot["availableSlots"] as! Int
+        self.totalSlots = snapshot["totalSlots"] as! Int
+        self.ratePerHour = snapshot["ratePerHour"] as! Float
+        self.rules = snapshot["rules"] as! String
+        
+    }
+    
+    
     
     
 }

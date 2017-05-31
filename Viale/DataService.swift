@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import SwiftKeychainWrapper
 import PKHUD
+import Async
 
 let DB_BASE = FIRDatabase.database().reference()
 let STORAGE_BASE = FIRStorage.storage().reference()
@@ -51,9 +52,17 @@ class DataService {
     //MARK: Storage Properties
     
     private var _REF_PARKING_IMAGES = STORAGE_BASE.child("parking-images")
+    private var _REF_CAR_IMAGES = STORAGE_BASE.child("car-images")
+    private var _REF_AVATAR_IMAGES = STORAGE_BASE.child("avatar-images")
     
     var REF_PARKING_IMAGES: FIRStorageReference {
         return _REF_PARKING_IMAGES
+    }
+    var REF_CAR_IMAGES: FIRStorageReference {
+        return _REF_CAR_IMAGES
+    }
+    var REF_AVATAR_IMAGES: FIRStorageReference {
+        return _REF_AVATAR_IMAGES
     }
     
     
@@ -65,29 +74,72 @@ class DataService {
     
     //MARK: Methods
     
-    func setupGlobalListeners() {
+    func setupCurrentUser(completion: @escaping (_ completed:Bool) -> Void) {
+        getUserDriver(withUID: USER_UID) { (driver) in
+            
+            UserDriver.currentUser = driver
+            completion(true)
+        }
+    }
+    
+    func getInterval(withKey key: String, completion: @escaping (_ parkingInterval: ParkingInterval,_ snapshot:[String:AnyObject]) -> Void) {
         
-        //Setup Listeners
+        DataService.ds.REF_INTERVALS.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            
+            guard let intervalData = snapshot.value as? Dictionary<String, AnyObject> else {
+                HUD.flash(.labeledError(title: "Error", subtitle: "Parsing Interval Data into simple dictionary"), delay: 2.5)
+                return
+            }
+            let parkingInterval = ParkingInterval(snapshot: intervalData)
+            
+            parkingInterval.intervalKey = key
+            
+            completion(parkingInterval,(snapshot.value as? [String: AnyObject])!)
+            
+        }) { (error) in
+            
+            HUD.flash(.labeledError(title: "Downloading Error", subtitle: "Error with downloading interval data"), delay: 2.5)
+            
+        }
         
-        //User itself
-        REF_USER_CURRENT.observe(.value, with: { (snapshot) in
-            if let snapshot = snapshot.value as? [String: AnyObject] {
-                if let fullName = snapshot["fullName"] as? String {
-                    UserDriver.currentUser.fullName = fullName
-                }
-                if let phoneNumber = snapshot["phoneNumber"] as? String {
-                    UserDriver.currentUser.phoneNumber = phoneNumber
-                }
-                if let hasDriveway = snapshot["hasDriveway"] as? Bool {
-                    UserDriver.currentUser.hasDriveway = hasDriveway
-                }
+    }
+    func getUserDriver(withUID key: String, completion: @escaping (_ userDriver: UserDriver) -> Void) {
+        
+        DataService.ds.REF_USERS.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let userData = snapshot.value as? Dictionary<String, AnyObject> else {
+                HUD.flash(.labeledError(title: "Error", subtitle: "Parsing User Driver Data into simple dictionary"), delay: 2.5)
+                return
             }
             
+            let driver = UserDriver(snapshot: userData)
+            completion(driver)
+
         })
         
     }
+    func uploadImage(withRef ref:FIRStorageReference, withImage image: UIImage, completion: @escaping (_ downloadURL: String) -> Void) {
+        
+        //Compress and setup the image data
+        if let imgData = UIImageJPEGRepresentation(image, 0.2) {
+            let imageUID = NSUUID().uuidString
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            ref.child(imageUID).put(imgData, metadata: metadata, completion: { (metadata, error) in
+                if (error != nil) {
+                    HUD.flash(.labeledError(title: "Error", subtitle: "Uploading image data to firebase"), delay: 2.5)
+                } else {
+                    completion((metadata?.downloadURL()?.absoluteString)!)
+                }
+            })
+            
+        }
+        
+    }
     
-    func createFirebaseDBUser(uid:String, userData: Dictionary<String,String>) {
+    func createFirebaseDBUser(uid:String, userData: Dictionary<String,AnyObject>) {
         _REF_USERS.child(uid).updateChildValues(userData)
     }
     

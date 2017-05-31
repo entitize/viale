@@ -18,6 +18,7 @@ class NewIntervalVC : UIViewController {
     @IBOutlet weak var rateField: KaedeTextField!
     @IBOutlet weak var slotField: KaedeTextField!
     @IBOutlet weak var rulesField: KaedeTextField!
+    @IBOutlet weak var nameField: KaedeTextField!
     
     var startDate : Date?
     var endDate : Date?
@@ -76,6 +77,9 @@ class NewIntervalVC : UIViewController {
         guard let rules = rulesField.text else {
             return
         }
+        guard let name = nameField.text else {
+            return
+        }
         
         //Convert time data to 1970 data
         
@@ -86,12 +90,13 @@ class NewIntervalVC : UIViewController {
         //Upload to firebase under 'Parking Intervals'
         
         let uploadData: Dictionary = [
-            "startDate":start1970,
-            "endDate":end1970,
+            "startDateDouble":start1970,
+            "endDateDouble":end1970,
             "ratePerHour":rate,
             "rules":rules,
             "availableSlots":slots,
-            "totalSlots":slots
+            "totalSlots":slots,
+            "name":name
         ] as [String : Any]
         
         let uuid = UUID().uuidString

@@ -10,38 +10,60 @@ import UIKit
 import Firebase
 import PKHUD
 import SwiftKeychainWrapper
+import ImagePicker
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController, ImagePickerDelegate {
 
     @IBOutlet weak var segControl: UISegmentedControl!
     @IBOutlet weak var fullNameField: FancyField!
     @IBOutlet weak var phoneNumberField: FancyField!
     @IBOutlet weak var emailField: FancyField!
     @IBOutlet weak var passwordField: FancyField!
+    @IBOutlet weak var selectCarImageButton: UIButton!
+    @IBOutlet weak var selectAvatarImageButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     
+    var selectedCarPicture = false
+    var selectedAvatarPicture = false
+    
+    var carPicture: UIImage!
+    var avatarPicture: UIImage!
+    
+    var selectingPictureIndex = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        
+        signOut()
     }
     override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            DataService.ds.setupGlobalListeners()
-            performSegue(withIdentifier: "toMainScreen", sender: nil)
+            DataService.ds.setupCurrentUser(completion: { (_) in
+                self.performSegue(withIdentifier: "toMainScreen", sender: nil)
+            })
         }
+    }
+    
+    func signOut() {
+        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+        try! FIRAuth.auth()?.signOut()
+        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
     func setupRegisterView() {
         fullNameField.isHidden = false
         phoneNumberField.isHidden = false
+        selectCarImageButton.isHidden = false
+        selectAvatarImageButton.isHidden = false
         submitButton.setTitle("Register New Account", for: .normal)
     }
     func setupLoginView() {
         fullNameField.isHidden = true
         phoneNumberField.isHidden = true
+        selectCarImageButton.isHidden = true
+        selectAvatarImageButton.isHidden = true
         submitButton.setTitle("Login", for: .normal)
     }
     func loginUser() {
@@ -58,8 +80,8 @@ class SignInVC: UIViewController {
                 HUD.flash(.labeledError(title: "", subtitle: "There was an error logging in"), delay: 1.0)
             } else {
                 if let user = user {
-                    let userData = ["provider":user.providerID]
-                    self.completeSignIn(id: user.uid, userData: userData)
+                    let userData = ["provider":user.providerID] as Dictionary<String, AnyObject>
+                    self.completeSignIn(id: user.uid, userData: userData )
                 }
             }
         })
@@ -67,6 +89,7 @@ class SignInVC: UIViewController {
     }
     
     func registerUser() {
+        
         guard let email = emailField.text, let password = passwordField.text, let fullName = fullNameField.text, let phoneNumber = phoneNumberField.text else {
             return
         }
@@ -74,24 +97,42 @@ class SignInVC: UIViewController {
             HUD.flash(.labeledError(title: "", subtitle: "Please fill out all email and password fields"), delay: 1.0)
             return
         }
+        if selectedAvatarPicture == false {
+            HUD.flash(.labeledError(title: "", subtitle: "Please choose a car image"), delay: 1.0)
+        }
+        if selectedCarPicture == false {
+            HUD.flash(.labeledError(title: "", subtitle: "Please choose an image of your car"), delay: 1.0)
+        }
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {
                 HUD.flash(.labeledError(title: "", subtitle: "There was an error signing in"), delay: 1.0)
             } else {
-                if let user = user {
-                    let userData = ["provider":user.providerID,"fullName":fullName,"phoneNumber":phoneNumber,"hasDriveway":"false"]
-                    self.completeSignIn(id: user.uid, userData: userData)
-                }
                 
+                //First, compress and setup the data
+                DataService.ds.uploadImage(withRef: DataService.ds.REF_CAR_IMAGES, withImage: self.carPicture, completion: { (carURL) in
+                    
+                    DataService.ds.uploadImage(withRef: DataService.ds.REF_AVATAR_IMAGES, withImage: self.avatarPicture, completion: { (avatarURL) in
+                        
+                        if let user = user {
+                            let userData = ["provider":user.providerID,"fullName":fullName,"phoneNumber":phoneNumber,"hasDriveway":false,"carImageURL":carURL,"avatarImageURL":avatarURL] as [String : AnyObject]
+                            self.completeSignIn(id: user.uid, userData: userData)
+                        }
+                        
+                    })
+                    
+                })
+                    
             }
+            
         })
     }
-    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+    func completeSignIn(id: String, userData: Dictionary<String, AnyObject>) {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
-        performSegue(withIdentifier: "toMainScreen", sender: nil)
-        DataService.ds.setupGlobalListeners()
-        HUD.flash(.success, delay: 0.5)
+        DataService.ds.setupCurrentUser(completion: { (_) in
+            self.performSegue(withIdentifier: "toMainScreen", sender: nil)
+            HUD.flash(.success, delay: 0.5)
+        })
     }
     
     @IBAction func segControlTapped(_ sender: Any) {
@@ -103,6 +144,40 @@ class SignInVC: UIViewController {
         }
         
     }
+    @IBAction func avatarImageButtonTapped(_ sender: Any) {
+        
+        selectingPictureIndex = 1
+        
+        var config = Configuration()
+        config.doneButtonTitle = "Finish"
+        config.noImagesTitle = "Sorry! There are no images here!"
+        config.recordLocation = false
+        
+        let imagePicker = ImagePickerController()
+        imagePicker.configuration = config
+        imagePicker.imageLimit = 1
+        imagePicker.delegate = self
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    @IBAction func carImageButtonTapped(_ sender: Any) {
+        
+        selectingPictureIndex = 2
+        
+        var config = Configuration()
+        config.doneButtonTitle = "Finish"
+        config.noImagesTitle = "Sorry! There are no images here!"
+        config.recordLocation = false
+        
+        let imagePicker = ImagePickerController()
+        imagePicker.configuration = config
+        imagePicker.imageLimit = 1
+        imagePicker.delegate = self
+        
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func submitButtonTapped(_ sender: Any) {
         
         HUD.show(.progress)
@@ -114,7 +189,31 @@ class SignInVC: UIViewController {
         }
         
     }
-
+    
+    //MARK: ImagePicker
+    
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        
+    }
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+        
+        if selectingPictureIndex == 1 {
+            selectedAvatarPicture = true
+            avatarPicture = images[0]
+            selectAvatarImageButton.setTitle("Avatar Picture Chosen", for: .normal)
+            
+        } else if selectingPictureIndex == 2 {
+            selectedCarPicture = true
+            carPicture = images[0]
+            selectCarImageButton.setTitle("Car Picture Chosen", for: .normal)
+        }
+        
+    }
 
 }
 

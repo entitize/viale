@@ -135,6 +135,7 @@ class CreateDrivewayVC: UIViewController, SwiftSignatureViewDelegate, ImagePicke
                                     if (error != nil) {
                                         HUD.flash(.labeledError(title: "Error", subtitle: "There was an error with updating the user driveway status"), delay: 2.5)
                                     } else {
+                                        UserDriver.currentUser.hasDriveway = true
                                         HUD.flash(.success, delay: 1)
                                         self.dismiss(animated: true, completion: {
                                             NotificationCenter.default.post(name: NSNotification.Name.init(NOTIFICATION_KEY_DRIVEWAY_CREATED), object: nil)

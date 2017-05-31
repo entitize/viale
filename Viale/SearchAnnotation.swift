@@ -18,4 +18,5 @@ class SearchAnnotation: NSObject, MKAnnotation {
         return coord
     }
     
+    
 }

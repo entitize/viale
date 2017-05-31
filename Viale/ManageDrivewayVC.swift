@@ -13,8 +13,8 @@ import Firebase
 
 class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let kCloseCellHeight: CGFloat = 86
-    let kOpenCellHeight: CGFloat = 190
+    let kCloseCellHeight: CGFloat = 80
+    let kOpenCellHeight: CGFloat = 400
     
     var numberOfIntervals = 0
     

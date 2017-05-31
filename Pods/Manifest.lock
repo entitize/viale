@@ -1,4 +1,5 @@
 PODS:
+  - AsyncSwift (2.0.1)
   - DateTimePicker (1.1.2)
   - Firebase/Auth (3.17.0):
     - Firebase/Core
@@ -51,6 +52,7 @@ PODS:
   - TextFieldEffects (1.3.2)
 
 DEPENDENCIES:
+  - AsyncSwift
   - DateTimePicker
   - Firebase/Auth
   - Firebase/Core
@@ -67,6 +69,7 @@ DEPENDENCIES:
   - TextFieldEffects
 
 SPEC CHECKSUMS:
+  AsyncSwift: 632138e42ead868b53c745fcde9bf733ce1527ad
   DateTimePicker: 518bffa5438ef83a7a687cc4d5e187e5c12012b8
   Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
@@ -87,6 +90,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TextFieldEffects: 9e5cce561ea39c75b86e9d3637601727a67e8b23
 
-PODFILE CHECKSUM: 31ca5114d52da8775e64d0259ea54a58410519cd
+PODFILE CHECKSUM: 4f8d768261216fecca2fda1d4299d2d29bab14a4
 
 COCOAPODS: 1.2.1

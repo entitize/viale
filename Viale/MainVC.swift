@@ -29,8 +29,6 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     //SEARCH Variables
     var searchController : UISearchController!
     
-    
-    
     override func viewDidLoad() {
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
@@ -153,10 +151,10 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             mapView.addAnnotation(searchAnnotation)
             
             //Select the new annotation automatically
-            //let annotationIndex = 1
-            //mapView.selectAnnotation(mapView.annotations[annotationIndex], animated: true)
+            mapView.selectAnnotation(searchAnnotation, animated: true)
             
-            //self.createSearchCircle(latitude: res.location.latitude, longitude: res.location.longitude)
+            //Circle in on that search
+            centerMapOnLocation(location: CLLocation(latitude: res.location.latitude, longitude: res.location.longitude))
             
             //Next, start GeoFire search
             geoSearchCircle(latitude: res.location.latitude, longitude: res.location.longitude,radius: 2.5)
@@ -239,24 +237,16 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
                                 //Finally, add the annotation
                                 self.mapView.addAnnotation(parkingAnnotation)
                                 
-                                
                             }
                         })
                         
-                        
-                        
-                        
-                
                     } else {
                         HUD.flash(.labeledError(title: "Parsing Error", subtitle: "abcdefgh"), delay: 2.5)
                     }
-                    
-                    
-                    
+
                 }, withCancel: { (error) in
                     HUD.flash(.labeledError(title: "Error", subtitle: "Getting Parking Data Error"), delay: 2.5)
                 })
-                
                 
             }
         })
@@ -264,8 +254,6 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     
     func createSearchCircle(latitude:CLLocationDegrees,longitude:CLLocationDegrees) {
         
-        let location = CLLocation(latitude: latitude, longitude: longitude)
-        self.centerMapOnLocation(location: location)
         let circle = MKCircle(center: CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude), radius: 500)
         mapView.add(circle)
     }
@@ -318,9 +306,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
                     
                     let buttonThree = CancelButton(title: "CANCEL", height: 60) { }
                     
-                    // Add buttons to dialog
-                    // Alternatively, you can use popup.addButton(buttonOne)
-                    // to add a single button
+                    // Add buttons to dialogs
                     popup.addButtons([buttonOne, buttonTwo, buttonThree])
                     self.present(popup, animated: true, completion: nil)
                     
@@ -333,18 +319,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
                     //vc.messageText = "something"
                 }
             })
-            
-            
-
         }
     }
-    
-    
-    
-    @IBAction func logoutButtonTapped(_ sender: Any) {
-        
-    }
-    
-    
-    
+ 
 }

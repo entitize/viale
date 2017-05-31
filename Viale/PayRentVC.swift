@@ -43,8 +43,10 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
         if (signed == true) {
             
             //Subtract 1 from totalParkings
-            let intervalKey = RentService.rs.selectedInterval?.intervalKey
-            let intervalRef = DataService.ds.REF_INTERVALS.child(intervalKey!)
+            guard let intervalKey = RentService.rs.selectedInterval?.intervalKey else {
+                return
+            }
+            let intervalRef = DataService.ds.REF_INTERVALS.child(intervalKey)
             let intervalSlotsRef = intervalRef.child("availableSlots")
                 
             intervalSlotsRef.observeSingleEvent(of: .value, with: { (snapshot) in

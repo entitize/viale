@@ -20,6 +20,7 @@ target 'Viale' do
     pod "TextFieldEffects"
     pod 'ImagePicker'
     pod 'FoldingCell'
+    pod 'AsyncSwift'
 
 
 end

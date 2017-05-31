@@ -10,28 +10,26 @@ import Foundation
 
 class UserDriver {
     
-    static var currentUser = UserDriver(fullName: "", avatarImage: UIImage(named: "add_feeling_btn")!, carImage: UIImage(named: "Swift_logo.svg")!, phoneNumber: "0000000000")
+    static var currentUser : UserDriver!
     
-    //All
-    var fullName : String?
-    var avatarImage : UIImage?
-    var phoneNumber : String?
-    var carImage : UIImage?
+    var fullName : String!
+    var phoneNumber : String!
+    
+    var avatarImageURL : String!
+    var carImageURL : String!
     
     var parking : Parking?
-    var hasDriveway : Bool?
+    var hasDriveway : Bool!
     
-    init(fullName:String,avatarImage:UIImage,carImage:UIImage,phoneNumber:String,parking:Parking? = nil, hasDriveway:Bool? = false) {
+    init(snapshot:[String:AnyObject]) {
         
-        self.fullName = fullName
-        self.avatarImage = avatarImage
-        self.carImage = carImage
-        self.phoneNumber = phoneNumber
-        self.parking = parking
-        self.hasDriveway = hasDriveway
+        self.fullName = snapshot["fullName"] as! String
+        self.hasDriveway = snapshot["hasDriveway"] as! Bool
+        self.phoneNumber = snapshot["phoneNumber"] as! String
+        self.avatarImageURL = snapshot["avatarImageURL"] as! String
+        self.carImageURL = snapshot["carImageURL"] as! String
+        
     }
-    
-    
     
     
     

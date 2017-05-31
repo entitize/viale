@@ -25,5 +25,14 @@ class DatePickerService {
         return picker
     }
     
+    func convertDateToString(date:Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm aa dd/MM/YYYY"
+        return formatter.string(from: date)
+        
+    }
+    
+    
+    
     
 }
