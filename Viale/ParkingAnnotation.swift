@@ -16,28 +16,21 @@ class ParkingAnnotation: NSObject, MKAnnotation {
     
     var title: String?
     var subtitle: String?
+    
+    var parking: Parking?
+    
     var coordinate: CLLocationCoordinate2D {
         return coord
     }
-    
-    var parking : Parking? {
-        didSet {
-            
-            if let p = parking {
-                
-                //Download user
-                self.title = p.name
-                
-                self.subtitle = "$\(p.averageRate!) / hour"
-                
-                if let c = p.coordinate {
-                    self.coord = c
-                }
-                
-            }
-            
-        }
+    init(parking:Parking) {
+        
+        self.parking = parking
+        self.title = parking.name
+        self.subtitle = "$\(parking.averageRate!) / hour"
+        self.coord = parking.coordinate
+        
     }
+
     
     
     

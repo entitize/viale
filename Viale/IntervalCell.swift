@@ -44,6 +44,7 @@ class IntervalCell : FoldingCell {
         
     }
     func setupViews() {
+        
         //Use parkingInterval's data to setup the views
         
         

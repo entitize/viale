@@ -21,6 +21,9 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     var cellHeights = [CGFloat]()
     var intervalKeys = [String]()
     
+    var handleKey : Int?
+    var ref : FIRDatabaseReference?
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -38,36 +41,28 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         //Download the data
         HUD.show(.progress)
         
-        numberOfIntervals = 0
+        self.numberOfIntervals = 0
         
-        DataService.ds.REF_USER_PARKINGS.child("intervals").observe(.value, with: { (snapshot) in
-            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+        DataService.ds.getParkingWithUpdates(withKey: DataService.ds.USER_UID) { (parking, handleKey, ref) in
+            
+            HUD.hide()
+            
+            self.intervalKeys = []
+            self.numberOfIntervals = 0
+            
+            for (intervalKey,_) in parking.intervals {
                 
-                self.intervalKeys = []
+                self.intervalKeys.append(intervalKey)
+                self.numberOfIntervals += 1
                 
-                for snap in snapshot {
-                    if let isActive = snap.value as? Bool {
-                        let key = snap.key
-                        if (isActive) {
-                            //Getting the keys of the 'parkings'
-                            
-                            self.intervalKeys.append(key)
-                        }
-                    }
-                    self.numberOfIntervals += 1
-                }
-                HUD.hide()
             }
             
-            //Setup cellHeights array
             self.createCellHeightsArray()
-            
             self.tableView.reloadData()
             
             
-        }) { (error) in
-            HUD.flash(.labeledError(title: "Error", subtitle: "There was an error with Keanu"), delay: 2.5)
         }
+        
         
     }
     

@@ -21,6 +21,25 @@ class RentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        setupNotifications()
+        
+        guard let selectedParking = RentService.rs.selectedParking else {
+            return
+        }
+        self.locationNameLabel.text = selectedParking.name
+        
+        self.intervalKeys = []
+        
+        for (intervalKey, _) in selectedParking.intervals {
+            self.intervalKeys.append(intervalKey)
+        }
+        
+    }
+    func setupNotifications() {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_EXIT_RENT), object: nil, queue: nil) { (notification) in
             //Also reload the table view
             self.tableView.reloadData()
@@ -36,20 +55,8 @@ class RentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.present(popup, animated: true, completion: nil)
             
         }
-        
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        
-        guard let selectedParking = RentService.rs.selectedParking else {
-            return
-        }
-        self.locationNameLabel.text = selectedParking.name
-        
-        intervalKeys = selectedParking.intervalKeys
-        
     }
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -63,7 +70,6 @@ class RentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RentIntervalCell
         cell.setupListeners(key: intervalKeys[indexPath.row])
         return cell
-        
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

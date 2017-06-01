@@ -72,7 +72,7 @@ class DataService {
         return KeychainWrapper.standard.string(forKey: KEY_UID)!
     }
     
-    //MARK: Methods
+    //MARK: Database Helpers
     
     func setupCurrentUser(completion: @escaping (_ completed:Bool) -> Void) {
         getUserDriver(withUID: USER_UID) { (driver) in
@@ -83,6 +83,8 @@ class DataService {
     }
     
     func getInterval(withKey key: String, completion: @escaping (_ parkingInterval: ParkingInterval,_ snapshot:[String:AnyObject]) -> Void) {
+        
+        //Download the interval with key
         
         DataService.ds.REF_INTERVALS.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -106,6 +108,8 @@ class DataService {
     }
     func getUserDriver(withUID key: String, completion: @escaping (_ userDriver: UserDriver) -> Void) {
         
+        //Download the user with the UID
+        
         DataService.ds.REF_USERS.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
             
             guard let userData = snapshot.value as? Dictionary<String, AnyObject> else {
@@ -119,10 +123,78 @@ class DataService {
         })
         
     }
+    func getUserDriverWithUpdates(withUID key: String, completion: @escaping (_ userDriver: UserDriver, _ handlerKey: UInt, _ ref:FIRDatabaseReference) -> Void) {
+        
+        //Download the user with the UID
+        
+        let ref = DataService.ds.REF_USERS.child(key)
+        
+        var handle: UInt = 0
+        handle = ref.observe(.value, with: { (snapshot) in
+            
+            guard let userData = snapshot.value as? Dictionary<String, AnyObject> else {
+                HUD.flash(.labeledError(title: "Error", subtitle: "Parsing User Driver Data into simple dictionary"), delay: 2.5)
+                return
+            }
+            
+            let driver = UserDriver(snapshot: userData)
+            completion(driver,handle,ref)
+            
+        }) { (error) in
+            HUD.flash(.labeledError(title: "Downloading Error", subtitle: "Error with downloading user driver with updates data"), delay: 2.5)
+        }
+        
+    }
+    func getParking(withKey key: String, completion: @escaping(_ parking: Parking) -> Void) {
+        
+        //Download the parking at the key
+        
+        DataService.ds.REF_PARKINGS.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let parkingData = snapshot.value as? Dictionary<String, AnyObject> else {
+                HUD.flash(.labeledError(title: "Error", subtitle: "Parsing Parking Data into simple dictionary"), delay: 2.5)
+                return
+            }
+            
+            let parking = Parking(snapshot: parkingData)
+            completion(parking)
+            
+        }) { (error) in
+            
+            HUD.flash(.labeledError(title: "Downloading Error", subtitle: "Error with downloading parking data"), delay: 2.5)
+            
+        }
+
+    }
+    func getParkingWithUpdates(withKey key: String, completion: @escaping(_ parking: Parking, _ handleKey:UInt, _ ref:FIRDatabaseReference) -> Void) {
+        
+        let ref = DataService.ds.REF_PARKINGS.child(key)
+        
+        //Download the parking at the key
+        var handle: UInt = 0
+        handle = ref.observe(.value, with: { (snapshot) in
+            
+            guard let parkingData = snapshot.value as? Dictionary<String, AnyObject> else {
+                HUD.flash(.labeledError(title: "Error", subtitle: "Parsing Parking Data into simple dictionary"), delay: 2.5)
+                return
+            }
+            
+            let parking = Parking(snapshot: parkingData)
+            completion(parking,handle,ref)
+            
+            
+        }) { (error) in
+            HUD.flash(.labeledError(title: "Downloading Error", subtitle: "Error with downloading parking with udpates data"), delay: 2.5)
+        }
+        
+    }
+    
+    
+    //MARK: Downloading From Storage Helpers
     func uploadImage(withRef ref:FIRStorageReference, withImage image: UIImage, completion: @escaping (_ downloadURL: String) -> Void) {
         
         //Compress and setup the image data
-        if let imgData = UIImageJPEGRepresentation(image, 0.2) {
+        if let imgData = UIImageJPEGRepresentation(image, 0.1) {
             let imageUID = NSUUID().uuidString
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
@@ -135,6 +207,25 @@ class DataService {
                 }
             })
             
+        }
+        
+    }
+    func downloadImage(withUrl url:String, completion: @escaping(_ image:UIImage) -> Void) {
+        
+        let ref = FIRStorage.storage().reference(forURL: url)
+        
+        ref.data(withMaxSize: 1024 * 1024) { (data, error) in
+            if (error != nil) {
+                HUD.flash(.labeledError(title: "Error", subtitle: "Downloading image data from firebase"), delay: 2.5)
+            } else {
+                guard let img = UIImage(data: data!) else {
+                    HUD.flash(.labeledError(title: "Error", subtitle: "Converting Downloaded image from firebase"), delay: 2.5)
+                    return
+                }
+                
+                completion(img)
+                
+            }
         }
         
     }

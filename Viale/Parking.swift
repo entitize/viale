@@ -8,31 +8,72 @@
 
 import Foundation
 import MapKit
+import Firebase
 
 class Parking {
     
-    var addressString : String?
-    var parkingImage : UIImage?
-    var rating : CGFloat?
-    var coordinate : CLLocationCoordinate2D?
-    var name : String?
-    var totalIntervals : Int?
-    var description : String?
-    var intervalKeys = [String]()
-    var ownerUID : String?
-    var averageRate : Float?
+    var name : String!
+    var description : String!
+
+    //Location
+    var addressString : String!
+    var coordinate : CLLocationCoordinate2D!
     
+    //Images
+    var parkingImageURL : String!
     
-    init(addressString:String,parkingImage:UIImage,rating:CGFloat,coordinate:CLLocationCoordinate2D,name:String,totalIntervals:Int,description:String,averageRate:Float) {
-        self.addressString = addressString
-        self.parkingImage = parkingImage
-        self.rating = rating
-        self.coordinate = coordinate
-        self.totalIntervals = totalIntervals
-        self.name = name
-        self.description = description
-        self.averageRate = averageRate
+    //Owner Data
+    var ownerUID : String!
+    
+    //Interval Data
+    var intervals : [String:Bool]!
+    var totalIntervals : Int!
+    
+    //Rates $
+    var averageRate : Float!
+    var totalRates : Float!
+    
+    //Stars
+    var totalStars : Int!
+    var totalRatesAmount : Float!
+    
+    //Local Properties
+    private var parkingImage : UIImage?
+    
+    init(snapshot:[String:AnyObject]) {
+        
+        self.name = snapshot["name"] as? String
+        self.addressString = snapshot["addressString"] as! String
+        self.averageRate = snapshot["averageRate"] as! Float
+        self.description = snapshot["description"] as! String
+        self.ownerUID = snapshot["ownerUID"] as! String
+        self.parkingImageURL = snapshot["parkingImageURL"] as! String
+        self.totalRates = snapshot["totalRates"] as! Float
+        self.totalRatesAmount = snapshot["totalRates"] as! Float
+        
+        if let _intervals = snapshot["intervals"] as? [String:Bool] {
+            self.intervals = _intervals
+        } else {
+            self.intervals = [:]
+        }
+    
+    }
+    
+    func getParkingImage(completion: @escaping (_ image: UIImage) -> Void) {
+        
+        if let image = parkingImage {
+            completion(image)
+        } else {
+            DataService.ds.downloadImage(withUrl: parkingImageURL, completion: { (image) in
+                self.parkingImage = image
+                completion(image)
+            })
+            
+        }
         
     }
+    
+    
+    
     
 }

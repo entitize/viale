@@ -14,13 +14,9 @@ class RentService {
     
     var selectedParking : Parking?
     var selectedInterval : ParkingInterval?
+    var selectedOwner : UserDriver?
     var selectedStartDate : Date?
     var selectedEndDate : Date?
     var totalValue : Float?
-    
-    
-    
-    
-    
     
 }

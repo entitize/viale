@@ -21,6 +21,7 @@ target 'Viale' do
     pod 'ImagePicker'
     pod 'FoldingCell'
     pod 'AsyncSwift'
+    pod 'SwiftMessages'
 
 
 end

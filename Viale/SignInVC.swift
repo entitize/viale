@@ -35,11 +35,13 @@ class SignInVC: UIViewController, ImagePickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        signOut()
+        //signOut()
     }
     override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            HUD.show(.progress)
             DataService.ds.setupCurrentUser(completion: { (_) in
+                HUD.hide()
                 self.performSegue(withIdentifier: "toMainScreen", sender: nil)
             })
         }
