@@ -138,7 +138,7 @@ class NewIntervalVC : UIViewController {
                             let newAverage = newTotalRatesAmount / newTotalRates
                             
                             //Upload that average to the parking's averageRates
-                            DataService.ds.REF_USER_PARKINGS.updateChildValues(["averageRate":newAverage])
+                            DataService.ds.REF_USER_PARKINGS.updateChildValues(["averageRate":newAverage,"totalRates":newTotalRates,"totalRatesAmount":newTotalRatesAmount])
                             
                         })
                         

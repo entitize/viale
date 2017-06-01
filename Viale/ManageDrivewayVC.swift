@@ -21,7 +21,7 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     var cellHeights = [CGFloat]()
     var intervalKeys = [String]()
     
-    var handleKey : Int?
+    var handleKey : UInt?
     var ref : FIRDatabaseReference?
     
     @IBOutlet weak var tableView: UITableView!
@@ -47,6 +47,9 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
             
             HUD.hide()
             
+            self.handleKey = handleKey
+            self.ref = ref
+            
             self.intervalKeys = []
             self.numberOfIntervals = 0
             
@@ -65,8 +68,13 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //ref?.removeObserver(withHandle: self.handleKey!)
+    }
+
     func createCellHeightsArray() {
+        cellHeights = []
         for _ in 0...numberOfIntervals {
             cellHeights.append(kCloseCellHeight)
         }
@@ -126,6 +134,8 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        
+        self.ref?.removeObserver(withHandle: handleKey!)
         dismiss(animated: true, completion: nil)
     }
     

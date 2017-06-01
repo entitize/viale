@@ -13,6 +13,7 @@ import Firebase
 import PKHUD
 import MapKit
 import PopupDialog
+import SwiftMessages
 
 class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     
@@ -119,6 +120,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     
     @IBAction func searchFromLocal(_ sender: Any) {
         
+        displaySerachingDialogue(titleText: "Searching...", bodyText: "Looking for nearby driveways from the center of the map")
         geoSearchCircle(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude, radius: 2.5)
         
     }
@@ -131,17 +133,17 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         
-        HUD.show(.labeledProgress(title: "Locating...", subtitle: "This may take a while"))
-        
         searchBar.resignFirstResponder()
         dismiss(animated: true, completion: nil)
         
         
         let res = GoogleMapsService.gm.getLatLng(addressString: searchBar.text!)
+        
+        displaySerachingDialogue(titleText: "Searching...", bodyText: "Looking for nearby driveways from \(res.formattedAdress)")
+        
         if (res.isError) {
-            HUD.flash(.labeledError(title: "Location was not found", subtitle: "Try being more descriptive or specific in your search."),delay:1.5)
+            displayErrorDialogue(titleText: "Sorry", bodyText: "Please be more specific and accurate in your searching")
         } else {
-            HUD.hide()
             
             //Create the search annotation
             let searchAnnotation = SearchAnnotation()
@@ -159,21 +161,68 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             //Next, start GeoFire search
             geoSearchCircle(latitude: res.location.latitude, longitude: res.location.longitude,radius: 2.5)
             
-            
         }
+    }
+    func displayErrorDialogue(titleText:String,bodyText:String) {
+        let dialog = MessageView.viewFromNib(layout: .CardView)
+        dialog.configureTheme(.error)
+        dialog.configureDropShadow()
+        dialog.configureContent(title: titleText, body: bodyText)
+        dialog.button?.isHidden = true
+        var config = SwiftMessages.defaultConfig
+        config.presentationStyle = .bottom
+        config.presentationContext = .window(windowLevel: UIWindowLevelNormal)
+        SwiftMessages.show(config: config, view: dialog)
+    }
+    func displaySerachingDialogue(titleText:String,bodyText:String) {
+        let dialog = MessageView.viewFromNib(layout: .CardView)
+        dialog.configureTheme(.warning)
+        dialog.configureDropShadow()
+        dialog.configureContent(title: titleText, body: bodyText)
+        dialog.button?.isHidden = true
+        var config = SwiftMessages.defaultConfig
+        config.duration = .forever
+        config.presentationStyle = .bottom
+        config.presentationContext = .window(windowLevel: UIWindowLevelNormal)
+        SwiftMessages.show(config: config, view: dialog)
+    }
+    func displaySuccessSearchDialogue(foundCount:Int) {
+        SwiftMessages.hide()
+        let dialog = MessageView.viewFromNib(layout: .CardView)
+        dialog.configureTheme(.success)
+        dialog.configureDropShadow()
+        dialog.configureContent(title: "Success!", body: "We found \(foundCount) nearby driveways!")
+        dialog.button?.isHidden = true
+        var config = SwiftMessages.defaultConfig
+        config.presentationStyle = .bottom
+        config.presentationContext = .window(windowLevel: UIWindowLevelNormal)
+        SwiftMessages.show(config: config, view: dialog)
     }
     func geoSearchCircle(latitude:CLLocationDegrees,longitude:CLLocationDegrees,radius:Double) {
         
         //Clear any existing marks
         self.mapView.removeAnnotations(self.mapView.annotations)
         
+        var foundCount = 0
+        
         let circleQuery = geoFire.query(at: CLLocation.init(latitude: latitude, longitude: longitude), withRadius: radius)
+        
+        let task = DispatchWorkItem {
+            
+            circleQuery?.removeAllObservers()
+            SwiftMessages.hide()
+            self.displayErrorDialogue(titleText: "Sorry", bodyText: "We could not find any nearby driveways")
+            
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6, execute: task)
         
         circleQuery?.observe(GFEventType.keyEntered, with: { (key, location) in
             
             if let userUID = key, let location = location {
                 
                 //Download the parking information
+                foundCount += 1
                 
                 DataService.ds.getParking(withKey: userUID, completion: { (parking) in
                     
@@ -193,6 +242,23 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
   
             }
         })
+        
+        circleQuery?.observeReady({
+            
+            SwiftMessages.hide()
+            
+            task.cancel()
+            
+            if foundCount >= 1 {
+                self.displaySuccessSearchDialogue(foundCount: foundCount)
+            } else {
+                self.displayErrorDialogue(titleText: "Sorry", bodyText: "We could not find any nearby driveways")
+            }
+            
+            circleQuery?.removeAllObservers()
+            
+        })
+        
     }
     
     func createSearchCircle(latitude:CLLocationDegrees,longitude:CLLocationDegrees) {
@@ -230,16 +296,16 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             //Set the selected parking into future referencable variable
             RentService.rs.selectedParking = parking
             
-            HUD.show(.progress)
+            displaySerachingDialogue(titleText: "Loading Driveway...", bodyText: "")
             
             //Download from firebase the owner data
             DataService.ds.getUserDriver(withUID: parking.ownerUID!, completion: { (owner) in
                 
                 RentService.rs.selectedOwner = owner
-                
+            
                 parking.getParkingImage(completion: { (image) in
                     
-                    HUD.hide()
+                    SwiftMessages.hide()
                     
                     //Display the popup accordingly
                     let popup = PopupDialog(title: owner.fullName, message: parking.addressString)
@@ -260,7 +326,6 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
                     let vc = popup.viewController as! PopupDialogDefaultViewController
                     
                     vc.image = image
-                    
                     
                 })
                 

@@ -19,6 +19,14 @@ class IntervalCell : FoldingCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var totalRevenueLabel: UILabel!
+    @IBOutlet weak var fractionLabel: UILabel!
+    
+    
+    var ref : FIRDatabaseReference?
+    var handleKey : UInt?
     
     override func awakeFromNib() {
         //Customizations
@@ -30,6 +38,14 @@ class IntervalCell : FoldingCell {
         
         super.awakeFromNib()
     }
+    deinit {
+        guard let ref = self.ref, let handleKey = self.handleKey else {
+            return
+        }
+        
+        ref.removeObserver(withHandle: handleKey)
+        
+    }
     override func animationDuration(_ itemIndex:NSInteger, type:AnimationType)-> TimeInterval {
         
         let durations = [0.2,0.2,0.2,0.2]
@@ -37,10 +53,13 @@ class IntervalCell : FoldingCell {
     }
     func setupIntervalListener(intervalKey:String) {
         
-        DataService.ds.getInterval(withKey: intervalKey) { (interval,_) in
+        DataService.ds.getIntervalWithUpdates(withKey: intervalKey) { (interval, _, handleKey, ref) in
+            self.ref = ref
+            self.handleKey = handleKey
             self.parkingInterval = interval
             self.setupViews()
         }
+        
         
     }
     func setupViews() {
@@ -54,19 +73,21 @@ class IntervalCell : FoldingCell {
             return
         }
         
+        fractionLabel.text = "\(remainingSlots) / \(totalSlots)"
+        
         if (remainingSlots == totalSlots) {
             //Empty
-            setCellColor(color: UIColor.init(hex: "#66BB6A"))
+            setCellColor(color: UIColor.init(hex: "#0288D1"))
             statusLabel.text = "Empty, no customers yet"
             
         } else if (remainingSlots >= 1) {
             //There are still some spaces
-            setCellColor(color: UIColor.init(hex: "#5C6BC0"))
+            setCellColor(color: UIColor.init(hex: "#0097A7"))
             statusLabel.text = "\(remainingSlots) / \(totalSlots) spots remaining"
             
         } else {
             //There are no more spaces
-            setCellColor(color: UIColor.init(hex: "#7E57C2"))
+            setCellColor(color: UIColor.init(hex: "#00796B"))
             statusLabel.text = "FULL"
         }
         
@@ -82,6 +103,9 @@ class IntervalCell : FoldingCell {
             HUD.flash(.labeledError(title: "Parsing Error", subtitle: "Internal error with converting rate data"), delay: 2.5)
             return
         }
+        
+        startLabel.text = "Start Time: " + DatePickerService.dps.convertDateToString(date: (parkingInterval?.startDate)!)
+        endLabel.text = "End Time: " + DatePickerService.dps.convertDateToString(date: (parkingInterval?.endDate)!)
         
         rateLabel.text = "Rate: $\(rate) / hour"
         

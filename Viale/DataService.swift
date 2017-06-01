@@ -106,6 +106,31 @@ class DataService {
         }
         
     }
+    func getIntervalWithUpdates(withKey key: String, completion: @escaping (_ parkingInterval: ParkingInterval,_ snapshot:[String:AnyObject], _ handleKey:UInt, _ ref:FIRDatabaseReference) -> Void) {
+        
+        //Download the interval with key
+        
+        let ref = DataService.ds.REF_INTERVALS.child(key)
+        var handle : UInt = 0
+        
+        handle = ref.observe(.value, with: { (snapshot) in
+            
+            guard let intervalData = snapshot.value as? Dictionary<String, AnyObject> else {
+                HUD.flash(.labeledError(title: "Error", subtitle: "Parsing Interval Data into simple dictionary"), delay: 2.5)
+                return
+            }
+            let parkingInterval = ParkingInterval(snapshot: intervalData)
+            
+            parkingInterval.intervalKey = key
+            
+            completion(parkingInterval,(snapshot.value as? [String: AnyObject])!, handle, ref)
+            
+        }, withCancel: { (error) in
+            HUD.flash(.labeledError(title: "Downloading Error", subtitle: "Error with downloading interval data"), delay: 2.5)
+        })
+        
+        
+    }
     func getUserDriver(withUID key: String, completion: @escaping (_ userDriver: UserDriver) -> Void) {
         
         //Download the user with the UID

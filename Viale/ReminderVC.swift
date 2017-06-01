@@ -38,8 +38,8 @@ class ReminderVC: UIViewController {
         whenToArriveLabel.text = "You should arrive to your destination at: " + formatter.string(from: selectedInterval.startDate!)
         
         addressLabel.text = selectedParking.addressString
-        fromLabel.text = formatter.string(from: selectedInterval.startDate!)
-        tillLabel.text = formatter.string(from: selectedInterval.endDate!)
+        fromLabel.text = "Start Time: " + formatter.string(from: selectedInterval.startDate!)
+        tillLabel.text = "End Time " + formatter.string(from: selectedInterval.endDate!)
         DataService.ds.REF_USERS.child(selectedParking.ownerUID!).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshot = snapshot.value as? [String: AnyObject] {
                 if let fullName = snapshot["fullName"] as? String {
