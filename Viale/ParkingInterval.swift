@@ -66,15 +66,17 @@ class ParkingInterval {
                 self.userIntervalKeys.append(userInterval)
             }
             
-            //Loop through the snapshot user ids
-            self.userIds = []
-            let _userIds = snapshot["userIds"] as! [String:Bool]
+        }
+        //Loop through the snapshot user ids
+        self.userIds = []
+        
+        if let _userIds = snapshot["userIds"] as? [String:Bool]{
             
             for (userId, _) in _userIds {
-                self.userIntervalKeys.append(userId)
+                self.userIds.append(userId)
             }
+            
         }
-        
         
         
     }

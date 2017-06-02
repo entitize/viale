@@ -37,15 +37,19 @@ class RentIntervalCell: UITableViewCell {
             
             let userUID = DataService.ds.USER_UID
             
-            for userId in interval.userIds {
-                
-                if userId == userUID {
-                    self.alreadyRented = true
-                    self.backgroundColor = UIColor.init(hex: "#BDBDBD")
-                    self.detailTextLabel?.text = "ALREADY REGISTERED"
+            if let userIds = interval.userIds {
+                for userId in userIds {
+                    
+                    if userId == userUID {
+                        self.alreadyRented = true
+                        self.backgroundColor = UIColor.init(hex: "#BDBDBD")
+                        self.detailTextLabel?.text = "ALREADY REGISTERED"
+                    }
+                    
                 }
-                
             }
+            
+            
             
         }
     }

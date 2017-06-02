@@ -213,7 +213,24 @@ class DataService {
             
             
         }) { (error) in
-            HUD.flash(.labeledError(title: "Downloading Error", subtitle: "Error with downloading parking with udpates data"), delay: 2.5)
+            HUD.flash(.labeledError(title: "Downloading Error", subtitle: "Error with downloading parking with updates data"), delay: 2.5)
+        }
+        
+    }
+    func getUserInterval(withKey key: String, completion: @escaping(_ userInterval: UserInterval) -> Void ) {
+        
+        REF_USER_INTERVALS.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let userIntervalData = snapshot.value as? Dictionary<String, AnyObject> else {
+                HUD.flash(.labeledError(title: "Error", subtitle: "Parsing User Interval Data into simple dictionary"), delay: 2.5)
+                return
+            }
+            
+            let userInterval = UserInterval(snapshot: userIntervalData)
+            completion(userInterval)
+            
+        }) { (error) in
+            HUD.flash(.labeledError(title: "Downloading Error", subtitle: "Error with downloading user interval data"), delay: 2.5)
         }
         
     }

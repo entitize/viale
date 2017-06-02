@@ -14,7 +14,7 @@ import Firebase
 class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let kCloseCellHeight: CGFloat = 80
-    let kOpenCellHeight: CGFloat = 400
+    let kOpenCellHeight: CGFloat = 353 + 2 * 8
     
     var numberOfIntervals = 0
     
@@ -115,10 +115,15 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         return intervalKeys.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let cell = tableView.cellForRow(at: indexPath) as! IntervalCell
+        
         if cell.isAnimating() {
             return
         }
+        
+        DrivewayService.ds.selectedParkingInterval = cell.parkingInterval
+        
         var duration = 0.0
         if cellHeights[(indexPath as NSIndexPath).row] == kCloseCellHeight { // open cell
             cellHeights[(indexPath as NSIndexPath).row] = kOpenCellHeight

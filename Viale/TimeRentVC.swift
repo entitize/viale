@@ -91,7 +91,7 @@ class TimeRentVC: UIViewController {
     @IBAction func continueTapped(_ sender: Any) {
         
         //Validate Data, then perform segue
-        guard let start = selectedStartDate, let end = selectedStartDate else {
+        guard let start = selectedStartDate, let end = selectedEndDate else {
             HUD.flash(.labeledError(title: "Field Error", subtitle: "Please select a start date and an end date"), delay: 2.5)
             return
         }

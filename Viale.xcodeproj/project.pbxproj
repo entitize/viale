@@ -21,6 +21,7 @@
 		EEA423091EDA1A1A00609599 /* PayRentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA423081EDA1A1A00609599 /* PayRentVC.swift */; };
 		EEA4230B1EDA640700609599 /* CreateDrivewayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */; };
 		EEA4230D1EDA6EF300609599 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA4230C1EDA6EF300609599 /* UIViewController+Helper.swift */; };
+		EEA96D9B1EE1189900B4D83A /* DrivewayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA96D9A1EE1189900B4D83A /* DrivewayService.swift */; };
 		EEB4734A1ED6230500B1020A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473491ED6230500B1020A /* AppDelegate.swift */; };
 		EEB4734C1ED6230500B1020A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4734B1ED6230500B1020A /* SignInVC.swift */; };
 		EEB4734F1ED6230500B1020A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB4734D1ED6230500B1020A /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		EEA423081EDA1A1A00609599 /* PayRentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayRentVC.swift; sourceTree = "<group>"; };
 		EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDrivewayVC.swift; sourceTree = "<group>"; };
 		EEA4230C1EDA6EF300609599 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
+		EEA96D9A1EE1189900B4D83A /* DrivewayService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrivewayService.swift; sourceTree = "<group>"; };
 		EEB473461ED6230500B1020A /* Viale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Viale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB473491ED6230500B1020A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEB4734B1ED6230500B1020A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				EE4E07EA1ED9BA1100F7D02A /* GoogleMapsService.swift */,
 				EEE5940D1EDCA0FA00800B07 /* RentService.swift */,
 				EEE594131EDCD20300800B07 /* DatePickerService.swift */,
+				EEA96D9A1EE1189900B4D83A /* DrivewayService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				EEE594161EDCD6AA00800B07 /* Date+Helper.swift in Sources */,
 				EEB4734C1ED6230500B1020A /* SignInVC.swift in Sources */,
 				EEB473661ED7258300B1020A /* FancyField.swift in Sources */,
+				EEA96D9B1EE1189900B4D83A /* DrivewayService.swift in Sources */,
 				EEB4738D1ED7AC2900B1020A /* GFGeoHashQuery.m in Sources */,
 				EE1FC0CD1EE0E96500FCD1F3 /* UserInterval.swift in Sources */,
 				EE4E07EF1ED9D17B00F7D02A /* SearchAnnotationView.swift in Sources */,
