@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftSignatureView
 import PKHUD
+import Firebase
 
 class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
     
@@ -28,9 +29,7 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
             
         }
         
-        
     }
-    
     
     @IBAction func cleaButtonTapped(_ sender: Any) {
         signatureView.clear()
@@ -56,12 +55,10 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
                 let value = valString - 1
                 intervalSlotsRef.setValue(value)
                 
-                //Upload the user UID under 'users' inside the intervalRef
-                let userUID = DataService.ds.USER_UID
-                intervalRef.child("users").child(userUID).setValue(true)
-                
-                //Success
-                self.performSegue(withIdentifier: "toNext", sender: nil)
+                //Generate random key
+                let randomKey = NSUUID().uuidString
+                self.uploadUserInterval(withKey: randomKey, withRefToInterval: intervalRef)
+            
                 
             }, withCancel: { (error) in
                 HUD.flash(.labeledError(title: "Upload Error", subtitle: "There was an error with downloading the slots data"), delay: 2.5)
@@ -72,6 +69,74 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
             HUD.flash(.labeledError(title: "Signature Required", subtitle: "Please Sign in the Gray Box to Confirm"),delay:1)
         }
     }
+    func uploadUserInterval(withKey key:String, withRefToInterval intervalRef:FIRDatabaseReference) {
+        
+        HUD.show(.progress)
+        
+        let userUID = DataService.ds.USER_UID
+        
+        //Construct the Firebase UserInterval Object for uploading
+        
+        //Convert dates to doubles
+        
+        let startDateDouble = RentService.rs.selectedStartDate?.timeIntervalSince1970
+        let endDateDouble = RentService.rs.selectedEndDate?.timeIntervalSince1970
+        
+        let uploadData : [String:AnyObject] = [
+            "startDateDouble":startDateDouble as AnyObject,
+            "endDateDouble":endDateDouble as AnyObject,
+            "paidAmount":RentService.rs.totalValue as AnyObject,
+            "ownerKey":userUID as AnyObject
+        ]
+        
+        //Upload the information
+        
+        DataService.ds.REF_USER_INTERVALS.child(key).updateChildValues(uploadData) { (error, _) in
+            
+            if (error != nil) {
+                HUD.flash(.labeledError(title: "Upload Error", subtitle: "There was an error with uploading the user interval data"),delay:1)
+            } else {
+                
+                //Store the key of the new UserInterval intside the ParkingInterval
+            
+                intervalRef.child("userIntervals").child(key).setValue(true, withCompletionBlock: { (error, _) in
+                    
+                    if (error != nil) {
+                        HUD.flash(.labeledError(title: "Upload Error", subtitle: "There was an error with setting the userIntervals key data"),delay:1)
+                    } else {
+                        
+                        
+                        //Also store the customer uid within the usersIds of the ParkingInterval
+                        intervalRef.child("userIds").child(DataService.ds.USER_UID).setValue(true, withCompletionBlock: { (error, _) in
+                            
+                            if (error != nil) {
+                                
+                                HUD.flash(.labeledError(title: "Upload Error", subtitle: "There was an error with setting the userIntervals key data"),delay:1)
+                                
+                            } else {
+                                
+                                HUD.hide()
+                                self.performSegue(withIdentifier: "toNext", sender: nil)
+                                
+                            }
+                            
+                            
+                        })
+                        
+                        
+                        
+                        
+                        
+                    }
+                    
+                })
+                
+            }
+            
+        }
+        
+    }
+    
     func swiftSignatureViewDidTapInside(_ view: SwiftSignatureView) {
         signed = true
         

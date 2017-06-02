@@ -43,6 +43,8 @@ class ManageDrivewayVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         self.numberOfIntervals = 0
         
+        //self.tableView.reloadData()
+        
         DataService.ds.getParkingWithUpdates(withKey: DataService.ds.USER_UID) { (parking, handleKey, ref) in
             
             HUD.hide()

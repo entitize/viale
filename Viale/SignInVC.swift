@@ -12,6 +12,8 @@ import PKHUD
 import SwiftKeychainWrapper
 import ImagePicker
 
+var loggedInWithRegister = false
+
 class SignInVC: UIViewController, ImagePickerDelegate {
 
     @IBOutlet weak var segControl: UISegmentedControl!
@@ -134,6 +136,7 @@ class SignInVC: UIViewController, ImagePickerDelegate {
         DataService.ds.setupCurrentUser(completion: { (_) in
             self.performSegue(withIdentifier: "toMainScreen", sender: nil)
             HUD.flash(.success, delay: 0.5)
+            loggedInWithRegister = true
         })
     }
     

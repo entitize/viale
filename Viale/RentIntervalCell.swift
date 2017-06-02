@@ -19,7 +19,7 @@ class RentIntervalCell: UITableViewCell {
     
     func setupListeners(key:String) {
         
-        DataService.ds.getInterval(withKey: key) { (interval,snapshot) in
+        DataService.ds.getInterval(withKey: key) { (interval,_) in
             self.parkingInterval = interval
             
             let startDateString = DatePickerService.dps.convertDateToString(date: interval.startDate)
@@ -37,24 +37,18 @@ class RentIntervalCell: UITableViewCell {
             
             let userUID = DataService.ds.USER_UID
             
-            guard let users = snapshot["users"] as? [String: Bool] else {
+            for userId in interval.userIds {
                 
-                //There are no users, return
-                return
-            }
-            
-            for user in users {
-                if user.value == true {
-                    if user.key == userUID {
-                        self.alreadyRented = true
-                        self.backgroundColor = UIColor.init(hex: "#BDBDBD")
-                        self.detailTextLabel?.text = "ALREADY REGISTERED"
-                    }
+                if userId == userUID {
+                    self.alreadyRented = true
+                    self.backgroundColor = UIColor.init(hex: "#BDBDBD")
+                    self.detailTextLabel?.text = "ALREADY REGISTERED"
                 }
+                
             }
             
         }
     }
     
-
+    
 }

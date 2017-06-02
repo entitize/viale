@@ -36,7 +36,7 @@ class IntervalCell : FoldingCell {
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
         
-        super.awakeFromNib()
+        //super.awakeFromNib()
     }
     deinit {
         guard let ref = self.ref, let handleKey = self.handleKey else {

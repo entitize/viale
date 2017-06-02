@@ -25,6 +25,7 @@ class DataService {
     private var _REF_GEOFIRE = DB_BASE.child("geofire")
     private var _REF_PARKINGS = DB_BASE.child("parkings")
     private var _REF_INTERVALS = DB_BASE.child("intervals")
+    private var _REF_USER_INTERVALS = DB_BASE.child("user-intervals")
     
     var REF_GEOFIRE: FIRDatabaseReference {
         return _REF_GEOFIRE
@@ -40,6 +41,9 @@ class DataService {
     }
     var REF_INTERVALS : FIRDatabaseReference {
         return _REF_INTERVALS
+    }
+    var REF_USER_INTERVALS : FIRDatabaseReference {
+        return _REF_USER_INTERVALS
     }
     
     var REF_USER_CURRENT: FIRDatabaseReference {
@@ -213,6 +217,7 @@ class DataService {
         }
         
     }
+    
     
     
     //MARK: Downloading From Storage Helpers

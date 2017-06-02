@@ -21,6 +21,9 @@ class ParkingInterval {
     
     var intervalKey: String?
     
+    var userIntervalKeys : [String]!
+    var userIds : [String]!
+    
     var startDateDouble : Double {
         set {
             self.startDate = Date(timeIntervalSince1970: TimeInterval(newValue))
@@ -56,9 +59,24 @@ class ParkingInterval {
         self.ratePerHour = snapshot["ratePerHour"] as! Float
         self.rules = snapshot["rules"] as! String
         
+        //Loop through the snapshot user intervals
+        self.userIntervalKeys = []
+        if let _userIntervals = snapshot["userIntervals"] as? [String:Bool] {
+            for (userInterval, _) in _userIntervals {
+                self.userIntervalKeys.append(userInterval)
+            }
+            
+            //Loop through the snapshot user ids
+            self.userIds = []
+            let _userIds = snapshot["userIds"] as! [String:Bool]
+            
+            for (userId, _) in _userIds {
+                self.userIntervalKeys.append(userId)
+            }
+        }
+        
+        
+        
     }
-    
-    
-    
     
 }

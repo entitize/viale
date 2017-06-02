@@ -43,6 +43,20 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         mapHasCenteredOnce = false
         locationAuthStatus()
         
+        if loggedInWithRegister == true {
+            
+            let popup = PopupDialog(title: "Welcome to Viale!", message: "Would you like a tour around the app?")
+            
+            let buttonOne = DefaultButton(title: "Yes please!") { }
+            
+            let buttonTwo = DefaultButton(title: "No thank you.") { }
+            
+            popup.addButtons([buttonOne, buttonTwo])
+            self.present(popup, animated: true, completion: nil)
+            
+            loggedInWithRegister = false
+        }
+        
     }
     
     

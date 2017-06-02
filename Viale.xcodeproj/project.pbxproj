@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9CBFB99E4C60B8914C21D621 /* Pods_Viale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48545A165799EF72AF307AB7 /* Pods_Viale.framework */; };
+		EE1FC0CD1EE0E96500FCD1F3 /* UserInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FC0CC1EE0E96500FCD1F3 /* UserInterval.swift */; };
+		EE1FC0D01EE0F42900FCD1F3 /* CustomersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FC0CF1EE0F42900FCD1F3 /* CustomersVC.swift */; };
+		EE1FC0D21EE0F43300FCD1F3 /* CustomerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FC0D11EE0F43300FCD1F3 /* CustomerCell.swift */; };
 		EE2F74601EDA739D002389C8 /* ManageDrivewayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F745F1EDA739D002389C8 /* ManageDrivewayVC.swift */; };
 		EE4E07EB1ED9BA1100F7D02A /* GoogleMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07EA1ED9BA1100F7D02A /* GoogleMapsService.swift */; };
 		EE4E07ED1ED9CEE600F7D02A /* SearchAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07EC1ED9CEE600F7D02A /* SearchAnnotation.swift */; };
@@ -55,6 +58,9 @@
 		402312B47F9EDBA449D530C0 /* Pods-Viale.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Viale.release.xcconfig"; path = "Pods/Target Support Files/Pods-Viale/Pods-Viale.release.xcconfig"; sourceTree = "<group>"; };
 		48545A165799EF72AF307AB7 /* Pods_Viale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Viale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D462145FDFE613D75D58BFC /* Pods-Viale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Viale.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Viale/Pods-Viale.debug.xcconfig"; sourceTree = "<group>"; };
+		EE1FC0CC1EE0E96500FCD1F3 /* UserInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInterval.swift; sourceTree = "<group>"; };
+		EE1FC0CF1EE0F42900FCD1F3 /* CustomersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomersVC.swift; sourceTree = "<group>"; };
+		EE1FC0D11EE0F43300FCD1F3 /* CustomerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCell.swift; sourceTree = "<group>"; };
 		EE2F745F1EDA739D002389C8 /* ManageDrivewayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageDrivewayVC.swift; sourceTree = "<group>"; };
 		EE4E07EA1ED9BA1100F7D02A /* GoogleMapsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsService.swift; sourceTree = "<group>"; };
 		EE4E07EC1ED9CEE600F7D02A /* SearchAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAnnotation.swift; sourceTree = "<group>"; };
@@ -141,6 +147,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EE1FC0CE1EE0F41100FCD1F3 /* Customers */ = {
+			isa = PBXGroup;
+			children = (
+				EE1FC0CF1EE0F42900FCD1F3 /* CustomersVC.swift */,
+				EE1FC0D11EE0F43300FCD1F3 /* CustomerCell.swift */,
+			);
+			name = Customers;
+			sourceTree = "<group>";
+		};
 		EE2F74611EDA76DE002389C8 /* RentVCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */,
+				EE1FC0CE1EE0F41100FCD1F3 /* Customers */,
 				EEE594061EDC5F8F00800B07 /* ManageDriveway */,
 				EE8A9C971EDB262800DC6E8B /* NewIntervalVC.swift */,
 			);
@@ -229,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				EEB473D81ED8D76C00B1020A /* Parking.swift */,
+				EE1FC0CC1EE0E96500FCD1F3 /* UserInterval.swift */,
 				EEB473DA1ED8D82900B1020A /* UserDriver.swift */,
 				EEE594071EDC761E00800B07 /* ParkingInterval.swift */,
 			);
@@ -471,6 +488,7 @@
 				EEB4734C1ED6230500B1020A /* SignInVC.swift in Sources */,
 				EEB473661ED7258300B1020A /* FancyField.swift in Sources */,
 				EEB4738D1ED7AC2900B1020A /* GFGeoHashQuery.m in Sources */,
+				EE1FC0CD1EE0E96500FCD1F3 /* UserInterval.swift in Sources */,
 				EE4E07EF1ED9D17B00F7D02A /* SearchAnnotationView.swift in Sources */,
 				EEE594101EDCC97D00800B07 /* RentIntervalCell.swift in Sources */,
 				EEA4230B1EDA640700609599 /* CreateDrivewayVC.swift in Sources */,
@@ -498,7 +516,9 @@
 				EEB4738C1ED7AC2900B1020A /* GFGeoHash.m in Sources */,
 				EEB4738A1ED7AC2900B1020A /* GeoFire.m in Sources */,
 				EEB4738E1ED7AC2900B1020A /* GFQuery.m in Sources */,
+				EE1FC0D01EE0F42900FCD1F3 /* CustomersVC.swift in Sources */,
 				EEA423091EDA1A1A00609599 /* PayRentVC.swift in Sources */,
+				EE1FC0D21EE0F43300FCD1F3 /* CustomerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

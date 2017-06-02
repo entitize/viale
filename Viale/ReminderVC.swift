@@ -40,14 +40,7 @@ class ReminderVC: UIViewController {
         addressLabel.text = selectedParking.addressString
         fromLabel.text = "Start Time: " + formatter.string(from: selectedInterval.startDate!)
         tillLabel.text = "End Time " + formatter.string(from: selectedInterval.endDate!)
-        DataService.ds.REF_USERS.child(selectedParking.ownerUID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let snapshot = snapshot.value as? [String: AnyObject] {
-                if let fullName = snapshot["fullName"] as? String {
-                    self.ownerNameLabel.text = fullName
-                }
-            }
-        })
-        
+        self.ownerNameLabel.text = RentService.rs.selectedOwner?.fullName
 
     }
     @IBAction func chooseReminderTimeTapped(_ sender: Any) {
