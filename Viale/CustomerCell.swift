@@ -42,7 +42,7 @@ class CustomerCell : FoldingCell {
             
             //Download the customer
             
-            DataService.ds.getUserDriver(withUID: userInterval.ownerKey, completion: { (customer) in
+            DataService.ds.getUserDriver(withUID: userInterval.ownerKey, completion: { (customer,_) in
                 
                 //Setup the views
                 self.titleLabel.text = customer.fullName

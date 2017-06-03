@@ -42,7 +42,12 @@ class SignInVC: UIViewController, ImagePickerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             HUD.show(.progress)
-            DataService.ds.setupCurrentUser(completion: { (_) in
+            DataService.ds.setupCurrentUser(completion: { (_,error) in
+                if (error) {
+                    HUD.flash(.labeledError(title: "Logging In Error", subtitle: "There was an error with logging in"), delay: 2.0)
+                    self.signOut()
+                    return
+                }
                 HUD.hide()
                 self.performSegue(withIdentifier: "toMainScreen", sender: nil)
             })
@@ -84,8 +89,7 @@ class SignInVC: UIViewController, ImagePickerDelegate {
                 HUD.flash(.labeledError(title: "", subtitle: "There was an error logging in"), delay: 1.0)
             } else {
                 if let user = user {
-                    let userData = ["provider":user.providerID] as Dictionary<String, AnyObject>
-                    self.completeSignIn(id: user.uid, userData: userData )
+                    self.completeSignIn(id: user.uid, userData: [:])
                 }
             }
         })
@@ -118,7 +122,7 @@ class SignInVC: UIViewController, ImagePickerDelegate {
                     DataService.ds.uploadImage(withRef: DataService.ds.REF_AVATAR_IMAGES, withImage: self.avatarPicture, completion: { (avatarURL) in
                         
                         if let user = user {
-                            let userData = ["provider":user.providerID,"fullName":fullName,"phoneNumber":phoneNumber,"hasDriveway":false,"carImageURL":carURL,"avatarImageURL":avatarURL] as [String : AnyObject]
+                            let userData = ["fullName":fullName,"phoneNumber":phoneNumber,"hasDriveway":false,"carImageURL":carURL,"avatarImageURL":avatarURL] as [String : AnyObject]
                             self.completeSignIn(id: user.uid, userData: userData)
                         }
                         

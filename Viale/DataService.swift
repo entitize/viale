@@ -78,11 +78,11 @@ class DataService {
     
     //MARK: Database Helpers
     
-    func setupCurrentUser(completion: @escaping (_ completed:Bool) -> Void) {
-        getUserDriver(withUID: USER_UID) { (driver) in
+    func setupCurrentUser(completion: @escaping (_ completed:Bool, _ error:Bool) -> Void) {
+        getUserDriver(withUID: USER_UID) { (driver,error) in
             
             UserDriver.currentUser = driver
-            completion(true)
+            completion(true,error)
         }
     }
     
@@ -135,22 +135,39 @@ class DataService {
         
         
     }
-    func getUserDriver(withUID key: String, completion: @escaping (_ userDriver: UserDriver) -> Void) {
+    func getUserDriver(withUID key: String, completion: @escaping (_ userDriver: UserDriver, _ error: Bool) -> Void) {
         
         //Download the user with the UID
         
-        DataService.ds.REF_USERS.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+        let ref = DataService.ds.REF_USERS.child(key)
+        
+        
+        let task = DispatchWorkItem {
             
+            ref.removeAllObservers()
+            completion(UserDriver(snapshot: [:]),true)
+            
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 9, execute: task)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let userData = snapshot.value as? Dictionary<String, AnyObject> else {
+                task.cancel()
                 HUD.flash(.labeledError(title: "Error", subtitle: "Parsing User Driver Data into simple dictionary"), delay: 2.5)
                 return
             }
             
             let driver = UserDriver(snapshot: userData)
-            completion(driver)
+            completion(driver,false)
+            task.cancel()
 
-        })
+        }) { (error) in
+            task.cancel()
+            HUD.flash(.labeledError(title: "Downloading Error", subtitle: "Error with downloading user data"), delay: 2.5)
+        }
         
+
     }
     func getUserDriverWithUpdates(withUID key: String, completion: @escaping (_ userDriver: UserDriver, _ handlerKey: UInt, _ ref:FIRDatabaseReference) -> Void) {
         

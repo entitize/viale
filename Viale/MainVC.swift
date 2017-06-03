@@ -313,7 +313,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             displaySerachingDialogue(titleText: "Loading Driveway...", bodyText: "")
             
             //Download from firebase the owner data
-            DataService.ds.getUserDriver(withUID: parking.ownerUID!, completion: { (owner) in
+            DataService.ds.getUserDriver(withUID: parking.ownerUID!, completion: { (owner,_) in
                 
                 RentService.rs.selectedOwner = owner
             

@@ -24,6 +24,10 @@ class UserDriver {
     
     init(snapshot:[String:AnyObject]) {
         
+        if (snapshot.isEmpty) {
+            return
+        }
+        
         self.fullName = snapshot["fullName"] as! String
         self.hasDriveway = snapshot["hasDriveway"] as! Bool
         self.phoneNumber = snapshot["phoneNumber"] as! String

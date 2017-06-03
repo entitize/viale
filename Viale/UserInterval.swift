@@ -53,7 +53,7 @@ class UserInterval {
         } else {
             
             //Download the owner data from firebase using the key
-            DataService.ds.getUserDriver(withUID: ownerUID, completion: { (owner) in
+            DataService.ds.getUserDriver(withUID: ownerUID, completion: { (owner,_) in
                 
                 self.owner = owner
                 completion(owner)
