@@ -16,6 +16,10 @@ class UserInterval {
     var ownerKey: String!
     var paidAmount: Float!
     
+    var addressString: String!
+    var ownerName: String!
+    var phoneNumber: String!
+    
     private var owner : UserDriver?
     
     var startDateDouble : Double {
@@ -71,6 +75,9 @@ class UserInterval {
         self.endDateDouble = snapshot["endDateDouble"] as! Double
         self.ownerKey = snapshot["ownerKey"] as! String
         self.paidAmount = snapshot["paidAmount"] as! Float
+        self.addressString = snapshot["addressString"] as! String
+        self.ownerName = snapshot["ownerName"] as! String
+        self.phoneNumber = snapshot["phoneNumber"] as! String
         
     }
     

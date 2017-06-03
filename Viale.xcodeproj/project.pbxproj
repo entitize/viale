@@ -44,6 +44,8 @@
 		EEB473D51ED8619200B1020A /* UIColor+Helpe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473D41ED8619200B1020A /* UIColor+Helpe.swift */; };
 		EEB473D91ED8D76C00B1020A /* Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473D81ED8D76C00B1020A /* Parking.swift */; };
 		EEB473DB1ED8D82900B1020A /* UserDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB473DA1ED8D82900B1020A /* UserDriver.swift */; };
+		EEB81F0F1EE24DBC007E0034 /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB81F0E1EE24DBC007E0034 /* ScheduleVC.swift */; };
+		EEB81F111EE24DC3007E0034 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB81F101EE24DC3007E0034 /* ScheduleCell.swift */; };
 		EEE594051EDC5F8B00800B07 /* IntervalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE594041EDC5F8B00800B07 /* IntervalCell.swift */; };
 		EEE594081EDC761E00800B07 /* ParkingInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE594071EDC761E00800B07 /* ParkingInterval.swift */; };
 		EEE5940A1EDC9DF300800B07 /* TimeRentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE594091EDC9DF300800B07 /* TimeRentVC.swift */; };
@@ -109,6 +111,8 @@
 		EEB473D41ED8619200B1020A /* UIColor+Helpe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpe.swift"; sourceTree = "<group>"; };
 		EEB473D81ED8D76C00B1020A /* Parking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parking.swift; sourceTree = "<group>"; };
 		EEB473DA1ED8D82900B1020A /* UserDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDriver.swift; sourceTree = "<group>"; };
+		EEB81F0E1EE24DBC007E0034 /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
+		EEB81F101EE24DC3007E0034 /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		EEE594041EDC5F8B00800B07 /* IntervalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalCell.swift; sourceTree = "<group>"; };
 		EEE594071EDC761E00800B07 /* ParkingInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingInterval.swift; sourceTree = "<group>"; };
 		EEE594091EDC9DF300800B07 /* TimeRentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRentVC.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 				EEB473731ED7A31A00B1020A /* MainVC.swift */,
 				EEB4734B1ED6230500B1020A /* SignInVC.swift */,
 				EEECD5731ED92B7800D42B65 /* LeftMenuTBVC.swift */,
+				EEB81F0D1EE24D89007E0034 /* SchedulesVC */,
 				EE2F74611EDA76DE002389C8 /* RentVCs */,
 				EE2F74621EDA76EA002389C8 /* DrivewayVCs */,
 			);
@@ -332,6 +337,15 @@
 				EEE594151EDCD6AA00800B07 /* Date+Helper.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		EEB81F0D1EE24D89007E0034 /* SchedulesVC */ = {
+			isa = PBXGroup;
+			children = (
+				EEB81F0E1EE24DBC007E0034 /* ScheduleVC.swift */,
+				EEB81F101EE24DC3007E0034 /* ScheduleCell.swift */,
+			);
+			name = SchedulesVC;
 			sourceTree = "<group>";
 		};
 		EEE594061EDC5F8F00800B07 /* ManageDriveway */ = {
@@ -506,11 +520,13 @@
 				EEA4230D1EDA6EF300609599 /* UIViewController+Helper.swift in Sources */,
 				EEE594081EDC761E00800B07 /* ParkingInterval.swift in Sources */,
 				EE2F74601EDA739D002389C8 /* ManageDrivewayVC.swift in Sources */,
+				EEB81F111EE24DC3007E0034 /* ScheduleCell.swift in Sources */,
 				EEB473741ED7A31A00B1020A /* MainVC.swift in Sources */,
 				EEB473911ED7B6BB00B1020A /* ParkingAnnotation.swift in Sources */,
 				EE4E07ED1ED9CEE600F7D02A /* SearchAnnotation.swift in Sources */,
 				EEB4736E1ED725BD00B1020A /* Constants.swift in Sources */,
 				EEB4734A1ED6230500B1020A /* AppDelegate.swift in Sources */,
+				EEB81F0F1EE24DBC007E0034 /* ScheduleVC.swift in Sources */,
 				EE4E07F31ED9F8C400F7D02A /* RentVC.swift in Sources */,
 				EEE594141EDCD20300800B07 /* DatePickerService.swift in Sources */,
 				EEE5940E1EDCA0FA00800B07 /* RentService.swift in Sources */,

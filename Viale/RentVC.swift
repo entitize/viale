@@ -46,7 +46,7 @@ class RentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             self.dismiss(animated: true, completion: nil)
             
-            let popup = PopupDialog(title: "Success!", message: "You have successfully scheduled a rent space! View your scheduled rents by clicking the bell icon on the top bar on the map view.")
+            let popup = PopupDialog(title: "Success!", message: "You have successfully scheduled a rent space! View your scheduled rents by clicking the very right bar button item on the top bar on the map view.")
             
             // Create buttons
             let buttonOne = DefaultButton(title: "Done") { }

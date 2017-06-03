@@ -83,6 +83,13 @@ class DataService {
             
             UserDriver.currentUser = driver
             completion(true,error)
+            if (error == false) {
+                self.getUserDriverWithUpdates(withUID: self.USER_UID, completion: { (userDriver, _, _) in
+                    
+                    UserDriver.currentUser = userDriver
+                    
+                })
+            }
         }
     }
     

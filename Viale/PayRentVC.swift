@@ -82,11 +82,15 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
         let startDateDouble = RentService.rs.selectedStartDate?.timeIntervalSince1970
         let endDateDouble = RentService.rs.selectedEndDate?.timeIntervalSince1970
         
+        
         let uploadData : [String:AnyObject] = [
             "startDateDouble":startDateDouble as AnyObject,
             "endDateDouble":endDateDouble as AnyObject,
+            "ownerKey":userUID as AnyObject,
             "paidAmount":RentService.rs.totalValue as AnyObject,
-            "ownerKey":userUID as AnyObject
+            "addressString":RentService.rs.selectedParking?.addressString as AnyObject,
+            "ownerName":RentService.rs.selectedOwner?.fullName as AnyObject,
+            "phoneNumber":RentService.rs.selectedOwner?.phoneNumber as AnyObject
         ]
         
         //Upload the information
@@ -115,8 +119,17 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
                                 
                             } else {
                                 
-                                HUD.hide()
-                                self.performSegue(withIdentifier: "toNext", sender: nil)
+                                //Also put the key inside the currentUser information
+                                DataService.ds.REF_USER_CURRENT.child("schedule").child(key).setValue(true, withCompletionBlock: { (error, _) in
+                                    if (error != nil) {
+                                        HUD.flash(.labeledError(title: "Upload Error", subtitle: "There was an error with setting the userIntervals key data"),delay:1)
+                                    } else {
+                                        
+                                        HUD.hide()
+                                        self.performSegue(withIdentifier: "toNext", sender: nil)
+                                    }
+                                })
+                                
                                 
                             }
                             
