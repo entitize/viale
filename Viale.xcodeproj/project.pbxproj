@@ -17,6 +17,7 @@
 		EE4E07EF1ED9D17B00F7D02A /* SearchAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07EE1ED9D17B00F7D02A /* SearchAnnotationView.swift */; };
 		EE4E07F11ED9E4A900F7D02A /* ParkingAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07F01ED9E4A900F7D02A /* ParkingAnnotationView.swift */; };
 		EE4E07F31ED9F8C400F7D02A /* RentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E07F21ED9F8C400F7D02A /* RentVC.swift */; };
+		EE7F5E391EE3342600302969 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F5E381EE3342600302969 /* UIImage+Helper.swift */; };
 		EE8A9C981EDB262800DC6E8B /* NewIntervalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A9C971EDB262800DC6E8B /* NewIntervalVC.swift */; };
 		EEA423091EDA1A1A00609599 /* PayRentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA423081EDA1A1A00609599 /* PayRentVC.swift */; };
 		EEA4230B1EDA640700609599 /* CreateDrivewayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */; };
@@ -70,6 +71,7 @@
 		EE4E07EE1ED9D17B00F7D02A /* SearchAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAnnotationView.swift; sourceTree = "<group>"; };
 		EE4E07F01ED9E4A900F7D02A /* ParkingAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingAnnotationView.swift; sourceTree = "<group>"; };
 		EE4E07F21ED9F8C400F7D02A /* RentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentVC.swift; sourceTree = "<group>"; };
+		EE7F5E381EE3342600302969 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		EE8A9C971EDB262800DC6E8B /* NewIntervalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewIntervalVC.swift; sourceTree = "<group>"; };
 		EEA423081EDA1A1A00609599 /* PayRentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayRentVC.swift; sourceTree = "<group>"; };
 		EEA4230A1EDA640700609599 /* CreateDrivewayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDrivewayVC.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				EEB473D41ED8619200B1020A /* UIColor+Helpe.swift */,
 				EEA4230C1EDA6EF300609599 /* UIViewController+Helper.swift */,
 				EEE594151EDCD6AA00800B07 /* Date+Helper.swift */,
+				EE7F5E381EE3342600302969 /* UIImage+Helper.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				EEE594141EDCD20300800B07 /* DatePickerService.swift in Sources */,
 				EEE5940E1EDCA0FA00800B07 /* RentService.swift in Sources */,
 				EEB473DB1ED8D82900B1020A /* UserDriver.swift in Sources */,
+				EE7F5E391EE3342600302969 /* UIImage+Helper.swift in Sources */,
 				EEB473641ED7258300B1020A /* FancyView.swift in Sources */,
 				EEB473721ED79BFC00B1020A /* DataService.swift in Sources */,
 				EEB4738C1ED7AC2900B1020A /* GFGeoHash.m in Sources */,

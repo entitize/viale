@@ -19,6 +19,7 @@ class ScheduleCell : FoldingCell {
     @IBOutlet weak var addressLabel: UILabel!
     
     var myAddressString = ""
+    var placeNameString = ""
     
     override func awakeFromNib() {
         //Customizations
@@ -39,13 +40,14 @@ class ScheduleCell : FoldingCell {
         
         DataService.ds.getUserInterval(withKey: intervalKey) { (userInterval) in
             
-            self.titleLabel.text = "Driveway Owner: " + userInterval.ownerName
+            self.titleLabel.text = userInterval.placeName
             self.userNameLabel.text = "Driveway Owner: " + userInterval.ownerName
             self.startLabel.text = "Start: " + DatePickerService.dps.convertDateToString(date: userInterval.startDate)
             self.endLabel.text = "End: " + DatePickerService.dps.convertDateToString(date: userInterval.endDate)
             self.phoneNumberLabel.text = "Phone: " + userInterval.phoneNumber
             self.addressLabel.text = userInterval.addressString
             self.myAddressString = userInterval.addressString
+            self.placeNameString = userInterval.placeName
         }
         
     }
@@ -53,7 +55,7 @@ class ScheduleCell : FoldingCell {
         let res = GoogleMapsService.gm.getLatLng(addressString: self.myAddressString)
         if res.isError == false {
             let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: res.location, addressDictionary:nil))
-            mapItem.name = myAddressString
+            mapItem.name = self.placeNameString
             mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
         }
     }

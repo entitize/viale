@@ -99,6 +99,12 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
             
             
         }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NOTIFICATION_KEY_OPEN_SCHEDULE), object: nil, queue: nil) { (notification) in
+            
+            self.performSegue(withIdentifier: "toSchedule", sender: nil)
+            
+            
+        }
     }
     
     func locationAuthStatus() {
@@ -339,7 +345,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
                     
                     let vc = popup.viewController as! PopupDialogDefaultViewController
                     
-                    vc.image = image
+                    vc.image = cropToBounds(image: image, width: Double(self.view.frame.width * 3 / 4), height: Double(self.view.frame.height * 3 / 4))
                     
                 })
                 

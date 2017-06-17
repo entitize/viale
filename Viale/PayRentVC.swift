@@ -90,7 +90,8 @@ class PayRentVC: UIViewController, SwiftSignatureViewDelegate {
             "paidAmount":RentService.rs.totalValue as AnyObject,
             "addressString":RentService.rs.selectedParking?.addressString as AnyObject,
             "ownerName":RentService.rs.selectedOwner?.fullName as AnyObject,
-            "phoneNumber":RentService.rs.selectedOwner?.phoneNumber as AnyObject
+            "phoneNumber":RentService.rs.selectedOwner?.phoneNumber as AnyObject,
+            "placeName":RentService.rs.selectedParking?.name as AnyObject
         ]
         
         //Upload the information

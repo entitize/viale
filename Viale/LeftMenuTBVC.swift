@@ -36,6 +36,14 @@ class LeftMenuTBVC: UITableViewController {
             
             //Logout User
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_KEY_LOGOUT_USER), object: nil)
+        } else if selectedIndex == 1 {
+            
+            dismiss(animated: true, completion: { 
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_KEY_OPEN_SCHEDULE), object: nil)
+            })
+            //Open our schedule
+            
+            
         }
         
     }

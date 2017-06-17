@@ -32,25 +32,32 @@ class SignInVC: UIViewController, ImagePickerDelegate {
     var avatarPicture: UIImage!
     
     var selectingPictureIndex = 0
+    var viewDidAppearOnce = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
         //signOut()
     }
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            HUD.show(.progress)
-            DataService.ds.setupCurrentUser(completion: { (_,error) in
-                if (error) {
-                    HUD.flash(.labeledError(title: "Logging In Error", subtitle: "There was an error with logging in"), delay: 2.0)
-                    self.signOut()
-                    return
-                }
-                HUD.hide()
-                self.performSegue(withIdentifier: "toMainScreen", sender: nil)
-            })
+        super.viewDidAppear(animated)
+        
+        if (!self.viewDidAppearOnce) {
+            if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+                HUD.show(.progress)
+                DataService.ds.setupCurrentUser(completion: { (_,error) in
+                    if (error) {
+                        HUD.flash(.labeledError(title: "Logging In Error", subtitle: "There was an error with logging in"), delay: 2.0)
+                        self.signOut()
+                        return
+                    }
+                    HUD.hide()
+                    self.performSegue(withIdentifier: "toMainScreen", sender: nil)
+                })
+            }
+            self.viewDidAppearOnce = true
         }
     }
     
@@ -107,9 +114,11 @@ class SignInVC: UIViewController, ImagePickerDelegate {
         }
         if selectedAvatarPicture == false {
             HUD.flash(.labeledError(title: "", subtitle: "Please choose a car image"), delay: 1.0)
+            return
         }
         if selectedCarPicture == false {
             HUD.flash(.labeledError(title: "", subtitle: "Please choose an image of your car"), delay: 1.0)
+            return
         }
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {

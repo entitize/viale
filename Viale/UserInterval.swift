@@ -19,6 +19,7 @@ class UserInterval {
     var addressString: String!
     var ownerName: String!
     var phoneNumber: String!
+    var placeName: String!
     
     private var owner : UserDriver?
     
@@ -78,6 +79,7 @@ class UserInterval {
         self.addressString = snapshot["addressString"] as! String
         self.ownerName = snapshot["ownerName"] as! String
         self.phoneNumber = snapshot["phoneNumber"] as! String
+        self.placeName = snapshot["placeName"] as! String
         
     }
     
