@@ -198,8 +198,6 @@ class SignInVC: UIViewController, ImagePickerDelegate {
     
     @IBAction func submitButtonTapped(_ sender: Any) {
         
-        HUD.show(.progress)
-        
         if (segControl.selectedSegmentIndex == 0) {
             registerUser()
         } else {

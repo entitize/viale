@@ -184,7 +184,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         }
     }
     func displayErrorDialogue(titleText:String,bodyText:String) {
-        let dialog = MessageView.viewFromNib(layout: .CardView)
+        let dialog = MessageView.viewFromNib(layout: .cardView)
         dialog.configureTheme(.error)
         dialog.configureDropShadow()
         dialog.configureContent(title: titleText, body: bodyText)
@@ -195,7 +195,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
         SwiftMessages.show(config: config, view: dialog)
     }
     func displaySerachingDialogue(titleText:String,bodyText:String) {
-        let dialog = MessageView.viewFromNib(layout: .CardView)
+        let dialog = MessageView.viewFromNib(layout: .cardView)
         dialog.configureTheme(.warning)
         dialog.configureDropShadow()
         dialog.configureContent(title: titleText, body: bodyText)
@@ -208,7 +208,7 @@ class MainVC : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, U
     }
     func displaySuccessSearchDialogue(foundCount:Int) {
         SwiftMessages.hide()
-        let dialog = MessageView.viewFromNib(layout: .CardView)
+        let dialog = MessageView.viewFromNib(layout: .cardView)
         dialog.configureTheme(.success)
         dialog.configureDropShadow()
         dialog.configureContent(title: "Success!", body: "We found \(foundCount) nearby driveways!")
